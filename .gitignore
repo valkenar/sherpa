@@ -28,6 +28,9 @@ extern/fftw-3.3.4/tools/fftw-wisdom-to-conf
 extern/fftw-3.3.4/tools/fftw_wisdom.1
 extern/region-4.7/src/regparser.tab.c
 
+# VI
+*.swp
+
 # Packages
 *.egg
 *.egg-info
