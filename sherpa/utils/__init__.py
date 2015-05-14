@@ -88,7 +88,7 @@ __all__ = ('NoNewAttributesAfterInit', 'SherpaTest', 'SherpaTestCase',
            'guess_reference', 'histogram1d', 'histogram2d', 'igam', 'igamc',
            'incbet', 'interpolate', 'is_binary_file', 'Knuth_close',
            'lgam', 'linear_interp', 'nearest_interp',
-           'needs_data', 'neville', 'neville2d',
+           'test_data_missing', 'neville', 'neville2d',
            'new_muller', 'normalize', 'numpy_convolve',
            'pad_bounding_box', 'parallel_map', 'param_apply_limits',
            'parse_expr', 'poisson_noise', 'print_fields', 'rebin',
@@ -223,39 +223,12 @@ class SherpaTestCase(numpytest.NumpyTestCase):
         self.assert_(numpy.all(sao_fcmp(first, second, tol)), msg)
 
 
-def needs_xspec(meth):
+def test_data_missing():
     """
-    Decorator for tests requiring the xspec extension, similar to needs_data.
-
-    :param meth:
-    :return:
+    Returns True if external data (i.e. data not distributed with Sherpa
+    itself) is missing.  This is used to skip tests that require such data.
     """
-    def new_meth(self):
-        try:
-            from sherpa.astro import xspec
-        except:
-            return
-        return meth(self)
-    new_meth.__name__ = meth.__name__
-    return new_meth
-
-
-def needs_data(meth):
-    """
-
-    Decorator for test_* methods of SherpaTestCase subclasses that
-    indicates that the corresponding test requires external data
-    (i.e. data not distributed with Sherpa itself).  Its effect is to
-    make the test a no-op if SherpaTestCase.datadir is None.
-
-    """
-
-    def new_meth(self):
-        if SherpaTestCase.datadir is None:
-            return
-        meth(self)
-    new_meth.__name__ = meth.__name__
-    return new_meth
+    return SherpaTestCase.datadir is None
 
 
 def has_package_from_list(*packages):
@@ -266,7 +239,7 @@ def has_package_from_list(*packages):
         try:
             importlib.import_module(package)
             return True
-        except ImportError:
+        except:
             pass
     return False
 

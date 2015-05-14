@@ -18,10 +18,11 @@
 #
 
 
+import unittest
 import logging
 import os
 import os.path
-from sherpa.utils import SherpaTest, SherpaTestCase, needs_data, needs_xspec
+from sherpa.utils import SherpaTest, SherpaTestCase, test_data_missing, has_package_from_list
 import sherpa.astro.sim as sim
 
 from sherpa.astro.instrument import Response1D
@@ -75,8 +76,9 @@ class test_sim(SherpaTestCase):
         if hasattr(self,'old_level'):
             logger.setLevel(self.old_level)
 
-    @needs_xspec
-    @needs_data
+    @unittest.skipIf(not has_package_from_list('sherpa.astro.xspec'),
+                     "required sherpa.astro.xspec module missing")
+    @unittest.skipIf(test_data_missing(), "required test data missing")
     def test_pragbayes_simarf(self):
         datadir = SherpaTestCase.datadir
         if datadir is None:
@@ -105,8 +107,9 @@ class test_sim(SherpaTestCase):
         #     print 'param: ', str(params.std(1))
         #     raise
 
-    @needs_xspec
-    @needs_data
+    @unittest.skipIf(not has_package_from_list('sherpa.astro.xspec'),
+                     "required sherpa.astro.xspec module missing")
+    @unittest.skipIf(test_data_missing(), "required test data missing")
     def test_pragbayes_pcaarf(self):
         datadir = SherpaTestCase.datadir
         if datadir is None:
