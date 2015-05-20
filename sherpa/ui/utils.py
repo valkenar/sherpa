@@ -292,7 +292,6 @@ class Session(NoNewAttributesAfterInit):
 
         return allnames
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def clean(self):
         """Clear out the current Sherpa session.
 
@@ -445,7 +444,6 @@ class Session(NoNewAttributesAfterInit):
         self._srccompimage = sherpa.image.ComponentSourceImage()
 
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def save(self, filename='sherpa.save', clobber=False):
         """Save the current Sherpa session to a file.
 
@@ -462,7 +460,7 @@ class Session(NoNewAttributesAfterInit):
         Raises
         ------
         sherpa.utils.err.IOErr
-           If `filename` already exists and `clobber` is `False`.
+           If ``filename`` already exists and ``clobber`` is ``False``.
 
         See Also
         --------
@@ -504,7 +502,6 @@ class Session(NoNewAttributesAfterInit):
         finally:
             fout.close()
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def restore(self, filename='sherpa.save'):
         """Load in a Sherpa session from a file.
 
@@ -512,12 +509,12 @@ class Session(NoNewAttributesAfterInit):
         ----------
         filename : str, optional
            The name of the file to read the results from. The default
-           is `sherpa.save`.
+           is 'sherpa.save'.
 
         Raises
         ------
         IOError
-           If `filename` does not exist.
+           If ``filename`` does not exist.
 
         See Also
         --------
@@ -532,16 +529,16 @@ class Session(NoNewAttributesAfterInit):
         between versions of Sherpa, but is platform independent. A
         warning message may be created if a file saved by an older
         (or newer) version of Sherpa is loaded. An example of such
-        a message is
+        a message is::
 
-        WARNING: Could not determine whether the model is discrete.
-        This probably means that you have restored a session saved with a previous version of Sherpa.
-        Falling back to assuming that the model is continuous.
+          WARNING: Could not determine whether the model is discrete.
+          This probably means that you have restored a session saved with a previous version of Sherpa.
+          Falling back to assuming that the model is continuous.
 
         Examples
         --------
 
-        Load in the Sherpa session from `sherpa.save`.
+        Load in the Sherpa session from 'sherpa.save'.
 
         >>> restore()
 
@@ -692,7 +689,6 @@ class Session(NoNewAttributesAfterInit):
             covar_str += self.get_covar_results().format() + '\n\n'
         return covar_str
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def show_stat(self, outfile=None, clobber=False):
         """Display the current fit statistic.
 
@@ -741,7 +737,6 @@ class Session(NoNewAttributesAfterInit):
         _send_to_pager(all, outfile, clobber)
 
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def show_method(self, outfile=None, clobber=False):
         """Display the current optimization method and options.
 
@@ -796,7 +791,6 @@ class Session(NoNewAttributesAfterInit):
         _send_to_pager(all, outfile, clobber)
 
 
-    ### Ahelp ingest: 2015-05-02 DJB
     def show_fit(self, outfile=None, clobber=False):
         """Summarize the fit results.
 
@@ -843,7 +837,6 @@ class Session(NoNewAttributesAfterInit):
         _send_to_pager(all, outfile, clobber)
 
 
-    ### Ahelp ingest: 2015-05-02 DJB
     def show_data(self, id=None, outfile=None, clobber=False):
         """Summarize the available data sets.
 
@@ -889,7 +882,6 @@ class Session(NoNewAttributesAfterInit):
         _send_to_pager(all, outfile, clobber)
 
 
-    ### Ahelp ingest: 2015-05-02 DJB
     def show_filter(self, id=None, outfile=None, clobber=False):
         """Show any filters applied to a data set.
 
@@ -938,7 +930,6 @@ class Session(NoNewAttributesAfterInit):
         _send_to_pager(all, outfile, clobber)
 
 
-    ### Ahelp ingest: 2015-05-01 DJB
     def show_model(self, id=None, outfile=None, clobber=False):
         """Display the model expression used to fit a data set.
 
@@ -991,7 +982,6 @@ class Session(NoNewAttributesAfterInit):
         _send_to_pager(all, outfile, clobber)
 
 
-    ### Ahelp ingest: 2015-05-01 DJB
     def show_source(self, id=None, outfile=None, clobber=False):
         """Display the source model expression for a data set.
 
@@ -1040,7 +1030,6 @@ class Session(NoNewAttributesAfterInit):
         all += self._get_show_source(id)
         _send_to_pager(all, outfile, clobber)
 
-    ### Ahelp ingest: 2015-05-02 DJB
     ### DOC-TODO: how and where to describe the PSF/kernel difference
     ###           as the Notes section below is inadequate
     def show_kernel(self, id=None, outfile=None, clobber=False):
@@ -1102,7 +1091,6 @@ class Session(NoNewAttributesAfterInit):
         all += self._get_show_kernel(id)
         _send_to_pager(all, outfile, clobber)
 
-    ### Ahelp ingest: 2015-05-02 DJB
     ### DOC-TODO: how and where to describe the PSF/kernel difference
     ###           as the Notes section below is inadequate
     def show_psf(self, id=None, outfile=None, clobber=False):
@@ -1165,7 +1153,6 @@ class Session(NoNewAttributesAfterInit):
         all += self._get_show_psf(id)
         _send_to_pager(all, outfile, clobber)
 
-    ### Ahelp ingest: 2015-05-01 DJB
     def show_conf(self, outfile=None, clobber=False):
         """Display the results of the last conf evaluation.
 
@@ -1207,7 +1194,6 @@ class Session(NoNewAttributesAfterInit):
         all += self._get_show_conf()
         _send_to_pager(all, outfile, clobber)
 
-    ### Ahelp ingest: 2015-05-01 DJB
     def show_proj(self, outfile=None, clobber=False):
         """Display the results of the last proj evaluation.
 
@@ -1249,7 +1235,6 @@ class Session(NoNewAttributesAfterInit):
         all += self._get_show_proj()
         _send_to_pager(all, outfile, clobber)
 
-    ### Ahelp ingest: 2015-05-01 DJB
     def show_covar(self, outfile=None, clobber=False):
         """Display the results of the last covar evaluation.
 
@@ -1292,7 +1277,6 @@ class Session(NoNewAttributesAfterInit):
         _send_to_pager(all, outfile, clobber)
 
 
-    ### Ahelp ingest: 2015-05-02 DJB
     def show_all(self, id=None, outfile=None, clobber=False):
         """Report the current state of the Sherpa session.
 
@@ -1360,7 +1344,6 @@ class Session(NoNewAttributesAfterInit):
         all += self._get_show_covar()
         _send_to_pager(all, outfile, clobber)
 
-    ### Ahelp ingest: 2015-05-04 DJB
     def get_functions(self):
         """Return the functions provided by Sherpa.
 
@@ -1379,7 +1362,6 @@ class Session(NoNewAttributesAfterInit):
                 funcs.append(func)
         return funcs
         
-    ### Ahelp ingest: 2015-04-27 DJB
     def list_functions(self, outfile=None, clobber=False):
         """Display the functions provided by Sherpa.
 
@@ -1455,7 +1437,6 @@ class Session(NoNewAttributesAfterInit):
         _check_type(item, itemtype, itemname, itemdesc)
         itemdict[id] = item
 
-    ### Ahelp ingest: 2015-04-28 DJB
     def get_default_id(self):
         """Return the default data set identifier.
 
@@ -1484,7 +1465,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._default_id
 
-    ### Ahelp ingest: 2015-04-28 DJB
     def set_default_id(self, id):
         """Set the default data set identifier.
 
@@ -1532,7 +1512,6 @@ class Session(NoNewAttributesAfterInit):
     ###########################################################################
 
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def list_methods(self):
         """List the optimization methods.
 
@@ -1564,7 +1543,6 @@ class Session(NoNewAttributesAfterInit):
             raise ArgumentErr('badmethod', name)
         return meth
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def get_method(self, name=None):
         """Return an optimization method.
 
@@ -1618,7 +1596,6 @@ class Session(NoNewAttributesAfterInit):
         _check_type(name, basestring, 'name', 'a string')
         return self._get_method_by_name(name)
 
-    ### Ahelp ingest: 2015-04-27 DJB
     ### DOC-TODO: is this guaranteed to be the same as get_method().name
     ###           or get_method().name.lower() and, if so, shouldn't this be
     ###           how it is coded?
@@ -1652,7 +1629,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return type(self.get_method()).__name__.lower()
 
-    ### Ahelp ingest: 2015-04-25 DJB
     ### DOC-TODO: remove the list of supported methods once the
     ### relevant documenation has been updated.
     def set_method(self, meth):
@@ -1737,7 +1713,6 @@ class Session(NoNewAttributesAfterInit):
         if optname not in self._current_method.config:
             raise ArgumentErr('badopt', optname, self.get_method_name())
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def get_method_opt(self, optname=None):
         """Return one or all of the options for the current optimization
         method.
@@ -1782,7 +1757,6 @@ class Session(NoNewAttributesAfterInit):
         self._check_method_opt(optname)
         return self._current_method.config[optname]
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def set_method_opt(self, optname, val):
         """Set an option for the current optimization method.
 
@@ -1823,7 +1797,6 @@ class Session(NoNewAttributesAfterInit):
 
     #### Iterative Fitting Methods for CIAO 4.3 testing
 
-    ### Ahelp ingest: 2015-05-04 DJB
     def get_iter_method_name(self):
         """Return the name of the iterative fitting scheme.
 
@@ -1841,7 +1814,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._current_itermethod['name']
 
-    ### Ahelp ingest: 2015-05-04 DJB
     def get_iter_method_opt(self, optname=None):
         """Return one or all options for the iterative-fitting scheme.
 
@@ -1880,7 +1852,6 @@ class Session(NoNewAttributesAfterInit):
             raise ArgumentErr('badopt', optname, self._current_itermethod['name'])
         return itermethod_opts[optname]
 
-    ### Ahelp ingest: 2015-05-04 DJB
     def list_iter_methods(self):
         """List the iterative fitting schemes.
 
@@ -1906,7 +1877,6 @@ class Session(NoNewAttributesAfterInit):
         keys.sort()
         return keys
 
-    ### Ahelp ingest: 2015-05-04 DJB
     ### DOC-TODO: this information is also in sherpa/fit.py
     ### DOC-TODO: this raises a ValueError rather than a Sherpa error class
     def set_iter_method(self, meth):
@@ -1999,7 +1969,6 @@ class Session(NoNewAttributesAfterInit):
         else:
             _argument_type_error(meth, 'a string')
 
-    ### Ahelp ingest: 2015-05-04 DJB
     def set_iter_method_opt(self, optname, val):
         """Set an option for the iterative-fitting scheme.
 
@@ -2080,7 +2049,6 @@ class Session(NoNewAttributesAfterInit):
     ###########################################################################
 
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def list_stats(self):
         """List the fit statistics.
 
@@ -2120,7 +2088,6 @@ class Session(NoNewAttributesAfterInit):
             raise ArgumentErr('badstat', name)
         return stat
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def get_stat(self, name=None):
         """Return a fit statisic.
 
@@ -2162,7 +2129,6 @@ class Session(NoNewAttributesAfterInit):
         _check_type(name, basestring, 'name', 'a string')
         return self._get_stat_by_name(name)
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def get_stat_name(self):
         """Return the name of the current fit statistic.
 
@@ -2190,7 +2156,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return type(self.get_stat()).__name__.lower()
 
-    ### Ahelp ingest: 2015-04-24 DJB
     ### DOC-TODO: remove the list of supported methods once the
     ### relevant documenation has been updated.
     def set_stat(self, stat):
@@ -2257,14 +2222,14 @@ class Session(NoNewAttributesAfterInit):
         ----------
 
         .. [1] Cash, W. "Parameter estimation in astronomy through
-        application of the likelihood ratio", ApJ, vol 228,
-        p. 939-947 (1979).
-        http://adsabs.harvard.edu/abs/1979ApJ...228..939C
+               application of the likelihood ratio", ApJ, vol 228,
+               p. 939-947 (1979).
+               http://adsabs.harvard.edu/abs/1979ApJ...228..939C
 
         .. [2] Gehrels, N. "Confidence limits for small numbers of
-        events in astrophysical data", ApJ, vol 303,
-        p. 336-346 (1986).
-        http://adsabs.harvard.edu/abs/1986ApJ...303..336G
+               events in astrophysical data", ApJ, vol 303,
+               p. 336-346 (1986).
+               http://adsabs.harvard.edu/abs/1986ApJ...303..336G
 
         .. [3] https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/XSappendixStatistics.html
 
@@ -2288,7 +2253,6 @@ class Session(NoNewAttributesAfterInit):
     ###########################################################################
 
 
-    ### Ahelp ingest: 2015-04-29 DJB
     def list_data_ids(self):
         """List the identifiers for the loaded data sets.
 
@@ -2322,7 +2286,6 @@ class Session(NoNewAttributesAfterInit):
         keys.sort()
         return keys
 
-    ### Ahelp ingest: 2015-05-01 DJB
     def get_data(self, id=None):
         """Return the data set by identifier.
 
@@ -2371,7 +2334,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._get_item(id, self._data, 'data set', 'has not been set')
 
-    ### Ahelp ingest: 2015-05-01 DJB
     ### DOC-TODO: terrible synopsis
     def set_data(self, id, data=None):
         """Set a data set.
@@ -2399,8 +2361,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `data` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `data` parameters,
+        the ``data`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``data`` parameters,
         respectively.
 
         Examples
@@ -2427,7 +2389,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     # DOC-NOTE: also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-06 DJB
     ### DOC-NOTE: is ncols really 2 here? Does it make sense?
     def load_staterror(self, id, filename=None, ncols=2, *args, **kwargs):
         """Load the statistical errors from a file.
@@ -2470,8 +2431,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `filename` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `filename` parameters,
+        the ``filename`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``filename`` parameters,
         respectively. The remaining parameters are expected to be
         given as named arguments.
 
@@ -2505,7 +2466,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     # DOC-NOTE: also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-06 DJB
     ### DOC-NOTE: is ncols really 2 here? Does it make sense?
     def load_syserror(self, id, filename=None, ncols=2, *args, **kwargs):
         """Load the systematic errors from a file.
@@ -2545,8 +2505,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `filename` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `filename` parameters,
+        the ``filename`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``filename`` parameters,
         respectively. The remaining parameters are expected to be
         given as named arguments.
 
@@ -2580,7 +2540,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     # DOC-NOTE: also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-06 DJB
     ### DOC-TODO: does ncols make sense here? (have removed for now)
     ### DOC-TODO: labelling as AstroPy; i.e. assuming conversion
     ###           from PyFITS lands soon.
@@ -2623,8 +2582,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `filename` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `filename` parameters,
+        the ``filename`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``filename`` parameters,
         respectively. The remaining parameters are expected to be
         given as named arguments.
 
@@ -2654,7 +2613,6 @@ class Session(NoNewAttributesAfterInit):
                         ignore=ignore)
 
 
-    ### Ahelp ingest: 2015-05-06 DJB
     def set_filter(self, id, val=None, ignore=False):
         """Set the filter array of a data set.
 
@@ -2684,8 +2642,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `val` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `val` parameters,
+        the ``val`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``val`` parameters,
         respectively.
 
         Examples
@@ -2723,7 +2681,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     # also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-11 DJB
     def set_dep(self, id, val=None):
         """Set the dependent axis of a data set.
 
@@ -2747,8 +2704,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `val` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `val` parameters,
+        the ``val`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``val`` parameters,
         respectively.
 
         Examples
@@ -2778,7 +2735,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-05 DJB
     def set_staterror(self, id, val=None, fractional=False):
         """Set the statistical errors on the dependent axis of a data set.
 
@@ -2794,10 +2750,10 @@ class Session(NoNewAttributesAfterInit):
         val : array or scalar
            The systematic error.
         fractional : bool, optional
-           If `False` (the default value), then the `val` parameter is
-           the absolute value, otherwise the `val` parameter
+           If `False` (the default value), then the ``val`` parameter is
+           the absolute value, otherwise the ``val`` parameter
            represents the fractional error, so the absolute value is
-           calculated as `get_dep() * val` (and `val` must be
+           calculated as `get_dep() * val` (and ``val`` must be
            a scalar).
 
         See Also
@@ -2812,8 +2768,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `val` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `val` parameters,
+        the ``val`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``val`` parameters,
         respectively.
 
         Examples
@@ -2847,7 +2803,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     # DOC-NOTE: also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-05 DJB
     def set_syserror(self, id, val=None, fractional=False):
         """Set the systematic errors on the dependent axis of a data set.
 
@@ -2860,10 +2815,10 @@ class Session(NoNewAttributesAfterInit):
         val : array or scalar
            The systematic error.
         fractional : bool, optional
-           If `False` (the default value), then the `val` parameter is
-           the absolute value, otherwise the `val` parameter
+           If `False` (the default value), then the ``val`` parameter is
+           the absolute value, otherwise the ``val`` parameter
            represents the fractional error, so the absolute value is
-           calculated as `get_dep() * val` (and `val` must be
+           calculated as `get_dep() * val` (and ``val`` must be
            a scalar).
 
         See Also
@@ -2878,8 +2833,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `val` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `val` parameters,
+        the ``val`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``val`` parameters,
         respectively.
 
         Examples
@@ -2912,7 +2867,6 @@ class Session(NoNewAttributesAfterInit):
         d.syserror = err
 
     # DOC-NOTE: also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-05 DJB
     def get_staterror(self, id=None, filter=False):
         """Return the statistical error on the dependent axis of a data set.
 
@@ -2979,7 +2933,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     # DOC-NOTE: also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-05 DJB
     def get_syserror(self, id=None, filter=False):
         """Return the systematic error on the dependent axis of a data set.
 
@@ -3023,7 +2976,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     # DOC-NOTE: also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-05 DJB
     def get_error(self, id=None, filter=False):
         """Return the errors on the dependent axis of a data set.
 
@@ -3061,7 +3013,6 @@ class Session(NoNewAttributesAfterInit):
                                            self.get_stat().calc_staterror)
 
     # DOC-NOTE: also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-05 DJB
     ### DOC-NOTE: shouldn't this expose a filter parameter?
     def get_indep(self, id=None):
         """Return the independent axes of a data set.
@@ -3109,7 +3060,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     # DOC-NOTE: also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-05 DJB
     def get_dep(self, id=None, filter=False):
         """Return the dependent axis of a data set.
 
@@ -3158,7 +3108,6 @@ class Session(NoNewAttributesAfterInit):
         return self.get_data(id).get_y(filter)
 
 
-    ### Ahelp ingest: 2015-05-01 DJB
     def get_dims(self, id=None, filter=False):
         """Return the dimensions of the data set.
 
@@ -3185,7 +3134,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self.get_data(id).get_dims(filter)
 
-    ### Ahelp ingest: 2015-05-06 DJB
     ### DOC-NOTE: should there be a version in sherpa.astro.utils with a bkg_id
     ###           parameter?
     def get_filter(self, id=None):
@@ -3257,7 +3205,6 @@ class Session(NoNewAttributesAfterInit):
         return self.get_data(id).get_filter()
 
 
-    ### Ahelp ingest: 2015-05-01 DJB
     def copy_data(self, fromid, toid):
         """Copy a data set to a new identifier.
 
@@ -3289,7 +3236,6 @@ class Session(NoNewAttributesAfterInit):
         data = copy.deepcopy(data)
         self.set_data(toid, data)
 
-    ### Ahelp ingest: 2015-04-29 DJB
     ### DOC-TODO: this does not delete the source expression;
     ###           is this intended or a bug?
     def delete_data(self, id=None):
@@ -3333,7 +3279,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     # DOC-NOTE: also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-11 DJB
     def dataspace1d(self, start, stop, step=1, numbins=None, 
                     id=None, dstype=sherpa.data.Data1DInt):
         """Create the independent axis for a 1D data set.
@@ -3421,7 +3366,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     # DOC-NOTE: also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-11 DJB
     def dataspace2d(self, dims, id=None, dstype=sherpa.data.Data2D):
         """Create the independent axis for a 2D data set.
 
@@ -3475,39 +3419,71 @@ class Session(NoNewAttributesAfterInit):
 
 
     def fake(self, id=None, method=sherpa.utils.poisson_noise):
-        """
-        fake
+        """Simulate a data set.
 
-        SYNOPSIS
-           Fake source data using supplied noise function by data id
+        Take a data set, evaluate the model for each bin, and then use
+        this value to create a data value from each bin. The default
+        behavior is to use a Poisson distribution, with the model
+        value as the expectation value of the distribution.
 
-        SYNTAX
+        Parameters
+        ----------
+        id : int or str, optional
+           The identifier for the data set to use. If not given then
+           the default identifier is used, as returned by
+           `get_default_id`.
+        method : func
+           The function used to create a random realisation of
+           a data set.
 
-        Arguments:
-           id      -  data id with corresponding model to evaluate and store
-                      faked data.
-                      default = default data id
+        See Also
+        --------
+        dataspace1d : Create the independent axis for a 1D data set.
+        dataspace2d : Create the independent axis for a 2D data set.
+        get_dep : Return the dependent axis of a data set.
+        load_arrays : Create a data set from array values.
+        set_model : Set the source model expression for a data set.
 
-           method  -  noise function
-                      default = poisson_noise
+        Notes
+        -----
+        The function for the `method` argument accepts a single
+        argument, the data values, and should return an array of the
+        same shape as the input, with the data values to use.
 
-        Returns:
-           None
+        The function can be called on any data set, it does not need
+        to have been created with `dataspace1d` or `dataspace2d`.
 
-        DESCRIPTION
-           Evalutes the source model by data id, adds noise defined by 'method'
-           and stores the resulting array in the data set.  The data set can
-           created from file or populated using dataspace1d or dataspace2d.
+        Specific data set types may have their own, specialized,
+        version of this function.
 
-        EXAMPLES
-           Blank data set with faked data.
+        Examples
+        --------
+        Create a random realisation of the model - a constant plus
+        gaussian line - for the range x=-5 to 5.
 
-              dataspace1d(0.1,10,0.1,dstype=Data1D)
-              set_model(gauss1d.g1)
-              fake()
+        >>> dataspace1d(-5, 5, 0.5, dstype=Data1D)
+        >>> set_source(gauss1d.gline + const1d.bgnd)
+        >>> bgnd.c0 = 2
+        >>> gline.fwhm = 4
+        >>> gline.ampl = 5
+        >>> gline.pos = 1
+        >>> fake()
+        >>> plot_data()
+        >>> plot_model(overplot=True)
 
-        SEE ALSO
-           dataspace1d, dataspace2d, set_model
+        For a 2D data set, display the simulated data, model, and
+        residuals:
+
+        >>> dataspace2d([150,80], id='fakeimg')
+        >>> set_source('fakeimg', beta2d.src + polynom2d.bg)
+        >>> src.xpos, src.ypos = 75, 40
+        >>> src.r0, src.alpha = 15, 2.3
+        >>> src.ellip, src.theta = 0.4, 1.32
+        >>> src.ampl = 100
+        >>> bg.c, bg.cx1, bg.cy1 = 3, 0.4, 0.3
+        >>> fake('fakeimg')
+        >>> image_fit('fakeimg')
+
         """
         data = self.get_data(id)
         model = self.get_model(id)
@@ -3521,7 +3497,6 @@ class Session(NoNewAttributesAfterInit):
 
     # DOC-NOTE: also in sherpa.astro.utils
     ### DOC-TODO: What data types are supported here?
-    ### Ahelp ingest: 2015-05-12 DJB
     def unpack_arrays(self, *args):
         """Create a sherpa data object from arrays of data.
 
@@ -3578,7 +3553,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-12 DJB
     def unpack_data(self, filename, ncols=2, colkeys=None,
                     dstype=sherpa.data.Data1D, sep=' ', comment='#', require_floats=True):
         """Create a sherpa data object from a file.
@@ -3649,7 +3623,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     # DOC-NOTE: also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-13 DJB
     def load_data(self, id, filename=None, ncols=2, colkeys=None,
                   dstype=sherpa.data.Data1D, sep=' ', comment='#', require_floats=True):
         """Load a data set from a file.
@@ -3698,8 +3671,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `filename` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `filename` parameters,
+        the ``filename`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``filename`` parameters,
         respectively. The remaining parameters are expected to be
         given as named arguments.
 
@@ -3721,7 +3694,6 @@ class Session(NoNewAttributesAfterInit):
                                            sep=sep, comment=comment, require_floats=require_floats))
 
     # DOC-NOTE: also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-01 DJB
     ### DOC-TODO: rework the Data type notes section (also needed by unpack_arrays)
     ##@loggable(with_id = True)
     def load_arrays(self, id, *args):
@@ -3827,7 +3799,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     # DOC-NOTE: also in sherpa.astro.utils with a different interface
-    ### Ahelp ingest: 2015-05-12 DJB
     def save_arrays(self, filename, args, fields=None, clobber=False, sep=' ',
                     comment='#', linebreak='\n', format='%g'):
         """Write a list of arrays to a file.
@@ -3839,26 +3810,26 @@ class Session(NoNewAttributesAfterInit):
         args : array of arrays
            The arrays to write out.
         fields : array of str
-           The column names (should match the size of `args`).
+           The column names (should match the size of ``args``).
         clobber : bool, optional
-           If `filename` is not `None`, then this flag controls
-           whether an existing file can be overwritten (`True`)
-           or if it raises an exception (`False`, the default
+           If ``filename`` is not ``None``, then this flag controls
+           whether an existing file can be overwritten (``True``)
+           or if it raises an exception (``False``, the default
            setting).
         sep : str, optional
-           The separator character. The default is ' '.
+           The separator character. The default is ``' '``.
         comment : str, optional
-           The comment character. The default is '#'.
+           The comment character. The default is ``'#'``.
         linebreak : str, optional
-           Indicate a new line. The default is '\n'.
+           Indicate a new line. The default is ``'\\n'``.
         format : str, optional
            The format used to write out the numeric values. The
-           default is '%g%.
+           default is ``'%g%'``.
 
         Raises
         ------
         sherpa.utils.err.IOErr
-           If `filename` already exists and `clobber` is `False`.
+           If ``filename`` already exists and ``clobber`` is ``False``.
 
         See Also
         --------
@@ -3886,7 +3857,6 @@ class Session(NoNewAttributesAfterInit):
                                linebreak, format)
 
     # DOC-NOTE: also in sherpa.utils with a different interface
-    ### Ahelp ingest: 2015-05-13 DJB
     def save_source(self, id, filename=None, clobber=False, sep=' ',
                     comment='#', linebreak='\n', format='%g'):
         """Save the model values to a file.
@@ -3904,24 +3874,24 @@ class Session(NoNewAttributesAfterInit):
            The name of the file to write the array to.
         clobber : bool, optional
            This flag controls whether an existing file can be
-           overwritten (`True`) or if it raises an exception (`False`,
+           overwritten (``True``) or if it raises an exception (``False``,
            the default setting).
         sep : str, optional
-           The separator character. The default is ' '.
+           The separator character. The default is ``' '``.
         comment : str, optional
-           The comment character. The default is '#'.
+           The comment character. The default is ``'#'``.
         linebreak : str, optional
-           Indicate a new line. The default is '\n'.
+           Indicate a new line. The default is ``'\\n'``.
         format : str, optional
            The format used to write out the numeric values. The
-           default is '%g%.
+           default is ``'%g%'``.
 
         Raises
         ------
         sherpa.utils.err.IdentifierErr
            If no model has been set for this data set.
         sherpa.utils.err.IOErr
-           If `filename` already exists and `clobber` is `False`.
+           If ``filename`` already exists and ``clobber`` is ``False``.
 
         See Also
         --------
@@ -3935,12 +3905,12 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `filename` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `filename` parameters,
+        the ``filename`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``filename`` parameters,
         respectively. The remaining parameters are expected to be
         given as named arguments.
 
-        The output file contains the columns `X` and `SOURCE` (for 1D
+        The output file contains the columns ``X`` and ``SOURCE`` (for 1D
         data). The residuals array respects any filter setting for the
         data set.
 
@@ -3963,7 +3933,6 @@ class Session(NoNewAttributesAfterInit):
                         comment=comment, linebreak=linebreak, format=format)
 
     # DOC-NOTE: also in sherpa.utils with a different interface
-    ### Ahelp ingest: 2015-05-13 DJB
     def save_model(self, id, filename=None, clobber=False, sep=' ',
                     comment='#', linebreak='\n', format='%g'):
         """Save the model values to a file.
@@ -3980,25 +3949,26 @@ class Session(NoNewAttributesAfterInit):
         filename : str
            The name of the file to write the array to.
         clobber : bool, optional
-           This flag controls whether an existing file can be
-           overwritten (`True`) or if it raises an exception (`False`,
-           the default setting).
+           If ``filename`` is not ``None``, then this flag controls
+           whether an existing file can be overwritten (``True``)
+           or if it raises an exception (``False``, the default
+           setting).
         sep : str, optional
-           The separator character. The default is ' '.
+           The separator character. The default is ``' '``.
         comment : str, optional
-           The comment character. The default is '#'.
+           The comment character. The default is ``'#'``.
         linebreak : str, optional
-           Indicate a new line. The default is '\n'.
+           Indicate a new line. The default is ``'\\n'``.
         format : str, optional
            The format used to write out the numeric values. The
-           default is '%g%.
+           default is ``'%g%'``.
 
         Raises
         ------
         sherpa.utils.err.IdentifierErr
            If no model has been set for this data set.
         sherpa.utils.err.IOErr
-           If `filename` already exists and `clobber` is `False`.
+           If ``filename`` already exists and ``clobber`` is ``False``.
 
         See Also
         --------
@@ -4012,12 +3982,12 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `filename` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `filename` parameters,
+        the ``filename`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``filename`` parameters,
         respectively. The remaining parameters are expected to be
         given as named arguments.
 
-        The output file contains the columns `X` and `MODEL` (for 1D
+        The output file contains the columns ``X`` and ``MODEL`` (for 1D
         data). The residuals array respects any filter setting for the
         data set.
 
@@ -4040,7 +4010,6 @@ class Session(NoNewAttributesAfterInit):
                         comment=comment, linebreak=linebreak, format=format)
 
     # DOC-NOTE: also in sherpa.utils with a different interface
-    ### Ahelp ingest: 2015-05-12 DJB
     def save_resid(self, id, filename=None, clobber=False, sep=' ',
                     comment='#', linebreak='\n', format='%g'):
         """Save the residuals (data-model) to a file.
@@ -4054,25 +4023,26 @@ class Session(NoNewAttributesAfterInit):
         filename : str
            The name of the file to write the array to.
         clobber : bool, optional
-           This flag controls whether an existing file can be
-           overwritten (`True`) or if it raises an exception (`False`,
-           the default setting).
+           If ``filename`` is not ``None``, then this flag controls
+           whether an existing file can be overwritten (``True``)
+           or if it raises an exception (``False``, the default
+           setting).
         sep : str, optional
-           The separator character. The default is ' '.
+           The separator character. The default is ``' '``.
         comment : str, optional
-           The comment character. The default is '#'.
+           The comment character. The default is ``'#'``.
         linebreak : str, optional
-           Indicate a new line. The default is '\n'.
+           Indicate a new line. The default is ``'\\n'``.
         format : str, optional
            The format used to write out the numeric values. The
-           default is '%g%.
+           default is ``'%g%'``.
 
         Raises
         ------
         sherpa.utils.err.IdentifierErr
            If no model has been set for this data set.
         sherpa.utils.err.IOErr
-           If `filename` already exists and `clobber` is `False`.
+           If ``filename`` already exists and ``clobber`` is ``False``.
 
         See Also
         --------
@@ -4084,12 +4054,12 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `filename` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `filename` parameters,
+        the ``filename`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``filename`` parameters,
         respectively. The remaining parameters are expected to be
         given as named arguments.
 
-        The output file contains the columns `X` and `RESID`. The
+        The output file contains the columns ``X`` and ``RESID``. The
         residuals array respects any filter setting for the data set.
 
         Examples
@@ -4111,7 +4081,6 @@ class Session(NoNewAttributesAfterInit):
                         comment=comment, linebreak=linebreak, format=format)
 
     # DOC-NOTE: also in sherpa.utils with a different interface
-    ### Ahelp ingest: 2015-05-12 DJB
     def save_delchi(self, id, filename=None, clobber=False, sep=' ',
                     comment='#', linebreak='\n', format='%g'):
         """Save the ratio of residuals (data-model) to error to a file.
@@ -4125,25 +4094,26 @@ class Session(NoNewAttributesAfterInit):
         filename : str
            The name of the file to write the array to.
         clobber : bool, optional
-           This flag controls whether an existing file can be
-           overwritten (`True`) or if it raises an exception (`False`,
-           the default setting).
+           If ``filename`` is not ``None``, then this flag controls
+           whether an existing file can be overwritten (``True``)
+           or if it raises an exception (``False``, the default
+           setting).
         sep : str, optional
-           The separator character. The default is ' '.
+           The separator character. The default is ``' '``.
         comment : str, optional
-           The comment character. The default is '#'.
+           The comment character. The default is ``'#'``.
         linebreak : str, optional
-           Indicate a new line. The default is '\n'.
+           Indicate a new line. The default is ``'\\n'``.
         format : str, optional
            The format used to write out the numeric values. The
-           default is '%g%.
+           default is ``'%g%'``.
 
         Raises
         ------
         sherpa.utils.err.IdentifierErr
            If no model has been set for this data set.
         sherpa.utils.err.IOErr
-           If `filename` already exists and `clobber` is `False`.
+           If ``filename`` already exists and ``clobber`` is ``False``.
 
         See Also
         --------
@@ -4155,12 +4125,12 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `filename` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `filename` parameters,
+        the ``filename`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``filename`` parameters,
         respectively. The remaining parameters are expected to be
         given as named arguments.
 
-        The output file contains the columns `X` and `DELCHI`. The
+        The output file contains the columns ``X`` and ``DELCHI``. The
         residuals array respects any filter setting for the data set.
 
         Examples
@@ -4183,7 +4153,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     ### DOC-NOTE: also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-12 DJB
     def save_data(self, id, filename=None, fields=None, sep=' ', comment='#',
                   clobber=False, linebreak='\n', format='%g'):
         """Save the data to a file.
@@ -4201,34 +4170,34 @@ class Session(NoNewAttributesAfterInit):
            The attributes of the data set to write out. If `None`,
            write out all the columns.
         sep : str, optional
-           The separator character. The default is ' '.
+           The separator character. The default is ``' '``.
         comment : str, optional
-           The comment character. The default is '#'.
+           The comment character. The default is ``'#'``.
         clobber : bool, optional
-           If `outfile` is not `None`, then this flag controls
-           whether an existing file can be overwritten (`True`)
-           or if it raises an exception (`False`, the default
+           If ``filename`` is not ``None``, then this flag controls
+           whether an existing file can be overwritten (``True``)
+           or if it raises an exception (``False``, the default
            setting).
         linebreak : str, optional
-           Indicate a new line. The default is '\n'.
+           Indicate a new line. The default is ``'\\n'``.
         format : str, optional
            The format used to write out the numeric values. The
-           default is '%g%.
+           default is ``'%g%'``.
 
         Raises
         ------
         sherpa.utils.err.IdentifierErr
            If there is no matching data set.
         sherpa.utils.err.IOErr
-           If `filename` already exists and `clobber` is `False`.
+           If ``filename`` already exists and ``clobber`` is ``False``.
 
         See Also
         --------
-        save_arrays : 
+        save_arrays : Write a list of arrays to a file.
         save_delchi : Save the ratio of residuals (data-model) to error to a file.
         save_error : Save the errors to a file.
         save_filter : Save the filter array to a file.
-        save_resid :
+        save_resid : Save the residuals (data-model) to a file.
         save_staterror : Save the statistical errors to a file.
         save_syserror : Save the statistical errors to a file.
 
@@ -4237,8 +4206,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `filename` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `filename` parameters,
+        the ``filename`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``filename`` parameters,
         respectively. The remaining parameters are expected to be
         given as named arguments.
 
@@ -4266,7 +4235,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     # DOC-NOTE: also in sherpa.astro.utils with a different interface
-    ### Ahelp ingest: 2015-05-06 DJB
     def save_filter(self, id, filename=None, clobber=False, sep=' ',
                     comment='#', linebreak='\n', format='%g'):
         """Save the filter array to a file.
@@ -4280,26 +4248,26 @@ class Session(NoNewAttributesAfterInit):
         filename : str
            The name of the file to write the array to.
         clobber : bool, optional
-           If `outfile` is not `None`, then this flag controls
-           whether an existing file can be overwritten (`True`)
-           or if it raises an exception (`False`, the default
+           If ``filename`` is not ``None``, then this flag controls
+           whether an existing file can be overwritten (``True``)
+           or if it raises an exception (``False``, the default
            setting).
         sep : str, optional
-           The separator character. The default is ' '.
+           The separator character. The default is ``' '``.
         comment : str, optional
-           The comment character. The default is '#'.
+           The comment character. The default is ``'#'``.
         linebreak : str, optional
-           Indicate a new line. The default is '\n'.
+           Indicate a new line. The default is ``'\\n'``.
         format : str, optional
            The format used to write out the numeric values. The
-           default is '%g%.
+           default is ``'%g%'``.
 
         Raises
         ------
         sherpa.utils.err.DataErr
            If the data set has not been filtered.
         sherpa.utils.err.IOErr
-           If `filename` already exists and `clobber` is `False`.
+           If ``filename`` already exists and ``clobber`` is ``False``.
 
         See Also
         --------
@@ -4311,12 +4279,12 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `filename` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `filename` parameters,
+        the ``filename`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``filename`` parameters,
         respectively. The remaining parameters are expected to be
         given as named arguments.
 
-        The output file contains the columns `X` and `FILTER`.
+        The output file contains the columns ``X`` and ``FILTER``.
 
         Examples
         --------
@@ -4343,14 +4311,13 @@ class Session(NoNewAttributesAfterInit):
 
 
     # DOC-NOTE: also in sherpa.astro.utils with a different interface
-    ### Ahelp ingest: 2015-05-06 DJB
     def save_staterror(self, id, filename=None, clobber=False, sep=' ',
                        comment='#', linebreak='\n', format='%g'):
         """Save the statistical errors to a file.
 
         If the statistical errors have not been set explicitly, then
-        the values calculated by the statistic - such as `chi2gehrels`
-        or `chi2datavar` - will be used.
+        the values calculated by the statistic - such as ``chi2gehrels``
+        or ``chi2datavar`` - will be used.
 
         Parameters
         ----------
@@ -4361,24 +4328,24 @@ class Session(NoNewAttributesAfterInit):
         filename : str
            The name of the file to write the array to.
         clobber : bool, optional
-           If `outfile` is not `None`, then this flag controls
-           whether an existing file can be overwritten (`True`)
-           or if it raises an exception (`False`, the default
+           If ``filename`` is not ``None``, then this flag controls
+           whether an existing file can be overwritten (``True``)
+           or if it raises an exception (``False``, the default
            setting).
         sep : str, optional
-           The separator character. The default is ' '.
+           The separator character. The default is ``' '``.
         comment : str, optional
-           The comment character. The default is '#'.
+           The comment character. The default is ``'#'``.
         linebreak : str, optional
-           Indicate a new line. The default is '\n'.
+           Indicate a new line. The default is ``'\\n'``.
         format : str, optional
            The format used to write out the numeric values. The
-           default is '%g%.
+           default is ``'%g%'``.
 
         Raises
         ------
         sherpa.utils.err.IOErr
-           If `filename` already exists and `clobber` is `False`.
+           If ``filename`` already exists and ``clobber`` is ``False``.
 
         See Also
         --------
@@ -4391,12 +4358,12 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `filename` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `filename` parameters,
+        the ``filename`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``filename`` parameters,
         respectively. The remaining parameters are expected to be
         given as named arguments.
 
-        The output file contains the columns `X` and `STAT_ERR`.
+        The output file contains the columns ``X`` and ``STAT_ERR``.
 
         Examples
         --------
@@ -4423,7 +4390,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     # DOC-NOTE: also in sherpa.astro.utils with a different interface
-    ### Ahelp ingest: 2015-05-06 DJB
     def save_syserror(self, id, filename=None, clobber=False, sep=' ',
                        comment='#', linebreak='\n', format='%g'):
         """Save the statistical errors to a file.
@@ -4437,26 +4403,26 @@ class Session(NoNewAttributesAfterInit):
         filename : str
            The name of the file to write the array to.
         clobber : bool, optional
-           If `outfile` is not `None`, then this flag controls
-           whether an existing file can be overwritten (`True`)
-           or if it raises an exception (`False`, the default
+           If ``filename`` is not ``None``, then this flag controls
+           whether an existing file can be overwritten (``True``)
+           or if it raises an exception (``False``, the default
            setting).
         sep : str, optional
-           The separator character. The default is ' '.
+           The separator character. The default is ``' '``.
         comment : str, optional
-           The comment character. The default is '#'.
+           The comment character. The default is ``'#'``.
         linebreak : str, optional
-           Indicate a new line. The default is '\n'.
+           Indicate a new line. The default is ``'\\n'``.
         format : str, optional
            The format used to write out the numeric values. The
-           default is '%g%.
+           default is ``'%g%'``.
 
         Raises
         ------
         sherpa.utils.err.IOErr
            If the data set does not contain any systematic errors.
         sherpa.utils.err.IOErr
-           If `filename` already exists and `clobber` is `False`.
+           If ``filename`` already exists and ``clobber`` is ``False``.
 
         See Also
         --------
@@ -4469,12 +4435,12 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `filename` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `filename` parameters,
+        the ``filename`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``filename`` parameters,
         respectively. The remaining parameters are expected to be
         given as named arguments.
 
-        The output file contains the columns `X` and `SYS_ERR`.
+        The output file contains the columns ``X`` and ``SYS_ERR``.
 
         Examples
         --------
@@ -4500,7 +4466,6 @@ class Session(NoNewAttributesAfterInit):
                          clobber, sep, comment, linebreak, format)
 
     # DOC-NOTE: also in sherpa.astro.utils with a different interface
-    ### Ahelp ingest: 2015-05-06 DJB
     def save_error(self, id, filename=None, clobber=False, sep=' ',
                        comment='#', linebreak='\n', format='%g'):
         """Save the errors to a file.
@@ -4509,7 +4474,7 @@ class Session(NoNewAttributesAfterInit):
         of the statistical and systematic errors. The systematic
         errors can be 0. If the statistical errors have not been set
         explicitly, then the values calculated by the statistic - such
-        as `chi2gehrels` or `chi2datavar` - will be used.
+        as ``chi2gehrels`` or ``chi2datavar`` - will be used.
 
         Parameters
         ----------
@@ -4520,24 +4485,24 @@ class Session(NoNewAttributesAfterInit):
         filename : str
            The name of the file to write the array to.
         clobber : bool, optional
-           If `outfile` is not `None`, then this flag controls
-           whether an existing file can be overwritten (`True`)
-           or if it raises an exception (`False`, the default
+           If ``filename`` is not ``None``, then this flag controls
+           whether an existing file can be overwritten (``True``)
+           or if it raises an exception (``False``, the default
            setting).
         sep : str, optional
-           The separator character. The default is ' '.
+           The separator character. The default is ``' '``.
         comment : str, optional
-           The comment character. The default is '#'.
+           The comment character. The default is ``'#'``.
         linebreak : str, optional
-           Indicate a new line. The default is '\n'.
+           Indicate a new line. The default is ``'\\n'``.
         format : str, optional
            The format used to write out the numeric values. The
-           default is '%g%.
+           default is ``'%g%'``.
 
         Raises
         ------
         sherpa.utils.err.IOErr
-           If `filename` already exists and `clobber` is `False`.
+           If ``filename`` already exists and ``clobber`` is ``False``.
 
         See Also
         --------
@@ -4553,12 +4518,12 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `filename` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `filename` parameters,
+        the ``filename`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``filename`` parameters,
         respectively. The remaining parameters are expected to be
         given as named arguments.
 
-        The output file contains the columns `X` and `ERR`.
+        The output file contains the columns ``X`` and ``ERR``.
 
         Examples
         --------
@@ -4595,7 +4560,6 @@ class Session(NoNewAttributesAfterInit):
             self.notice_id(ids, *vals, **kwargs)
 
 
-    ### Ahelp ingest: 2015-05-06 DJB
     def notice(self, lo=None, hi=None, **kwargs):
         """Include data in the fit.
 
@@ -4684,7 +4648,6 @@ class Session(NoNewAttributesAfterInit):
             d.notice(lo, hi, **kwargs)
 
 
-    ### Ahelp ingest: 2015-05-06 DJB
     def ignore(self, lo=None, hi=None, **kwargs):
         """Exclude data from the fit.
 
@@ -4759,7 +4722,6 @@ class Session(NoNewAttributesAfterInit):
             return self._notice_expr(lo, **kwargs)
         self.notice(lo, hi, **kwargs)
 
-    ### Ahelp ingest: 2015-05-06 DJB
     def notice_id(self, ids, lo=None, hi=None, **kwargs):
         """Include data from the fit for a data set.
 
@@ -4837,7 +4799,6 @@ class Session(NoNewAttributesAfterInit):
             self.get_data(i).notice(lo, hi, **kwargs)
 
 
-    ### Ahelp ingest: 2015-05-06 DJB
     def ignore_id(self, ids, lo=None, hi=None, **kwargs):
         """Exclude data from the fit for a data set.
 
@@ -4911,13 +4872,12 @@ class Session(NoNewAttributesAfterInit):
     # Models
     ###########################################################################
 
-    ### Ahelp ingest: 2015-05-02 DJB
     def paramprompt(self, val=False):
         """Should the user be asked for the parameter values when creating a model?
 
-        When `val` is `True`, calls to `set_model` will cause the user
+        When ``val`` is ``True``, calls to `set_model` will cause the user
         to be prompted for each parameter in the expression.  The
-        prompt includes the parameter name and default value, in `[]`:
+        prompt includes the parameter name and default value, in ``[]``:
         the valid responses are
 
         - return  which accepts the default
@@ -4926,7 +4886,7 @@ class Session(NoNewAttributesAfterInit):
         - value, min, max  which changes the value, minimum, and
           maximum values
 
-        The `value`, `min`, and `max` components are optional, so
+        The ``value``, ``min``, and ``max`` components are optional, so
         ",-5" will use the default parameter value and set its minimum
         to -5, while "2,,10" will change the parameter value to 2 and
         its maximum to 10, but leave the minimum at its default. If
@@ -4935,10 +4895,10 @@ class Session(NoNewAttributesAfterInit):
         Parameters
         ----------
         val : bool, optional
-           If `True`, the user will be prompted to enter each
+           If ``True``, the user will be prompted to enter each
            parameter value, including support for changing the minimum
            and maximum values, when a model component is created. The
-           default is `False`.
+           default is ``False``.
 
         See Also
         --------
@@ -4948,7 +4908,7 @@ class Session(NoNewAttributesAfterInit):
 
         Notes
         -----
-        Setting this to `True` only makes sense in an interactive
+        Setting this to ``True`` only makes sense in an interactive
         environment.  It is designed to be similar to the parameter
         prompting provided by X-Spec [1]_.
 
@@ -4961,10 +4921,10 @@ class Session(NoNewAttributesAfterInit):
         --------
 
         In the following, the default parameter settings are accepted
-        for the `pl.gamma` parameter, the starting values for the
-        `pl.ref` and `gline.pos` values are changed, the starting
-        value and ranges of both the `pl.ampl` and `gline.ampl`
-        parameters are set, and the `gline.fwhm` parameter is set to
+        for the ``pl.gamma`` parameter, the starting values for the
+        ``pl.ref`` and ``gline.pos`` values are changed, the starting
+        value and ranges of both the ``pl.ampl`` and ``gline.ampl``
+        parameters are set, and the ``gline.fwhm`` parameter is set to
         100, with its maximum changed to 10000.
 
         >>> paramprompt(True)
@@ -4998,7 +4958,6 @@ class Session(NoNewAttributesAfterInit):
             self._model_types[name] = ModelWrapper(self, cls)
             self._model_globals.update(self._model_types)
 
-    ### Ahelp ingest: 2015-05-14 DJB
     def add_model(self, modelclass, args=(), kwargs={}):
         """Create a user-defined model class.
 
@@ -5064,7 +5023,6 @@ class Session(NoNewAttributesAfterInit):
     # Model components
     #
 
-    ### Ahelp ingest: 2015-05-04 DJB
     def get_model_autoassign_func(self):
         """Return the method used to create model component identifiers.
 
@@ -5086,7 +5044,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._model_autoassign_func
 
-    ### Ahelp ingest: 2015-05-04 DJB
     ### DOC-TODO: what does func=None mean? If you try None then it
     ###           fails with AttributeError: 'Session' object attribute
     ###           '_model_autoassign_func' cannot be replaced with a non-callable attribute
@@ -5125,7 +5082,6 @@ class Session(NoNewAttributesAfterInit):
             _argument_type_error('func', 'a function or other callable object')
         self._model_autoassign_func = func
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def list_models(self, show="all"):
         """List the available model types.
 
@@ -5174,7 +5130,6 @@ class Session(NoNewAttributesAfterInit):
 
         return keys
 
-    ### Ahelp ingest: 2015-04-29 DJB
     def list_model_components(self):
         """List the names of all the model components.
 
@@ -5265,7 +5220,6 @@ class Session(NoNewAttributesAfterInit):
         return userstat
 
 
-    ### Ahelp ingest: 2015-05-04 DJB
     ### DOC-TODO: can send in a model variable, but this is just the
     ###           identity function, so not worth documenting
     def get_model_component(self, name):
@@ -5326,7 +5280,6 @@ class Session(NoNewAttributesAfterInit):
         return self._get_model_component(name, require=True)
 
 
-    ### Ahelp ingest: 2015-04-29 DJB
     def create_model_component(self, typename=None, name=None):
         """Create a model component.
 
@@ -5401,7 +5354,6 @@ class Session(NoNewAttributesAfterInit):
         self._model_components[name] = cls(name)
         #self._add_model_component(cls(name))
 
-    ### Ahelp ingest: 2015-04-28 DJB
     def reset(self, model=None, id=None):
         """Reset the model parameters to their default settings.
 
@@ -5464,7 +5416,6 @@ class Session(NoNewAttributesAfterInit):
             model.reset()
 
 
-    ### Ahelp ingest: 2015-04-29 DJB
     def delete_model_component(self, name):
         """Delete a model component.
 
@@ -5482,7 +5433,7 @@ class Session(NoNewAttributesAfterInit):
         list_models : List the available model types.
         list_model_components : List the names of all the model components.
         set_model : Set the source model expression for a data set.
-        set_model_autoassign_func :
+        set_model_autoassign_func : Set the method used to create model component identifiers.
 
         Notes
         -----
@@ -5496,7 +5447,7 @@ class Session(NoNewAttributesAfterInit):
         --------
 
         If a model instance called `pl` has been created - e.g. by
-        `create_model_component('powlaw1d', 'pl') - then the
+        `create_model_component('powlaw1d', 'pl')` - then the
         following will remove it:
 
         >>> delete_model_component('pl')
@@ -5531,7 +5482,6 @@ class Session(NoNewAttributesAfterInit):
         except:
             raise ArgumentErr('badexpr', typestr, sys.exc_info()[1])
 
-    ### Ahelp ingest: 2015-04-29 DJB
     def list_model_ids(self):
         """List of all the data sets with a source expression.
 
@@ -5602,7 +5552,6 @@ class Session(NoNewAttributesAfterInit):
                               'has not been set, consider using set_source()' +
                               ' or set_model()')
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def get_source(self, id=None):
         """Return the source model expression for a data set.
 
@@ -5652,7 +5601,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._get_source(id)
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def get_model(self, id=None):
         """Return the model expression for a data set.
 
@@ -5757,7 +5705,6 @@ class Session(NoNewAttributesAfterInit):
                         break
 
     # DOC-NOTE: also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-14 DJB
     ### DOC-TODO: what examples/info should be talked about here?
     ###           (e.g. no PHA/ARF/RMF)
     ##@loggable(with_id=True, with_keyword='model')
@@ -5792,8 +5739,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `model` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `model` parameters,
+        the ``model`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``model`` parameters,
         respectively.
 
         Some functions - such as `plot_source` - may not work for
@@ -5820,7 +5767,6 @@ class Session(NoNewAttributesAfterInit):
                        'a model object or model expression string')
         self._runparamprompt(model.pars)
 
-    ### Ahelp ingest: 2015-04-29 DJB
     ### DOC-TODO: the .cache value appears to default to 5
     ##@loggable(with_id=True, with_keyword="model")
     def set_model(self, id, model=None):
@@ -5862,8 +5808,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `model` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `model` parameters,
+        the ``model`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``model`` parameters,
         respectively.
 
         PHA data sets will automatically apply the instrumental
@@ -5960,7 +5906,6 @@ class Session(NoNewAttributesAfterInit):
     set_source = set_model
 
 
-    ### Ahelp ingest: 2015-04-29 DJB
     def delete_model(self, id=None):
         """Delete the model expression for a data set.
 
@@ -6008,7 +5953,6 @@ class Session(NoNewAttributesAfterInit):
                     'a model object or model expression string')
         return model
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def get_model_type(self, model):
         """Describe a model expression.
 
@@ -6055,7 +5999,6 @@ class Session(NoNewAttributesAfterInit):
         model = self._check_model(model)
         return type(model).__name__.lower()
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def get_model_pars(self, model):
         """Return the names of the parameters of a model.
 
@@ -6087,7 +6030,6 @@ class Session(NoNewAttributesAfterInit):
         model = self._check_model(model)
         return [p.name for p in model.pars]
 
-    ### Ahelp ingest: 2015-05-01 DJB
     def get_num_par(self, id=None):
         """Return the number of parameters in a model expression.
 
@@ -6117,7 +6059,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return len(self._get_source(id).pars)
     
-    ### Ahelp ingest: 2015-05-01 DJB
     def get_num_par_thawed(self, id=None):
         """Return the number of thawed parameters in a model expression.
 
@@ -6147,7 +6088,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return len(self._get_source(id).thawedpars)
 
-    ### Ahelp ingest: 2015-05-01 DJB
     def get_num_par_frozen(self, id=None):
         """Return the number of frozen parameters in a model expression.
 
@@ -6203,7 +6143,6 @@ class Session(NoNewAttributesAfterInit):
 
     ### DOC-TODO: I am not sure I have the data format correct.
     ### DOC-TODO: description of template interpolation needs a lot of work.
-    ### Ahelp ingest: 2015-05-13 DJB
     def load_template_model(self, modelname, templatefile, dstype=sherpa.data.Data1D,
                             sep=' ', comment='#', method=sherpa.utils.linear_interp, template_interpolator_name='default'):
         """Load a set of templates and use it as a model component.
@@ -6369,7 +6308,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     ### DOC-TODO: description of template interpolation needs a lot of work.
-    ### Ahelp ingest: 2015-05-13 DJB
     ##@loggable()
     def load_template_interpolator(self, name, interpolator_class, **kwargs):
         """Set the template interpolation scheme.
@@ -6402,7 +6340,6 @@ class Session(NoNewAttributesAfterInit):
 
     # also in sherpa.astro.utils
     # DOC-NOTE: does it make sense to allow ncols to vary here?
-    ### Ahelp ingest: 2015-05-13 DJB
     def load_table_model(self, modelname, filename, ncols=2, colkeys=None,
                          dstype=sherpa.data.Data1D, sep=' ', comment='#',
                          method=sherpa.utils.linear_interp):
@@ -6478,7 +6415,6 @@ class Session(NoNewAttributesAfterInit):
         self._add_model_component(tablemodel)
 
     # also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-14 DJB
     ### DOC-TODO: how is the _y value used if set
     ##@loggable()
     def load_user_model(self, func, modelname, filename=None, ncols=2,
@@ -6555,8 +6491,8 @@ class Session(NoNewAttributesAfterInit):
         There is no way using this interface to indicate that the
         model is for 1D or 2D data.
 
-        Example
-        -------
+        Examples
+        --------
 
         Create a two-parameter model of the form "y = mx + c",
         where the intercept is the first parameter and the slope the
@@ -6582,7 +6518,6 @@ class Session(NoNewAttributesAfterInit):
         self._add_model_component(usermodel)
 
     ##@loggable()
-    ### Ahelp ingest: 2015-05-14 DJB
     def add_user_pars(self, modelname, parnames,
                       parvals = None, parmins = None, parmaxs = None,
                       parunits = None, parfrozen = None):
@@ -6692,7 +6627,6 @@ class Session(NoNewAttributesAfterInit):
         self._add_model_component(newusermodel)
 
 
-    ### Ahelp ingest: 2015-05-13 DJB
     ### DOC-TODO: Improve priors documentation
     def load_user_stat(self, statname, calc_stat_func, calc_err_func=None,
                        priors={}):
@@ -6773,7 +6707,6 @@ class Session(NoNewAttributesAfterInit):
     # Conv
     #
 
-    ### Ahelp ingest: 2015-05-13 DJB
     ### DOC-NOTE: why isn't the "flux" of the convolved model ~
     ###           that of the unconvolved model?
     ### DOC-NOTE: better description of conv vs psf
@@ -6798,7 +6731,7 @@ class Session(NoNewAttributesAfterInit):
            be read in using the chosen Sherpa I/O library, or a
            model component.
         *args, **kwargs :
-           Arguments for `unpack_data` if `filename_or_model`
+           Arguments for `unpack_data` if ``filename_or_model``
            is a file.
 
         See Also
@@ -6857,7 +6790,6 @@ class Session(NoNewAttributesAfterInit):
     # PSF1
     #
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def load_psf(self, modelname, filename_or_model, *args, **kwargs):
         """Create a PSF model.
 
@@ -6875,7 +6807,7 @@ class Session(NoNewAttributesAfterInit):
            be read in using the chosen Sherpa I/O library, or a
            model component.
         *args, **kwargs :
-           Arguments for `unpack_data` if `filename_or_model`
+           Arguments for `unpack_data` if ``filename_or_model``
            is a file.
 
         See Also
@@ -6922,7 +6854,6 @@ class Session(NoNewAttributesAfterInit):
         self._add_model_component(psf)
         self._psf_models.append(psf)
 
-    ### Ahelp ingest: 2015-05-11 DJB
     ### DOC-TODO: am I correct about the multiple use warning?
     ##@loggable(with_id=True, with_keyword='psf')
     def set_psf(self, id, psf=None):
@@ -6958,8 +6889,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `psf` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `psf` parameters,
+        the ``psf`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``psf`` parameters,
         respectively.
 
         A PSF component should only be applied to a single data set.
@@ -7002,18 +6933,18 @@ class Session(NoNewAttributesAfterInit):
            positions.
 
         radial
-           Set to `1` to use a symmetric array. The default is `0` to
+           Set to ``1`` to use a symmetric array. The default is ``0`` to
            reduce edge effects.
 
         norm
            Should the kernel be normalized so that it sums to 1?  This
            summation is done over the full data set (not the subset
-           defined by the `size` parameter). The default is `1` (yes).
+           defined by the ``size`` parameter). The default is ``1`` (yes).
 
         Examples
         --------
 
-        Use the data in the file `line_profile.fits` as the PSF for
+        Use the data in the file 'line_profile.fits' as the PSF for
         the default data set:
 
         >>> load_psf('psf1', 'line_profile.fits')
@@ -7073,7 +7004,6 @@ class Session(NoNewAttributesAfterInit):
                 pass
 
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def get_psf(self, id=None):
         """Return the PSF model defined for a data set.
 
@@ -7116,7 +7046,6 @@ class Session(NoNewAttributesAfterInit):
         return self._get_item(id, self._psf, 'psf model', 'has not been set')
 
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def delete_psf(self, id=None):
         """Delete the PSF model for a data set.
 
@@ -7167,7 +7096,6 @@ class Session(NoNewAttributesAfterInit):
                     'a parameter object or parameter expression string')
         return par
 
-    ### Ahelp ingest: 2015-05-14 DJB
     ### DOC-NOTE: I have not documented that par can be an actual parameter
     ###           since in that case get_par(x) === x, so seems somewhat pointless!
     def get_par(self, par):
@@ -7209,7 +7137,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._check_par(par)
 
-    ### Ahelp ingest: 2015-05-14 DJB
     ### DOC-NOTE: I have not documented that par can be an actual parameter
     ###           since you can just change the values directly then (although
     ###           may have to car about order of operations)
@@ -7228,12 +7155,12 @@ class Session(NoNewAttributesAfterInit):
         max : number, optional
            Change the maximum value of the parameter (the soft limit).
         frozen : bool, optional
-           Freeze (`True`) or thaw (`Thaw`) the parameter.
+           Freeze (``True``) or thaw (``False``) the parameter.
 
         Raises
         ------
         sherpa.utils.err.ArgumentErr
-           If the `par` argument is invalid: the model component does
+           If the ``par`` argument is invalid: the model component does
            not exist or the given model has no parameter with that
            name.
 
@@ -7287,7 +7214,6 @@ class Session(NoNewAttributesAfterInit):
                 if not p.alwaysfrozen:
                     getattr(p, action)()
 
-    ### Ahelp ingest: 2015-04-28 DJB
     ### DOC-TODO: is this the best way to document the arguments?
     def freeze(self, *args):
         """Fix model parameters so they are not changed by a fit.
@@ -7331,7 +7257,6 @@ class Session(NoNewAttributesAfterInit):
         for p in par:
             self._freeze_thaw_par_or_model(p, 'freeze')
 
-    ### Ahelp ingest: 2015-04-28 DJB
     ### DOC-TODO: is this the best way to document the arguments?
     def thaw(self, *args):
         """Allow model parameters to be varied during a fit.
@@ -7374,7 +7299,6 @@ class Session(NoNewAttributesAfterInit):
         for p in par:
             self._freeze_thaw_par_or_model(p, 'thaw')
 
-    ### Ahelp ingest: 2015-04-28 DJB
     def link(self, par, val):
         """Link a parameter to a value.
 
@@ -7389,7 +7313,7 @@ class Session(NoNewAttributesAfterInit):
            The parameter to link.
         val :
            The value - wihch can be a numeric value or a function
-           of other model parameters, to set `par` to.
+           of other model parameters, to set ``par`` to.
 
         See Also
         --------
@@ -7400,13 +7324,13 @@ class Session(NoNewAttributesAfterInit):
 
         Notes
         -----
-        The `link` attribute of the parameter is set to match the
-        mathematical expression used for `val`.
+        The ``link`` attribute of the parameter is set to match the
+        mathematical expression used for ``val``.
 
         For a parameter value to be varied during a fit, it must be
         part of one of the source expressions involved in the fit.
-        So, in the following, the `src1.xpos` parameter will not
-        be varied because the `src2` model - from which it takes
+        So, in the following, the ``src1.xpos`` parameter will not
+        be varied because the ``src2`` model - from which it takes
         its value - is not included in the source expression of any
         of the data sets being fit.
 
@@ -7423,13 +7347,13 @@ class Session(NoNewAttributesAfterInit):
         Examples
         --------
 
-        The `fwhm` parameter of the `g2` model is set to be the same as
-        the `fwhm` parameter of the `g1` model.
+        The ``fwhm`` parameter of the ``g2`` model is set to be the
+        same as the ``fwhm`` parameter of the ``g1`` model.
 
         >>> link(g2.fwhm, g1.fwhm)
 
-        Fix the `pos` parameter of `g2` to be 2.3 more than the `pos`
-        parameter of the `g1` model.
+        Fix the ``pos`` parameter of ``g2`` to be 2.3 more than the
+        ``pos`` parameter of the ``g1`` model.
 
         >>> gauss1d.g1
         >>> gauss1d.g2
@@ -7447,7 +7371,6 @@ class Session(NoNewAttributesAfterInit):
             val = self._eval_model_expression(val, 'parameter link')
         par.link = val
 
-    ### Ahelp ingest: 2015-04-28 DJB
     def unlink(self, par):
         """Unlink a parameter value.
 
@@ -7614,7 +7537,6 @@ class Session(NoNewAttributesAfterInit):
         return output
 
 
-    ### Ahelp ingest: 2015-05-03 DJB
     def calc_stat_info(self):
         """Display the statistic values for the current models.
 
@@ -7647,7 +7569,6 @@ class Session(NoNewAttributesAfterInit):
             info(output[0])
 
 
-    ### Ahelp ingest: 2015-05-03 DJB
     def get_stat_info(self):
         """Return the statistic values for the current models.
 
@@ -7680,41 +7601,41 @@ class Session(NoNewAttributesAfterInit):
 
         The fields of the object include:
 
-        `name`
+        name
            The name of the data set, or sets, as a string.
 
-        `ids`
+        ids
            A sequence of the data set ids (it may be a tuple or
            array) included in the results.
 
-        `bkg_ids`
+        bkg_ids
            A sequence of the background data set ids (it may be a
            tuple or array) included in the results, if any.
 
-        `statname`
+        statname
            The name of the statistic function (as used in `set_stat`).
 
-        `statval`
+        statval
            The statistic value.
 
-        `numpoints`
+        numpoints
            The number of bins used in the fits.
 
-        `dof`
+        dof
            The number of degrees of freedom in the fit (the number of
            bins minus the number of free parameters).
 
-        `qval`
+        qval
            The Q-value (probability) that one would observe the
            reduced statistic value, or a larger value, if the assumed
            model is true and the current model parameters are the
-           true parameter values. This will be `None` if the value
+           true parameter values. This will be ``None`` if the value
            can not be calculated with the current statistic (e.g.
            the Cash statistic).
 
-        `rstat`
-           The reduced statistic value (the `statval` field divided by
-           `dof`). This is not calculated for all statistics.
+        rstat
+           The reduced statistic value (the ``statval`` field divided
+           by ``dof``). This is not calculated for all statistics.
 
         Examples
         --------
@@ -7729,7 +7650,6 @@ class Session(NoNewAttributesAfterInit):
         return self._get_stat_info()
 
 
-    ### Ahelp ingest: 2015-05-03 DJB
     def get_fit_results(self):
         """Return the results of the last fit.
 
@@ -7752,61 +7672,61 @@ class Session(NoNewAttributesAfterInit):
         -----
         The fields of the object include:
 
-        `datasets`
+        datasets
            A sequence of the data set ids included in the results.
 
-        `itermethodname`
+        itermethodname
            What iterated-fit scheme was used, if any (as set by
            `set_iter_method`).
 
-        `statname`
+        statname
            The name of the statistic function (as used in `set_stat`).
 
-        `succeeded`
+        succeeded
            Was the fit successful (did it converge)?
 
-        `parnames`
+        parnames
            A tuple of the parameter names that were varied in the fit
            (the thawed parameters in the model expression).
 
-        `parvals`
+        parvals
            A tuple of the parameter values, in the same order as
-           `parnames`.
+           ``parnames``.
 
-        `statval`
+        statval
            The statistic value after the fit.
 
-        `istatval`
+        istatval
            The statistic value at the start of the fit.
 
-        `dstatval`
-           The change in the statistic value (`istatval - statval`).
+        dstatval
+           The change in the statistic value (``istatval - statval``).
 
-        `numpoints`
+        numpoints
            The number of bins used in the fits.
 
-        `dof`
+        dof
            The number of degrees of freedom in the fit (the number of
            bins minus the number of free parameters).
 
-        `qval`
+        qval
            The Q-value (probability) that one would observe the
            reduced statistic value, or a larger value, if the assumed
            model is true and the current model parameters are the
-           true parameter values. This will be `None` if the value
+           true parameter values. This will be ``None`` if the value
            can not be calculated with the current statistic (e.g.
            the Cash statistic).
 
-        `rstat`
-           The reduced statistic value (the `statval` field divided by
-           `dof`). This is not calculated for all statistics.
+        rstat
+           The reduced statistic value (the ``statval`` field divided
+           by ``dof``). This is not calculated for all statistics.
 
-        `message`
+        message
            A message about the results of the fit (e.g. if the fit was
            unable to converge). The format and contents depend on the
            optimisation method.
 
-        `nfev`
+        nfev
            The number of model evaluations made during the fit.
 
         Examples
@@ -7828,11 +7748,10 @@ class Session(NoNewAttributesAfterInit):
         else:
             return self._fit_results
 
-    ### Ahelp ingest: 2015-04-28 DJB
     def guess(self, id=None, model=None, limits=True, values=True):
         """Estimate the parameter values and ranges given the loaded data.
 
-        The `guess` function can change the parameter values and
+        The guess function can change the parameter values and
         limits to match the loaded data. This is generally limited to
         changing the amplitude and position parameters (sometimes just
         the values and sometimes just the limits). The parameters that
@@ -7844,13 +7763,15 @@ class Session(NoNewAttributesAfterInit):
            The data set that provides the data. If not given then the
            default identifier is used, as returned by `get_default_id`.
         model :
-           Change the parameters of this model component. If `None`,
+           Change the parameters of this model component. If ``None``,
            then the source expression is assumed to consist of a single
            component, and that component is used.
         limits : bool
-           Should the parameter limits be changed? The default is `True`.
+           Should the parameter limits be changed? The default is
+           ``True``.
         values : bool
-           Should the parameter values be changed? The default is `True`.
+           Should the parameter values be changed? The default is
+           ``True``.
 
         See Also
         --------
@@ -7863,37 +7784,37 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `model` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `model` parameters,
+        the ``model`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``model`` parameters,
         respectively.
 
-        The `guess` function can reduce the time required to fit a
+        The guess function can reduce the time required to fit a
         data set by moving the parameters closer to a realistic
         solution. It can also be useful because it can set bounds on
         the parameter values based on the data: for instance, many
-        two-dimensional models will limit their `xpos` and `ypos`
+        two-dimensional models will limit their ``xpos`` and ``ypos``
         values to lie within the data area. This can be done manually,
         but `guess` simplifies this, at least for those parameters
         that are supported. Instrument models - such as an ARF and
-        RMF - should be set up *before* calling `guess`.
+        RMF - should be set up *before* calling guess.
 
         Examples
         --------
 
         Since the source expression contains only one component,
-        `guess` can be called with no arguments:
+        guess can be called with no arguments:
 
         >>> set_source(polynom1d.poly)
         >>> guess()
 
-        In this case, `guess` is called on each component separately.
+        In this case, guess is called on each component separately.
 
         >>> set_source(gauss1d.line + powlaw1d.cont)
         >>> guess(line)
         >>> guess(cont)
 
-        In this example, the values of the `src` model component are
-        guessed from the "src" data set, whereas the `bgnd` component
+        In this example, the values of the ``src`` model component are
+        guessed from the "src" data set, whereas the ``bgnd`` component
         is guessed from the "bgnd" data set.
 
         >>> set_source("src", gauss2d.src + const2d.bgnd)
@@ -7925,7 +7846,6 @@ class Session(NoNewAttributesAfterInit):
                  self._get_model(id).name)
 
 
-    ### Ahelp ingest: 2015-05-02 DJB
     def calc_stat(self, id=None, *otherids):
         """Calculate the fit statistic for a data set.
 
@@ -7939,7 +7859,7 @@ class Session(NoNewAttributesAfterInit):
         id : int or str, optional
            The data set to use. If not given then the default
            identifier is used, as returned by `get_default_id`.
-        otherids : int or str, optional
+        *otherids : int or str, optional
            Include multiple data sets in the calculation.
 
         Returns
@@ -7976,7 +7896,6 @@ class Session(NoNewAttributesAfterInit):
         ids, f = self._get_fit(id, otherids)
         return f.calc_stat()
 
-    ### Ahelp ingest: 2015-05-03 DJB
     def calc_chisqr(self, id=None, *otherids):
         """Calculate the per-bin chi-squared statistic.
 
@@ -7990,7 +7909,7 @@ class Session(NoNewAttributesAfterInit):
         id : int or str, optional
            The data set to use. If not given then the default
            identifier is used, as returned by `get_default_id`.
-        otherids : int or str, optional
+        *otherids : int or str, optional
            Include multiple data sets in the calculation.
 
         Returns
@@ -8011,39 +7930,78 @@ class Session(NoNewAttributesAfterInit):
         ids, f = self._get_fit(id, otherids)
         return f.calc_chisqr()
 
+    # also in sherpa.astro.utils
     def fit(self, id=None, *otherids, **kwargs):
         """Fit a model to one or more data sets.
 
-        fit
+        Use forward fitting to find the best-fit model to one or more
+        data sets, given the chosen statisitic and optimization
+        method. The fit proceeds until the results converge or the
+        number of iterations exceeds the maximum value (these values
+        can be changed with `set_method_opt`). An iterative scheme can
+        be added using `set_iter_method` to try and improve the
+        fit. The final fit results are displayed to the screen and can
+        be retrieved with `get_fit_results`.
 
-        SYNOPSIS
-           Perform fitting process using current optimization method and 
-           current fit statistic.
+        Parameters
+        ----------
+        id : int or str, optional
+           The data set that provides the data. If not given then
+           all data sets with an associated model are fit simultaneously.
+        *otherids : int or str, optional
+           Other data sets to use in the calculation.
+        outfile : str, optional
+           If set, then the fit results will be written to a file with
+           this name. The file contains the per-iteration fit results.
+        clobber : bool, optional
+           This flag controls whether an existing file can be
+           overwritten (``True``) or if it raises an exception
+           (``False``, the default setting).
 
-        SYNTAX
+        Raises
+        ------
+        sherpa.utils.err.FitErr
+           If ``filename`` already exists and ``clobber`` is ``False``.
 
-        Arguments:
-           id        - Sherpa data id
-                       default = default data id
+        See Also
+        --------
+        conf : Estimate the confidence intervals using the confidence method.
+        contour_fit : Contour the fit to a data set.
+        covar : Estimate the confidence intervals using the confidence method.
+        freeze : Fix model parameters so they are not changed by a fit.
+        get_fit_results : Return the results of the last fit.
+        plot_fit : Plot the fit results (data, model) for a data set.
+        image_fit : Display the data, model, and residuals for a data set in the image viewer.
+        set_stat : Set the statistical method.
+        set_method : Change the optimization method.
+        set_method_opt : Change an option of the current optimization method.
+        set_full_model : Define the convolved model expression for a data set.
+        set_iter_method : Set the iterative-fitting scheme used in the fit.
+        set_model : Set the model expression for a data set.
+        show_fit : Summarize the fit results.
+        thaw : Allow model parameters to be varied during a fit.
 
-           otherids  - List of other Sherpa data ids
+        Examples
+        --------
 
-           outfile   - filename and path of parameter value output vs. number
-                       of function evaluations
-                       default = None
+        Simultaneously fit all data sets with models and then
+        store the results in the variable fres:
 
-           clobber   - boolean whether to clobber outfile
-                       default = False
+        >>> fit()
+        >>> fres = get_fit_results()
 
-        Returns:
-           Formatted fit results output 
+        Fit just the data set 'img':
 
-        DESCRIPTION
-           Initiate optimization of model parameter values by id(s).
+        >>> fit('img')
 
-        SEE ALSO
-           get_fit_results, conf, proj, covar, set_iter_method,
-           set_stat, set_method
+        Simultaneously fit data sets 1, 2, and 3:
+
+        >>> fit(1, 2, 3)
+
+        Fit data set 'jet' and write the fit results to the text file
+        'jet.fit', over-writing it if it already exists:
+
+        >>> fit('jet', outfile='jet.fit', clobber=True)
 
         """
         ids, f = self._get_fit(id, otherids)
@@ -8053,6 +8011,7 @@ class Session(NoNewAttributesAfterInit):
         info(res.format())
 
     # Back-compatibility
+    # DOC-NOTE: can this be noted as deprecated now?
     simulfit = fit
 
 
@@ -8076,82 +8035,121 @@ class Session(NoNewAttributesAfterInit):
 
 
     def get_pvalue_results(self):
-        """
-        get_pvalue_results
+        """Return the data calculated by the last plot_pvalue call.
 
-        SYNOPSIS
-           Access the simulation results of the likelihood ratio test.
+        Returns
+        -------
+        plot : a sherpa.sim.simulate.LikelihoodRatioResults instance
+           None is returned if neither `plot_pvalue` or
+           `get_pvalue_pvalue` have been run.
 
-        SYNTAX
+        See Also
+        --------
+        plot_value : Compute and plot a histogram of likelihood ratios by simulating data.
+        get_pvalue_plot : Return the data used by plot_pvalue.
 
-        Arguments:
-           None
+        Examples
+        --------
 
-        Returns:
-           Likelihood Ratio Test results 
+        >>> res = get_pvalue_results()
+        >>> res.ppp
+        0.472
 
-        DESCRIPTION
-           Access the simulation results of the likelihood ratio test.
-
-        SEE ALSO
-           plot_pvalue, get_pvalue_plot
         """
         return self._pvalue_results
 
 
+    ### DOC-TODO: improve discussion of how the simulations are done.
     def plot_pvalue(self, null_model, alt_model, conv_model=None,
                     id=1, otherids=(), num=500, bins=25, numcores=None,
                     replot=False, overplot=False, clearwindow=True):
-        """
-        plot_pvalue
+        """Compute and plot a histogram of likelihood ratios by simulating data.
 
-        SYNOPSIS
-           Plot a histogram of likelihood ratios comparing fits of the null
-           model to fits of the alternative model to faked data using poisson
-           noise.  Computes the likelihood ratio on the real data and the 
-           p-value.
+        Compare the likelihood of the null model to an alternative model
+        by running a number of simulations, comparing the likelihoods
+        of the two models when compared to the observed data. The fit
+        statistic must be set to a likelihood-based method, such
+        as "cash" or "cstat". Screen output is created as well as the
+        plot; these values can be retrieved with `get_pvalue_results`.
 
-        SYNTAX
+        Parameters
+        ----------
+        null_model :
+           The model expression for the null hypothesis.
+        alt_model :
+           The model expression for the alternative hypothesis.
+        conv_model : optional
+           An expression used to modify the model so that it can be
+           compared to the data (e.g. a PSF or PHA response).
+        id : int or str, optional
+           The data set that provides the data. The default is `1`.
+        otherids : sequence of int or str, optional
+           Other data sets to use in the calculation.
+        num : int, optional
+           The number of simulations to run. The default is `500`.
+        bins : int, optional
+           The number of bins to use to create the histogram. The
+           default is `25`.
+        numcores : optional
+           The number of CPU cores to use. The default is to use all
+           the cores on the machine.
+        replot : bool, optional
+           Set to `True` to use the values calculated by the last
+           call to `plot_pvalue`. The default is `False`.
+        overplot : bool, optional
+           If `True` then add the data to an exsiting plot, otherwise
+           create a new plot. The default is `False`.
+        clearwindow : bool, optional
+           When using ChIPS for plotting, should the existing frame
+           be cleared before creating the plot?
 
-        Arguments:
+        See Also
+        --------
+        get_pvalue_plot : Return the data used by plot_pvalue.
+        get_pvalue_results : Return the data calculated by the last plot_pvalue call.
 
-           null_model  - model representing the null hypothesis
+        Raises
+        ------
+        TypeError
+           An invalid statistic.
 
-           alt_model   - alternative model to compare to null
+        Notes
+        -----
+        Each simulation involves creating a data set using the
+        observed data simulated with Poisson noise.
 
-           conv_model  - convolution model to include for fitting.
-                         default = None
+        For the likelihood ratio test to be valid, the following
+        conditions must hold:
 
-           id          - Sherpa data id
-                         default = default data id
+           1. The null model is nested within the alternative model.
 
-           otherids    - List of other Sherpa data ids
-                         default = ()
+           2. The extra parameters of the alternative model have
+              Gaussian (normal) distributions that are not truncated
+              by the boundaries of the parameter spaces.
 
-           num         - Number of iterations to run
-                         default = 500
+        Examples
+        --------
 
-           bins        - Number of bins for the histogram
-                         default = 25
+        Use the likelihood ratio to see if the data in data set 1 has
+        a statistically-significant gaussian component:
 
-           numcores    - Number of cpus to use during simulation
-                         default = number of detected cpus
+        >>> create_model_component('powlaw1d', 'pl')
+        >>> create_model_component('gauss1d', 'gline')
+        >>> plot_pvalue(pl, pl+gline)
 
-           replot      - Send cached data arrays to visualizer
-                         default = False
+        Use 1000 simulations and use the data from data sets
+        1, 2, and 3:
 
-           overplot    - Plot data without clearing previous plot
-                         default = False
+        >>> mdl1 = pl
+        >>> mdl2 = pl + gline
+        >>> plot_pvalue(mdl1, mdl2, id=1, otherids=(2,3),
+                        num=1000)
 
+        Apply a convolution to the models before fitting:
 
-        Returns:
-           Likelihood Ratio Test results 
+        >>> rsp = get_psf()
+        >>> plot_pvalue(mdl1, mdl2, conv_model=rsp)
 
-        DESCRIPTION
-           Access the simulation results of the likelihood ratio test.
-
-        SEE ALSO
-           get_pvalue_results, get_pvalue_plot
         """
         if not sherpa.utils.bool_cast(replot) or self._pvalue_results is None:
             self._run_pvalue(null_model, alt_model, conv_model,
@@ -8176,52 +8174,55 @@ class Session(NoNewAttributesAfterInit):
     def get_pvalue_plot(self, null_model=None, alt_model=None, conv_model=None,
                      id=1, otherids=(), num=500, bins=25, numcores=None,
                      recalc=False):
-        """
-        get_pvalue_plot
+        """Return the data used by plot_pvalue.
 
-        SYNOPSIS
-           Acess the histogram plot of the likelihood ratios comparing fits 
-           of the null model to fits of the alternative model to faked data
-           using poisson noise.  Access the likelihood ratio on the real data
-           and the p-value.
+        Parameters
+        ----------
+        null_model :
+           The model expression for the null hypothesis.
+        alt_model :
+           The model expression for the alternative hypothesis.
+        conv_model : optional
+           An expression used to modify the model so that it can be
+           compared to the data (e.g. a PSF or PHA response).
+        id : int or str, optional
+           The data set that provides the data. The default is `1`.
+        otherids : sequence of int or str, optional
+           Other data sets to use in the calculation.
+        num : int, optional
+           The number of simulations to run. The default is `500`.
+        bins : int, optional
+           The number of bins to use to create the histogram. The
+           default is `25`.
+        numcores : optional
+           The number of CPU cores to use. The default is to use all
+           the cores on the machine.
+        recalc : bool, optional
+           The default value (`False`) means that the results from the
+           last call to `plot_pvalue` or `get_pvalue_plot` are
+           returned. If `True`, the values are re-calculated.
 
-        SYNTAX
+        Returns
+        -------
+        plot : a sherpa.plot.LRHistogram instance
 
-        Arguments:
+        See Also
+        --------
+        get_pvalue_results : Return the data calculated by the last plot_pvalue call.
+        plot_pvalue : Compute and plot a histogram of likelihood ratios by simulating data.
 
-           null_model  - model representing the null hypothesis
+        Examples
+        --------
 
-           alt_model   - alternative model to compare to null
+        Return the values from the last call to `plot_pvalue`:
 
-           conv_model  - convolution model to include for fitting.
-                         default = None
+        >>> pvals = get_pvalue_plot()
+        >>> pvals.ppp
+        0.472
 
-           id          - Sherpa data id
-                         default = default data id
+        Run 500 simulations for the two models:
 
-           otherids    - List of other Sherpa data ids
-                         default = ()
-
-           num         - Number of iterations to run
-                         default = 500
-
-           bins        - Number of bins for the histogram
-                         default = 25
-
-           numcores    - Number of cpus to use during simulation
-                         default = number of detected cpus
-
-           recalc      - Recalculate the likelihood ratio test simulation
-                         default = False
-
-        Returns:
-           LRHistogram object
-
-        DESCRIPTION
-           Access the histogram plot of the likelihood ratio test.
-
-        SEE ALSO
-           plot_pvalue, get_pvalue_results
+        >>> pvals = get_pvalue_plot(mdl1, mdl2, recalc=True, num=500)
 
         """
         lrplot = self._lrplot
@@ -8247,11 +8248,10 @@ class Session(NoNewAttributesAfterInit):
     ## Sampling functions
     #
     ### DOC-TODO: This copies from sherpa/sim/sample.py, so can
-    ###           functools/... be used to share docstrings?
+    ###           docstrings be shared (whether directly or via functools)?
     ###           Unfortunately not quite a direct copy, so hard
     ###           to see how to do
 
-    ### Ahelp ingest: 2015-04-30 DJB
     def normal_sample(self, num=1, sigma=1, correlate=True,
                       id=None, otherids=(), numcores=None):
         """Sample the fit statistic by taking the parameter values
@@ -8323,7 +8323,6 @@ class Session(NoNewAttributesAfterInit):
         return sherpa.sim.normal_sample(fit, num, sigma, correlate, numcores)
 
 
-    ### Ahelp ingest: 2015-04-30 DJB
     ### DOC-TODO: improve the description of factor parameter
     def uniform_sample(self, num=1, factor=4,
                        id=None, otherids=(), numcores=None):
@@ -8382,7 +8381,6 @@ class Session(NoNewAttributesAfterInit):
         return sherpa.sim.uniform_sample(fit, num, factor, numcores)
 
 
-    ### Ahelp ingest: 2015-04-30 DJB
     def t_sample(self, num=1, dof=None, id=None, otherids=(), numcores=None):
         """Sample the fit statistic by taking the parameter values from
         a Student's t-distribution.
@@ -8448,7 +8446,6 @@ class Session(NoNewAttributesAfterInit):
     ###########################################################################
 
 
-    ### Ahelp ingest: 2015-05-08 DJB
     ### DOC-TODO: how best to document the settings?
     ### DOC-TODO: have I got soft_limits described correctly?
     def get_covar(self):
@@ -8504,7 +8501,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._estmethods['covariance']
 
-    ### Ahelp ingest: 2015-04-27 DJB
     ### DOC-TODO: how best to document the settings?
     ### DOC-TODO: have I got soft_limits described correctly?
     ### DOC-TODO: when verbose=True how is extra output displayed?
@@ -8614,7 +8610,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._estmethods['confidence']
 
-    ### Ahelp ingest: 2015-05-07 DJB
     def get_proj(self):
         """Return the confidence-interval estimation object.
 
@@ -8731,7 +8726,6 @@ class Session(NoNewAttributesAfterInit):
         self._check_estmethod_opt(meth, optname)
         meth.config[optname] = val
         
-    ### Ahelp ingest: 2015-05-08 DJB
     def get_covar_opt(self, name=None):
         """Return one or all of the options for the covariance
         method.
@@ -8773,7 +8767,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._get_estmethod_opt('covariance', name)
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def get_conf_opt(self, name=None):
         """Return one or all of the options for the confidence interval
         method.
@@ -8815,7 +8808,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._get_estmethod_opt('confidence', name)
     
-    ### Ahelp ingest: 2015-05-07 DJB
     def get_proj_opt(self, name=None):
         """Return one or all of the options for the confidence interval
         method.
@@ -8860,7 +8852,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._get_estmethod_opt('projection', name)
     
-    ### Ahelp ingest: 2015-05-08 DJB
     def set_covar_opt(self, name, val):
         """Set an option for the covariance method.
 
@@ -8895,7 +8886,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._set_estmethod_opt('covariance', name, val)
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def set_conf_opt(self, name, val):
         """Set an option for the confidence interval method.
 
@@ -8930,7 +8920,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._set_estmethod_opt('confidence', name, val)
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def set_proj_opt(self, name, val):
         """Set an option for the projection method.
 
@@ -8968,7 +8957,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._set_estmethod_opt('projection', name, val)
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def get_covar_results(self):
         """Return the results of the last `covar` run.
 
@@ -9064,7 +9052,6 @@ class Session(NoNewAttributesAfterInit):
         else:
             return self._covariance_results
 
-    ### Ahelp ingest: 2015-04-27 DJB
     ### DOC_TODO: what is the best description for nfits?
     def get_conf_results(self):
         """Return the results of the last `conf` run.
@@ -9163,7 +9150,6 @@ class Session(NoNewAttributesAfterInit):
         else:
             return self._confidence_results
 
-    ### Ahelp ingest: 2015-05-07 DJB
     def get_proj_results(self):
         """Return the results of the last `proj` run.
 
@@ -9281,7 +9267,6 @@ class Session(NoNewAttributesAfterInit):
         info(res.format())
         return res
 
-    ### Ahelp ingest: 2015-05-08 DJB
     ### DOC-TODO: include screen output of covar() ?
     def covar(self, *args):
         """Estimate the confidence intervals for parameters using the
@@ -9300,7 +9285,7 @@ class Session(NoNewAttributesAfterInit):
         ----------
         id : str or int, optional
         otherids : list of str or int, optional
-           The `id` and `otherids` arguments determine which data set
+           The ``id`` and ``otherids`` arguments determine which data set
            or data sets are used. If not given, all data sets which
            have a defined source model are used.
         parameters : optional
@@ -9407,7 +9392,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._covariance_results = self._est_errors(args, 'covariance')
     
-    ### Ahelp ingest: 2015-04-27 DJB
     ### DOC-TODO: include screen output of conf() ?
     def conf(self, *args):
         """Estimate the confidence intervals for parameters using the
@@ -9428,7 +9412,7 @@ class Session(NoNewAttributesAfterInit):
         ----------
         id : str or int, optional
         otherids : list of str or int, optional
-           The `id` and `otherids` arguments determine which data set
+           The ``id`` and ``otherids`` arguments determine which data set
            or data sets are used. If not given, all data sets which
            have a defined source model are used.
         parameters : optional
@@ -9600,7 +9584,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._confidence_results = self._est_errors(args, 'confidence')
 
-    ### Ahelp ingest: 2015-05-06 DJB
     ### DOC-TODO: add a deprecation note?
     def proj(self, *args):
         """Estimate the confidence intervals for parameters using the
@@ -9623,7 +9606,7 @@ class Session(NoNewAttributesAfterInit):
         ----------
         id : str or int, optional
         otherids : list of str or int, optional
-           The `id` and `otherids` arguments determine which data set
+           The ``id`` and ``otherids`` arguments determine which data set
            or data sets are used. If not given, all data sets which
            have a defined source model are used.
         parameters : optional
@@ -9723,7 +9706,6 @@ class Session(NoNewAttributesAfterInit):
     ###########################################################################
 
 
-    ### Ahelp ingest: 2015-04-30 DJB
     def set_sampler_opt(self, opt, value):
         """Set an option for the current pyBLoCXS sampler.
 
@@ -9788,7 +9770,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._pyblocxs.set_sampler_opt(opt, value)
 
-    ### Ahelp ingest: 2015-04-30 DJB
     def get_sampler_opt(self, opt):
         """Return an option of the current pyBLoCXS sampler.
 
@@ -9812,7 +9793,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._pyblocxs.get_sampler_opt(opt)
 
-    ### Ahelp ingest: 2015-04-30 DJB
     def get_sampler_name(self):
         """Return the name of the current pyBLoCXS sampler.
 
@@ -9834,7 +9814,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._pyblocxs.get_sampler_name()
         
-    ### Ahelp ingest: 2015-04-30 DJB
     def set_sampler(self, sampler):
         """Set the pyBLoCXS sampler.
 
@@ -9897,7 +9876,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._pyblocxs.set_sampler(sampler)
 
-    ### Ahelp ingest: 2015-04-30 DJB
     def get_sampler(self):
         """Return the current pyBLoCXS sampler options.
 
@@ -9918,7 +9896,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._pyblocxs.get_sampler()
 
-    ### Ahelp ingest: 2015-04-30 DJB
     ### DOC-TODO: should set_sampler_opt be mentioned here?
     def set_prior(self, par, prior):
         """Set the prior function to use with a parameter.
@@ -9981,7 +9958,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._pyblocxs.set_prior(par, prior)
 
-    ### Ahelp ingest: 2015-04-30 DJB
     def get_prior(self, par):
         """Return the prior function for a parameter.
 
@@ -10013,7 +9989,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._pyblocxs.get_prior(par)
 
-    ### Ahelp ingest: 2015-04-30 DJB
     ### DOC-TODO: include examples once this returns something useful
     def list_priors(self):
         """Return the priors set for model parameters, if any.
@@ -10032,7 +10007,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._pyblocxs.list_priors()
 
-    ### Ahelp ingest: 2015-04-30 DJB
     def list_samplers(self):
         """List the pyBLoCXS samplers.
 
@@ -10045,7 +10019,6 @@ class Session(NoNewAttributesAfterInit):
         See Also
         --------
         get_sampler_name : Return the name of the current pyBLoCXS sampler.
-        set_sampler : Set the pyBLoCXS sampler.
 
         Examples
         --------
@@ -10056,7 +10029,100 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._pyblocxs.list_samplers()
 
+    ### DOC-TODO: fix up the URL since it should be an internal
+    ###           reference (ie documented here)
+    ### DOC-TODO: add pointers on what to do with the return values
     def get_draws(self, id=None, otherids=(), niter=1000):
+        """Run the pyBLoCXS MCMC algorithm.
+
+        The function runs a Markov Chain Monte Carlo (MCMC) algorithm
+        designed to carry out Bayesian Low-Count X-ray Spectral
+        (BLoCXS) analysis [1]_. Unlike many MCMC algorithms, it is
+        designed to explore the parameter space at the suspected
+        statistic minimum (i.e.  after using `fit`) [2]_. The return
+        values include the statistic value, parameter values, and a
+        flag indicating whether the row represents a jump from the
+        current location or not.
+
+        Parameters
+        ----------
+        id : int or str, optional
+           The data set containing the data and model. If not given
+           then the default identifier is used, as returned by
+           `get_default_id`.
+        otherids : sequence of int or str, optional
+           Other data sets to use in the calculation.
+        niter : int, optional
+           The number of draws to use. The default is `1000`.
+
+        Returns
+        -------
+        stats, accept, params :
+           The results of the MCMC chain. The stats and accept arrays
+           contain niter+1 elements, with the first row being the
+           starting values. The params array has (nparams,niter+1)
+           elements, where nparams is the number of free parameters in
+           the model expression, and the first column contains the
+           values that the chain starts at. The accept array contains
+           boolean values, indicating whether the jump, or step, was
+           accepted (`True`), so the parameter values and statistic
+           change, or it wasn't, in which case there is no change to
+           the previous row.
+
+        See Also
+        --------
+        covar : Estimate the confidence intervals using the covariance method.
+        fit : Fit a model to one or more data sets.
+        plot_cdf : Plot the cumulative density function of an array.
+        plot_pdf : Plot the probability density function of an array.
+        plot_scatter : Create a scatter plot.
+        plot_trace : Create a trace plot of row number versus value.
+        set_prior : Set the prior function to use with a parameter.
+        set_sampler : Set the pyBLoCXS sampler.
+
+        Notes
+        -----
+        The chain is run using fit information associated with the
+        specified data set, or sets, the currently set sampler
+        (`set_sampler`) and parameter priors (`set_prior`), for a
+        specified number of iterations. The model should have been fit
+        to find the best-fit parameters, and `covar` called, before
+        running `get_draws`. The results from `get_draws` is used to
+        estimate the parameter distributions.
+
+        References
+        ----------
+
+        .. [1] "Analysis of Energy Spectra with Low Photon Counts via
+               Bayesian Posterior Simulation", van Dyk, D.A., Connors,
+               A., Kashyap, V.L., & Siemiginowska, A.  2001, Ap.J.,
+               548, 224
+               http://adsabs.harvard.edu/abs/2001ApJ...548..224V
+
+        .. [2] http://hea-www.harvard.edu/AstroStat/pyBLoCXS/#high-level-user-interface-functions
+
+        Examples
+        --------
+        Fit a source and then run a chain to investigate the parameter
+        distributions.  The distribution of the stats values created
+        by the chain is then displayed, using `plot_trace`, and the
+        parameter distributions for the first two thawed parameters
+        are displayed. The first one as a cumulative distribution
+        using `plot_cdf` and the second one as a probability
+        distribution using `plot_pdf`. Finally the acceptance fraction
+        (number of draws where the chain moved) is displayed:
+
+        >>> fit()
+        >>> covar()
+        >>> (stats, accept, params) = get_draws(1, niter=1e4)
+        >>> plot_trace(stats, name='stat')
+        >>> names = [p.fullname for p in get_source().pars if not p.frozen]
+        >>> plot_cdf(params[0,:], name=names[0], xlabel=names[0])
+        >>> plot_pdf(params[1,:], name=names[1], xlabel=names[1])
+        >>> accept[1:].sum() / 1.0e4
+        0.4287
+
+        """
 
         ids, fit = self._get_fit(id, otherids)
 
@@ -10084,67 +10150,18 @@ class Session(NoNewAttributesAfterInit):
     # Plot object access
     #
 
+    ### DOC-TODO: how is this used? simple testing didn't seem to make any
+    ###           difference with chips
     def get_split_plot(self):
-        """
-        get_split_plot
+        """Return the plot attributes for displays with multiple plots.
 
-        SYNOPSIS
-           Return a Sherpa split plot
+        Returns
+        -------
+        splot : a sherpa.plot.SplitPlot instance
 
-        SYNTAX
-
-        Arguments:
-           None
-
-        Returns:
-           Sherpa SplitPlot plot
-
-        DESCRIPTION
-           The Sherpa split plot object holds references to various
-           plot preferences and data arrays.
-
-           Attributes:
-              rows         - number of rows of plots
-                             default = 2
-
-              cols         - number of columns of plots
-                             default = 1
-
-              plot_prefs   - dictionary of plotting preferences
-                  None
-
-           Functions:
-
-              addplot(self, plot, *args, **kwargs)
-                 add a plot to the series in the split plot panel
-
-              addcontour(self, plot, *args, **kwargs)
-                 add a contour plot to the series in the split plot panel
-
-              plot(self, row, col, plot, *args, **kwargs)
-                 send the split plot panel to the visualizer
-
-              contour(self, row, col, plot, *args, **kwargs)
-                 send the split plot panel to the visualizer
-
-              overlayplot(self, plot, *args, **kwargs)
-                 plot over current plot
-
-              overlaycontour(self, plot, *args, **kwargs)
-                 plot contour over current contour plot
-
-              overplot(self, row, col, plot, *args, **kwargs)
-                 plot over current plot at specific coordinates
-
-              overcontour(self, row, col, plot, *args, **kwargs)
-                plot contour over current contour plot at specific coordinates
-
-        SEE ALSO
-           plot, plot_fit_resid, plot_fit_delchi
         """
         return self._splitplot
 
-    ### Ahelp ingest: 2015-04-29 DJB
     def get_data_plot(self, id=None):
         """Return the data used by plot_data.
 
@@ -10174,7 +10191,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_plotobj(id, self._dataplot)
         return self._dataplot
 
-    ### Ahelp ingest: 2015-04-29 DJB
     ### DOC-TODO: discussion of preferences needs better handling
     ###           of how it interacts with the chosen plot backend.
     def get_data_plot_prefs(self):
@@ -10279,7 +10295,6 @@ class Session(NoNewAttributesAfterInit):
         return self._dataplot.plot_prefs
 
     # also in sherpa.astro.utils (copies this docstring)
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_model_plot(self, id=None):
         """Return the data used by plot_model.
 
@@ -10311,7 +10326,6 @@ class Session(NoNewAttributesAfterInit):
         return self._modelplot
 
     # also in sherpa.astro.utils (does not copy this docstring)
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_source_plot(self, id=None):
         """Return the data used by plot_source.
 
@@ -10377,8 +10391,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `model` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `model` parameters,
+        the ``model`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``model`` parameters,
         respectively.
 
         Examples
@@ -10441,8 +10455,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `model` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `model` parameters,
+        the ``model`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``model`` parameters,
         respectively.
 
         Examples
@@ -10479,7 +10493,6 @@ class Session(NoNewAttributesAfterInit):
         return self._compsrcplot
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_model_plot_prefs(self):
         """Return the preferences for plot_model.
 
@@ -10580,7 +10593,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._modelplot.plot_prefs
 
-    ### Ahelp ingest: 2015-05-13 DJB
     def get_fit_plot(self, id=None):
         """Return the data used by plot_fit.
 
@@ -10615,7 +10627,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_plotobj(id, self._fitplot)
         return self._fitplot
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def get_resid_plot(self, id=None):
         """Return the data used by plot_resid.
 
@@ -10657,7 +10668,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_plotobj(id, self._residplot)
         return self._residplot
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def get_delchi_plot(self,id=None):
         """Return the data used by plot_delchi.
 
@@ -10700,7 +10710,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_plotobj(id, self._delchiplot)
         return self._delchiplot
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def get_chisqr_plot(self,id=None):
         """Return the data used by plot_chisqr.
 
@@ -10743,7 +10752,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_plotobj(id, self._chisqrplot)
         return self._chisqrplot
     
-    ### Ahelp ingest: 2015-05-11 DJB
     def get_ratio_plot(self, id=None):
         """Return the data used by plot_ratio.
 
@@ -10786,7 +10794,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_plotobj(id, self._ratioplot)
         return self._ratioplot
     
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_data_contour(self, id=None):
         """Return the data used by contour_data.
 
@@ -10828,7 +10835,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_plotobj(id, self._datacontour)
         return self._datacontour
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_data_contour_prefs(self):
         """Return the preferences for contour_data.
 
@@ -10879,7 +10885,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._datacontour.contour_prefs
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_model_contour(self, id=None):
         """Return the data used by contour_model.
 
@@ -10921,7 +10926,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_plotobj(id, self._modelcontour)
         return self._modelcontour
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_source_contour(self, id=None):
         """Return the data used by contour_source.
 
@@ -10963,7 +10967,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_plotobj(id, self._sourcecontour)
         return self._sourcecontour
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_model_contour_prefs(self):
         """Return the preferences for contour_model.
 
@@ -11014,7 +11017,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return self._modelcontour.contour_prefs
 
-    ### Ahelp ingest: 2015-05-13 DJB
     def get_fit_contour(self, id=None):
         """Return the data used by contour_fit.
 
@@ -11060,7 +11062,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_plotobj(id, self._fitcontour)
         return self._fitcontour
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def get_resid_contour(self, id=None):
         """Return the data used by contour_resid.
 
@@ -11103,7 +11104,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_plotobj(id, self._residcontour)
         return self._residcontour
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def get_ratio_contour(self, id=None):
         """Return the data used by contour_ratio.
 
@@ -11146,7 +11146,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_plotobj(id, self._ratiocontour)
         return self._ratiocontour
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def get_psf_contour(self, id=None):
         """Return the data used by contour_psf.
 
@@ -11185,7 +11184,6 @@ class Session(NoNewAttributesAfterInit):
         return self._psfcontour
 
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def get_kernel_contour(self, id=None):
         """Return the data used by contour_kernel.
 
@@ -11225,7 +11223,6 @@ class Session(NoNewAttributesAfterInit):
         return self._kernelcontour
 
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def get_psf_plot(self, id=None):
         """Return the data used by plot_psf.
 
@@ -11263,7 +11260,6 @@ class Session(NoNewAttributesAfterInit):
         return self._psfplot
 
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def get_kernel_plot(self, id=None):
         """Return the data used by plot_kernel.
 
@@ -11437,7 +11433,6 @@ class Session(NoNewAttributesAfterInit):
                 plot.histo_prefs[item] = value
 
 
-    ### Ahelp ingest: 2015-04-28 DJB
     def set_xlog(self, plottype="all"):
         """New plots will display a logarithmically-scaled X axis.
 
@@ -11474,7 +11469,6 @@ class Session(NoNewAttributesAfterInit):
         self._set_plot_item(plottype, 'xlog', True)
 
 
-    ### Ahelp ingest: 2015-04-28 DJB
     def set_ylog(self, plottype="all"):
         """New plots will display a logarithmically-scaled Y axis.
 
@@ -11511,7 +11505,6 @@ class Session(NoNewAttributesAfterInit):
         self._set_plot_item(plottype, 'ylog', True)
 
 
-    ### Ahelp ingest: 2015-04-28 DJB
     def set_xlinear(self, plottype="all"):
         """New plots will display a linear X axis.
 
@@ -11548,7 +11541,6 @@ class Session(NoNewAttributesAfterInit):
         self._set_plot_item(plottype, 'xlog', False)
 
 
-    ### Ahelp ingest: 2015-04-28 DJB
     def set_ylinear(self, plottype="all"):
         """New plots will display a linear Y axis.
 
@@ -11585,7 +11577,6 @@ class Session(NoNewAttributesAfterInit):
         self._set_plot_item(plottype, 'ylog', False)
 
 
-    ### Ahelp ingest: 2015-04-29 DJB
     ### DOC-TODO: how to describe optional plot types
     ### DOC-TODO: should we add plot_order
     ### DOC-TODO: how to list information/examples about the backends?
@@ -11730,7 +11721,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._multi_plot(args)        
 
-    ### Ahelp ingest: 2015-04-29 DJB
     def plot_data(self, id=None, **kwargs):
         """Plot the data values.
 
@@ -11781,7 +11771,6 @@ class Session(NoNewAttributesAfterInit):
         self._plot(id, self._dataplot, **kwargs)
     
     # DOC-NOTE: also in sherpa.astro.utils
-    ### Ahelp ingest: 2015-05-11 DJB
     def plot_model(self, id=None, **kwargs):
         """Plot the model for a data set.
 
@@ -11836,7 +11825,6 @@ class Session(NoNewAttributesAfterInit):
 
     # DOC-NOTE: also in sherpa.astro.utils, for now copies this text
     #           but does the astro version support a bkg_id parameter?
-    ### Ahelp ingest: 2015-05-11 DJB
     def plot_source_component(self, id, model=None, **kwargs):
         """Plot a component of the source expression for a data set.
 
@@ -11875,8 +11863,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `model` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `model` parameters,
+        the ``model`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``model`` parameters,
         respectively.
 
         Examples
@@ -11905,7 +11893,6 @@ class Session(NoNewAttributesAfterInit):
 
     # DOC-NOTE: also in sherpa.astro.utils, for now copies this text
     #           but does the astro version support a bkg_id parameter?
-    ### Ahelp ingest: 2015-05-11 DJB
     def plot_model_component(self, id, model=None, **kwargs):
         """Plot a component of the model for a data set.
 
@@ -11944,8 +11931,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `model` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `model` parameters,
+        the ``model`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``model`` parameters,
         respectively.
 
         Examples
@@ -11980,7 +11967,6 @@ class Session(NoNewAttributesAfterInit):
 
 
     # DOC-NOTE: also in sherpa.astro.utils, but with extra lo/hi arguments
-    ### Ahelp ingest: 2015-05-11 DJB
     def plot_source(self, id=None, **kwargs):
         """Plot the source expression for a data set.
 
@@ -12032,7 +12018,6 @@ class Session(NoNewAttributesAfterInit):
                     (mdl.name, str(id)))
         self._plot(id, self._sourceplot, **kwargs)
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def plot_fit(self, id=None, **kwargs):
         """Plot the fit results (data, model) for a data set.
 
@@ -12088,7 +12073,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._plot(id, self._fitplot, **kwargs)
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def plot_resid(self, id=None, **kwargs):
         """Plot the residuals (data - model) for a data set.
 
@@ -12148,7 +12132,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._plot(id, self._residplot, **kwargs)
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def plot_chisqr(self, id=None, **kwargs):
         """Plot the chi-squared value for each point in a data set.
 
@@ -12203,7 +12186,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._plot(id, self._chisqrplot, **kwargs)
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def plot_delchi(self, id=None, **kwargs):
         """Plot the ratio of residuals to error for a data set.
 
@@ -12258,7 +12240,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._plot(id, self._delchiplot, **kwargs)
         
-    ### Ahelp ingest: 2015-05-11 DJB
     def plot_ratio(self, id=None, **kwargs):
         """Plot the ratio of data to model for a data set.
 
@@ -12311,7 +12292,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._plot(id, self._ratioplot, **kwargs)
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def plot_psf(self, id=None, **kwargs):
         """Plot the 1D PSF model applied to a data set.
 
@@ -12365,7 +12345,6 @@ class Session(NoNewAttributesAfterInit):
         self._plot(id, self._psfplot, **kwargs)
 
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def plot_kernel(self, id=None, **kwargs):
         """Plot the 1D kernel applied to a data set.
 
@@ -12421,7 +12400,6 @@ class Session(NoNewAttributesAfterInit):
         self._plot(id, self._kernelplot, **kwargs)
 
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def plot_fit_resid(self, id=None, replot=False, overplot=False,
                        clearwindow=True):
         """Plot the fit results, and the residuals, for a data set.
@@ -12506,7 +12484,6 @@ class Session(NoNewAttributesAfterInit):
         else:
             sherpa.plot.end()
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def plot_fit_delchi(self, id=None, replot=False, overplot=False,
                         clearwindow=True):
         """Plot the fit results, and the residuals, for a data set.
@@ -12596,7 +12573,6 @@ class Session(NoNewAttributesAfterInit):
     ## Statistical plotting routines
     #
 
-    ### Ahelp ingest: 2015-04-30 DJB
     def plot_pdf(self, points, name="x", xlabel="x", bins=12, normed=True, 
                  replot=False, overplot=False, clearwindow=True ):
         """Plot the probability density function of an array of values.
@@ -12674,7 +12650,6 @@ class Session(NoNewAttributesAfterInit):
         return self._pdfplot
 
 
-    ### Ahelp ingest: 2015-04-30 DJB
     def plot_cdf(self, points, name="x", xlabel="x", 
                  replot=False, overplot=False, clearwindow=True ):
         """Plot the cumulative density function of an array of values.
@@ -12750,7 +12725,6 @@ class Session(NoNewAttributesAfterInit):
         return self._cdfplot
 
 
-    ### Ahelp ingest: 2015-04-30 DJB
     ### DOC-TODO: what does xlabel do?
     ### DOC-TODO: is clearwindow a ChIPS-only setting?
     def plot_trace(self, points, name="x", xlabel="x", 
@@ -12834,7 +12808,6 @@ class Session(NoNewAttributesAfterInit):
         return self._traceplot
 
 
-    ### Ahelp ingest: 2015-04-30 DJB
     def plot_scatter(self, x, y, name="(x,y)", xlabel="x", ylabel="y",
                    replot=False, overplot=False, clearwindow=True ):
         """Create a scatter plot.
@@ -12950,7 +12923,6 @@ class Session(NoNewAttributesAfterInit):
         else:            
             sherpa.plot.end()
 
-    ### Ahelp ingest: 2015-05-07 DJB
     ### DOC-TODO: how to describe optional plot types
     ### DOC-TODO: how to list information/examples about the backends?
     ###           have some introductory text, but prob. need a link
@@ -12974,7 +12946,7 @@ class Session(NoNewAttributesAfterInit):
         ---------
         contour_data : Contour the values of an image data set.
         contour_fit : Contour the fit to a data set.
-        contour_fit_resid :
+        contour_fit_resid : Contour the fit and the residuals to a data set.
         contour_kernel : Contour the kernel applied to the model of an image data set.
         contour_model : Contour the values of the model, including any PSF.
         contour_psf : Contour the PSF applied to the model of an image data set.
@@ -12988,38 +12960,38 @@ class Session(NoNewAttributesAfterInit):
         -----
         The supported plot types depend on the data set type, and
         include the following list. There are also individual
-        functions, with `contour_` prepended to the plot type, such as
-        `contour_data` and the `contour_fit_resid` variant.
+        functions, with ``contour_`` prepended to the plot type, such as
+        `contour_data` and the `contour_fit_resid` variant:
 
-        `data`
+        ``data``
            The data.
 
-        `fit`
+        ``fit``
            Contours of the data and the source model.
 
-        `fit_resid`
+        ``fit_resid``
            Two plots: the first is the contours of the data and the
            source model and the second is the residuals.
 
-        `kernel`
+        ``kernel``
            The kernel.
 
-        `model`
+        ``model``
            The source model including any PSF convolution set by
            `set_psf`.
 
-        `psf`
+        ``psf``
            The PSF.
 
-        `ratio`
+        ``ratio``
            Contours of the ratio image, formed by dividing the data by
            the model.
 
-        `resid`
+        ``resid``
            Contours of the residual image, formed by subtracting the
            model from the data.
 
-        `source`
+        ``source``
            The source model (without any PSF convolution set by
            `set_psf`).
 
@@ -13035,7 +13007,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._multi_plot(args, 'contour')
 
-    ### Ahelp ingest: 2015-05-07 DJB
     def contour_data(self, id=None, **kwargs):
         """Contour the values of an image data set.
 
@@ -13075,7 +13046,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._contour(id, self._datacontour, **kwargs)
         
-    ### Ahelp ingest: 2015-05-07 DJB
     def contour_model(self, id=None, **kwargs):
         """Contour the values of the model, including any PSF.
 
@@ -13116,7 +13086,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._contour(id, self._modelcontour, **kwargs)
 
-    ### Ahelp ingest: 2015-05-07 DJB
     def contour_source(self, id=None, **kwargs):
         """Contour the values of the model, without any PSF.
 
@@ -13158,7 +13127,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._contour(id, self._sourcecontour, **kwargs)
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def contour_fit(self, id=None, **kwargs):
         """Contour the fit to a data set.
 
@@ -13202,7 +13170,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._contour(id, self._fitcontour, **kwargs)
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def contour_resid(self, id=None, **kwargs):
         """Contour the residuals of the fit.
 
@@ -13245,7 +13212,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._contour(id, self._residcontour, **kwargs)
     
-    ### Ahelp ingest: 2015-05-08 DJB
     def contour_ratio(self, id=None, **kwargs):
         """Contour the ratio of data to model.
 
@@ -13288,7 +13254,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._contour(id, self._ratiocontour, **kwargs)
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def contour_psf(self, id=None, **kwargs):
         """Contour the PSF applied to the model of an image data set.
 
@@ -13320,7 +13285,6 @@ class Session(NoNewAttributesAfterInit):
         self._contour(id, self._psfcontour, **kwargs)
 
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def contour_kernel(self, id=None, **kwargs):
         """Contour the kernel applied to the model of an image data set.
 
@@ -13351,7 +13315,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._contour(id, self._kernelcontour, **kwargs)
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def contour_fit_resid(self, id=None, replot=False, overcontour=False):
         """Contour the fit and the residuals to a data set.
 
@@ -13410,7 +13373,6 @@ class Session(NoNewAttributesAfterInit):
     # Projection and uncertainty plots
     ###########################################################################
 
-    ### Ahelp ingest: 2015-05-07 DJB
     ### DOC-NOTE: I am not convinced that this code is working when recalc=True
     ### DOC-NOTE: needs to support the fast option of int_proj
     def get_int_proj(self, par=None, id=None, otherids=None, recalc=False,
@@ -13427,7 +13389,7 @@ class Session(NoNewAttributesAfterInit):
            The parameter to plot.
         id : str or int, optional
         otherids : list of str or int, optional
-           The `id` and `otherids` arguments determine which data set
+           The ``id`` and ``otherids`` arguments determine which data set
            or data sets are used. If not given, all data sets which
            have a defined source model are used.
         recalc : bool, optional
@@ -13505,7 +13467,6 @@ class Session(NoNewAttributesAfterInit):
             self._intproj.calc(fit,par,self._methods)
         return self._intproj
 
-    ### Ahelp ingest: 2015-05-07 DJB
     ### DOC-NOTE: Check that this works (since get_int_proj may not) when recalc=True
     def get_int_unc(self, par=None, id=None, otherids=None, recalc=False,
                     min=None, max=None, nloop=20, delv=None, fac=1, log=False,
@@ -13521,7 +13482,7 @@ class Session(NoNewAttributesAfterInit):
            The parameter to plot.
         id : str or int, optional
         otherids : list of str or int, optional
-           The `id` and `otherids` arguments determine which data set
+           The ``id`` and ``otherids`` arguments determine which data set
            or data sets are used. If not given, all data sets which
            have a defined source model are used.
         recalc : bool, optional
@@ -13599,7 +13560,6 @@ class Session(NoNewAttributesAfterInit):
             self._intunc.calc(fit,par)
         return self._intunc
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def get_reg_proj(self, par0=None, par1=None, id=None, otherids=None,
                      recalc=False, fast=True, min=None, max=None, 
                      nloop=(10,10),delv=None, fac=4, log=(False,False),
@@ -13615,7 +13575,7 @@ class Session(NoNewAttributesAfterInit):
            The parameters to plot on the X and Y axes, respectively.
         id : str or int, optional
         otherids : list of str or int, optional
-           The `id` and `otherids` arguments determine which data set
+           The ``id`` and ``otherids`` arguments determine which data set
            or data sets are used. If not given, all data sets which
            have a defined source model are used.
         recalc : bool, optional
@@ -13708,7 +13668,6 @@ class Session(NoNewAttributesAfterInit):
             self._regproj.calc(fit,par0,par1,self._methods)
         return self._regproj
     
-    ### Ahelp ingest: 2015-05-08 DJB
     def get_reg_unc(self, par0=None, par1=None, id=None, otherids=None,
                     recalc=False, min=None, max=None, nloop=(10,10), delv=None,
                     fac=4, log=(False,False), sigma=(1,2,3), levels=None,
@@ -13724,7 +13683,7 @@ class Session(NoNewAttributesAfterInit):
            The parameters to plot on the X and Y axes, respectively.
         id : str or int, optional
         otherids : list of str or int, optional
-           The `id` and `otherids` arguments determine which data set
+           The ``id`` and ``otherids`` arguments determine which data set
            or data sets are used. If not given, all data sets which
            have a defined source model are used.
         recalc : bool, optional
@@ -13842,7 +13801,6 @@ class Session(NoNewAttributesAfterInit):
         self._plot(id, plotobj, replot=True, **plot_dict)
 
     
-    ### Ahelp ingest: 2015-05-07 DJB
     ### DOC-NOTE: I am not convinced I have fac described correctly
     ### DOC-NOTE: same synopsis as int_unc
     def int_proj(self, par, id=None, otherids=None, replot=False, fast=True,
@@ -13864,7 +13822,7 @@ class Session(NoNewAttributesAfterInit):
            The parameter to plot.
         id : str or int, optional
         otherids : list of str or int, optional
-           The `id` and `otherids` arguments determine which data set
+           The ``id`` and ``otherids`` arguments determine which data set
            or data sets are used. If not given, all data sets which
            have a defined source model are used.
         replot : bool, optional
@@ -13960,7 +13918,6 @@ class Session(NoNewAttributesAfterInit):
                        delv=delv, fac=fac, log=log, numcores=numcores, 
                        overplot=overplot)
 
-    ### Ahelp ingest: 2015-05-07 DJB
     ### DOC-NOTE: I am not convinced I have fac described correctly
     ### DOC-NOTE: same synopsis as int_proj
     def int_unc(self, par, id=None, otherids=None, replot=False, min=None,
@@ -13982,7 +13939,7 @@ class Session(NoNewAttributesAfterInit):
            The parameter to plot.
         id : str or int, optional
         otherids : list of str or int, optional
-           The `id` and `otherids` arguments determine which data set
+           The ``id`` and ``otherids`` arguments determine which data set
            or data sets are used. If not given, all data sets which
            have a defined source model are used.
         replot : bool, optional
@@ -14102,7 +14059,6 @@ class Session(NoNewAttributesAfterInit):
         self._contour(id, plotobj, replot=True, **cont_dict)
 
 
-    ### Ahelp ingest: 2015-05-07 DJB
     ### DOC-TODO: how is sigma converted into delta_stat
     def reg_proj(self, par0, par1, id=None, otherids=None, replot=False,
                  fast=True, min=None, max=None, nloop=(10,10), delv=None, fac=4,
@@ -14124,7 +14080,7 @@ class Session(NoNewAttributesAfterInit):
            The parameters to plot on the X and Y axes, respectively.
         id : str or int, optional
         otherids : list of str or int, optional
-           The `id` and `otherids` arguments determine which data set
+           The ``id`` and ``otherids`` arguments determine which data set
            or data sets are used. If not given, all data sets which
            have a defined source model are used.
         replot : bool, optional
@@ -14231,7 +14187,6 @@ class Session(NoNewAttributesAfterInit):
                        delv=delv, fac=fac, log=log, sigma=sigma, levels=levels,
                        numcores=numcores, overplot=overplot)
 
-    ### Ahelp ingest: 2015-05-07 DJB
     ### DOC-TODO: how is sigma converted into delta_stat
     def reg_unc(self, par0, par1, id=None, otherids=None, replot=False,
                 min=None, max=None, nloop=(10,10), delv=None, fac=4,
@@ -14253,7 +14208,7 @@ class Session(NoNewAttributesAfterInit):
            The parameters to plot on the X and Y axes, respectively.
         id : str or int, optional
         otherids : list of str or int, optional
-           The `id` and `otherids` arguments determine which data set
+           The ``id`` and ``otherids`` arguments determine which data set
            or data sets are used. If not given, all data sets which
            have a defined source model are used.
         replot : bool, optional
@@ -14394,7 +14349,6 @@ class Session(NoNewAttributesAfterInit):
     # Image object access
     #
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_data_image(self, id=None):
         """Return the data used by image_data.
 
@@ -14436,7 +14390,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_imageobj(id, self._dataimage)
         return self._dataimage
     
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_model_image(self, id=None):
         """Return the data used by image_model.
 
@@ -14483,7 +14436,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_imageobj(id, self._modelimage)
         return self._modelimage
 
-    ### Ahelp ingest: 2015-05-12 DJB
     ### DOC-TODO: it looks like get_source_image doesn't raise DataErr with
     ###           a non-2D data set
     def get_source_image(self, id=None):
@@ -14530,7 +14482,6 @@ class Session(NoNewAttributesAfterInit):
         return self._sourceimage
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_model_component_image(self, id, model=None):
         """Return the data used by image_model_component.
 
@@ -14566,8 +14517,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `model` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `model` parameters,
+        the ``model`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``model`` parameters,
         respectively.
 
         Examples
@@ -14591,7 +14542,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_imageobj(id, self._mdlcompimage, model=model)
         return self._mdlcompimage
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_source_component_image(self, id, model=None):
         """Return the data used by image_source_component.
 
@@ -14627,8 +14577,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `model` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `model` parameters,
+        the ``model`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``model`` parameters,
         respectively.
 
         Examples
@@ -14652,7 +14602,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_imageobj(id, self._srccompimage, model=model)
         return self._srccompimage
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def get_ratio_image(self, id=None):
         """Return the data used by image_ratio.
 
@@ -14693,7 +14642,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_imageobj(id, self._ratioimage)
         return self._ratioimage
     
-    ### Ahelp ingest: 2015-05-11 DJB
     def get_resid_image(self, id=None):
         """Return the data used by image_resid.
 
@@ -14734,7 +14682,6 @@ class Session(NoNewAttributesAfterInit):
         self._prepare_imageobj(id, self._residimage)
         return self._residimage
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def get_psf_image(self, id=None):
         """Return the data used by image_psf.
 
@@ -14773,7 +14720,6 @@ class Session(NoNewAttributesAfterInit):
         return self._psfimage
 
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def get_kernel_image(self, id=None):
         """Return the data used by image_kernel.
 
@@ -14818,7 +14764,6 @@ class Session(NoNewAttributesAfterInit):
     def _image(self, id, imageobj, shape, newframe, tile, model=None):
         self._prepare_imageobj(id, imageobj, model).image(shape, newframe, tile)
 
-    ### Ahelp ingest: 2015-05-09 DJB
     def image_data(self, id=None, newframe=False, tile=False):
         """Display a data set in the image viewer.
 
@@ -14882,7 +14827,6 @@ class Session(NoNewAttributesAfterInit):
         self._image(id, self._dataimage, None,
                     newframe, tile)
 
-    ### Ahelp ingest: 2015-05-09 DJB
     def image_model(self, id=None, newframe=False, tile=False):
         """Display the model for a data set in the image viewer.
 
@@ -14956,7 +14900,6 @@ class Session(NoNewAttributesAfterInit):
                     newframe, tile)
 
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def image_source_component(self, id, model=None, newframe=False,
                                tile=False):
         """Display a component of the source expression in the image viewer.
@@ -15003,8 +14946,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `model` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `model` parameters,
+        the ``model`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``model`` parameters,
         respectively.
 
         Image visualization is optional, and provided by the
@@ -15041,7 +14984,6 @@ class Session(NoNewAttributesAfterInit):
         self._image(id, self._srccompimage, None, newframe, tile, model=model)
 
 
-    ### Ahelp ingest: 2015-05-11 DJB
     def image_model_component(self, id, model=None, newframe=False, tile=False):
         """Display a component of the model in the image viewer.
 
@@ -15087,8 +15029,8 @@ class Session(NoNewAttributesAfterInit):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `model` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `model` parameters,
+        the ``model`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``model`` parameters,
         respectively.
 
         Image visualization is optional, and provided by the
@@ -15130,7 +15072,6 @@ class Session(NoNewAttributesAfterInit):
         self._image(id, self._mdlcompimage, None, newframe, tile, model=model)
 
 
-    ### Ahelp ingest: 2015-05-09 DJB
     def image_source(self, id=None, newframe=False, tile=False):
         """Display the source expression for a data set in the image viewer.
 
@@ -15201,7 +15142,6 @@ class Session(NoNewAttributesAfterInit):
         """
         self._image(id, self._sourceimage, None, newframe, tile)
 
-    ### Ahelp ingest: 2015-05-09 DJB
     ### DOC-TODO: does newframe make sense here?
     def image_fit(self, id=None, newframe=True, tile=True, deleteframes=True):
         """Display the data, model, and residuals for a data set in the image viewer.
@@ -15278,7 +15218,6 @@ class Session(NoNewAttributesAfterInit):
         self._modelimage.image(None, newframe, tile)
         self._residimage.image(None, newframe, tile)
 
-    ### Ahelp ingest: 2015-05-09 DJB
     def image_resid(self, id=None, newframe=False, tile=False):
         """Display the residuals (data - model) for a data set in the image viewer.
 
@@ -15351,7 +15290,6 @@ class Session(NoNewAttributesAfterInit):
         self._image(id, self._residimage, None,
                     newframe, tile)
 
-    ### Ahelp ingest: 2015-05-09 DJB
     def image_ratio(self, id=None, newframe=False, tile=False):
         """Display the ratio (data/model) for a data set in the image viewer.
 
@@ -15411,7 +15349,6 @@ class Session(NoNewAttributesAfterInit):
         self._image(id, self._ratioimage, None,
                     newframe, tile)
 
-    ### Ahelp ingest: 2015-05-11 DJB
     ### DOC-TODO: what gets displayed when there is no PSF?
     def image_psf(self, id=None, newframe=False, tile=False):
         """Display the 2D PSF model for a data set in the image viewer.
@@ -15468,7 +15405,6 @@ class Session(NoNewAttributesAfterInit):
         self._image(id, self._psfimage, None, newframe, tile)
 
 
-    ### Ahelp ingest: 2015-05-11 DJB
     ### DOC-TODO: what gets displayed when there is no PSF?
     ### DOC-TODO: where to point to for PSF/kernel discussion/description
     ###           (as it appears in a number of places)?
@@ -15530,7 +15466,6 @@ class Session(NoNewAttributesAfterInit):
     # through unbound functions of the Image class--always talking to
     # the same instance of the Image backend, so OK for now
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def image_deleteframes(self):
         """Delete all the frames open in the image viewer.
 
@@ -15555,7 +15490,6 @@ class Session(NoNewAttributesAfterInit):
         """
         sherpa.image.Image.delete_frames()
         
-    ### Ahelp ingest: 2015-05-08 DJB
     def image_open(self):
         """Start the image viewer.
 
@@ -15592,7 +15526,6 @@ class Session(NoNewAttributesAfterInit):
         """
         sherpa.image.Image.open()
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def image_close(self):
         """Close the image viewer.
 
@@ -15616,7 +15549,6 @@ class Session(NoNewAttributesAfterInit):
         """
         sherpa.image.Image.close()
 
-    ### Ahelp ingest: 2015-05-11 DJB
     ### DOC-TODO: what is the "default" coordinate system
     def image_getregion(self, coord=''):
         """Return the region defined in the image viewer.
@@ -15656,7 +15588,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return sherpa.image.Image.get_region(coord)
 
-    ### Ahelp ingest: 2015-05-11 DJB
     ### DOC-TODO: what is the "default" coordinate system
     def image_setregion(self, reg, coord=''):
         """Set the region to display in the image viewer.
@@ -15699,7 +15630,6 @@ class Session(NoNewAttributesAfterInit):
         """
         sherpa.image.Image.set_region(reg, coord)
 
-    ### Ahelp ingest: 2015-05-09 DJB
     ### DOC-TODO: check the ds9 link when it is working
     ### DOC-TODO: is there a link of ds9 commands we can link to?
     def image_xpaget(self, arg):
@@ -15733,7 +15663,6 @@ class Session(NoNewAttributesAfterInit):
 
         Notes
         -----
-
         This XPA access point [1]_ of the ds9 image viewer lets
         commands and queries to be sent to the viewer.
 
@@ -15753,7 +15682,6 @@ class Session(NoNewAttributesAfterInit):
         """
         return sherpa.image.Image.xpaget(arg)
 
-    ### Ahelp ingest: 2015-05-09 DJB
     ### DOC-TODO: check the ds9 link when it is working
     ### DOC-TODO: is there a link of ds9 commands we can link to?
     def image_xpaset(self, arg, data=None):
@@ -15785,7 +15713,6 @@ class Session(NoNewAttributesAfterInit):
 
         Notes
         -----
-
         This XPA access point [1]_ of the ds9 image viewer lets
         commands and queries to be sent to the viewer.
 

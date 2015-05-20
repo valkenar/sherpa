@@ -111,7 +111,6 @@ class Session(sherpa.ui.utils.Session):
         sherpa.ui.utils.Session.__setstate__(self, state)
 
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def clean(self):
         """Clear out the current Sherpa session.
 
@@ -178,7 +177,6 @@ class Session(sherpa.ui.utils.Session):
         self._plot_types['bkgdelchi']=self._bkgdelchiplot
         self._plot_types['bkgchisqr']=self._bkgchisqrplot
 
-    ### Ahelp ingest: 2015-04-27 DJB
     # Add ability to save attributes sepcific to the astro package.
     # Save XSPEC module settings that need to be restored.
     def save(self, filename='sherpa.save', clobber=False):
@@ -233,7 +231,6 @@ class Session(sherpa.ui.utils.Session):
             self._xspec_state = None
         sherpa.ui.utils.Session.save(self, filename, clobber)
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def restore(self, filename='sherpa.save'):
         """Load in a Sherpa session from a file.
 
@@ -396,7 +393,6 @@ class Session(sherpa.ui.utils.Session):
         return model_str
 
 
-    ### Ahelp ingest: 2015-05-02 DJB
     def show_bkg(self, id=None, bkg_id=None, outfile=None, clobber=False):
         """Show the details of the PHA background data sets.
 
@@ -448,7 +444,6 @@ class Session(sherpa.ui.utils.Session):
         _send_to_pager(all, outfile, clobber)
 
 
-    ### Ahelp ingest: 2015-05-02 DJB
     def show_bkg_source(self, id=None, bkg_id=None, outfile=None, clobber=False):
         """Display the background model expression for a data set.
 
@@ -502,7 +497,6 @@ class Session(sherpa.ui.utils.Session):
         _send_to_pager(all, outfile, clobber)
 
 
-    ### Ahelp ingest: 2015-05-01 DJB
     def show_bkg_model(self, id=None, bkg_id=None, outfile=None, clobber=False):
         """Display the background model expression used to fit a data set.
 
@@ -561,7 +555,6 @@ class Session(sherpa.ui.utils.Session):
     ###########################################################################
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-11 DJB
     #@loggable(with_id=True, with_name='load_data')
     def dataspace1d(self, start, stop, step=1, numbins=None,
                     id=None, bkg_id=None, dstype=sherpa.data.Data1DInt):
@@ -671,7 +664,6 @@ class Session(sherpa.ui.utils.Session):
 
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-11 DJB
     def dataspace2d(self, dims, id=None, dstype=sherpa.astro.data.DataIMG):
         """Create the independent axis for a 2D data set.
 
@@ -725,7 +717,6 @@ class Session(sherpa.ui.utils.Session):
         self.set_data(id, dataset)
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-12 DJB
     ### DOC-TODO: how to describe Crates and/or AstroPy?
     def unpack_arrays(self, *args):
         """Create a sherpa data object from arrays of data.
@@ -797,7 +788,6 @@ class Session(sherpa.ui.utils.Session):
         return dataset
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-01 DJB
     ### DOC-TODO: rework the Data type notes section (also needed for
     ###           unpack_arrays)
     #@loggable(with_id=True, with_keyword='arg', with_name='load_data')
@@ -891,7 +881,6 @@ class Session(sherpa.ui.utils.Session):
         """
         self.set_data(id, self.unpack_arrays(*args))
 
-    ### Ahelp ingest: 2015-05-01 DJB
     ### DOC-TODO: should unpack_ascii be merged into this?
     def unpack_table(self, filename, ncols=2, colkeys=None, dstype=Data1D):
         """Unpack a FITS binary file into a data structure.
@@ -959,7 +948,6 @@ class Session(sherpa.ui.utils.Session):
         """
         return sherpa.astro.io.read_table(filename, ncols, colkeys, dstype)
 
-    ### Ahelp ingest: 2015-05-01 DJB
     ### DOC-TODO: the field listing really should be somewhere else
     ###           as it's needed in multiple places (ideally in the
     ###           DataX class documentation, but users may not find it)
@@ -1078,7 +1066,6 @@ class Session(sherpa.ui.utils.Session):
         
         self.set_data(id, self.unpack_table(filename, ncols, colkeys, dstype))
         
-    ### Ahelp ingest: 2015-05-01 DJB
     ### DOC-TODO: should unpack_ascii be merged into unpack_table?
     ### DOC-TODO: I am going to ignore the crates support here as
     ###           it is somewhat meaningless, since the crate could
@@ -1154,7 +1141,6 @@ class Session(sherpa.ui.utils.Session):
         return sherpa.astro.io.read_ascii(filename, ncols, colkeys, dstype,
                                           sep=sep, comment=comment)
     
-    ### Ahelp ingest: 2015-05-01 DJB
     ### DOC-TODO: I am going to ignore the crates support here as
     ###           it is somewhat meaningless, since the crate could
     ###           have been read from a FITS binary table.
@@ -1272,7 +1258,6 @@ class Session(sherpa.ui.utils.Session):
                                             sep=sep, comment=comment ))
         
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-12 DJB
     def unpack_data(self, filename, *args, **kwargs):
         """Create a sherpa data object from a file.
 
@@ -1336,7 +1321,6 @@ class Session(sherpa.ui.utils.Session):
         return data
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-13 DJB
     #@loggable(with_id=True, with_keyword='arg', with_name='load_data')
     def load_data(self, id, filename=None, *args, **kwargs):
         """Load a data set from a file.
@@ -1410,7 +1394,6 @@ class Session(sherpa.ui.utils.Session):
         else:
             self.set_data(id, data)
 
-    ### Ahelp ingest: 2015-05-01 DJB
     ### DOC-TODO: labelling as AstroPy HDUList; i.e. assuming conversion
     ###           from PyFITS lands soon.
     def unpack_image(self, arg, coord='logical',
@@ -1467,7 +1450,6 @@ class Session(sherpa.ui.utils.Session):
         """
         return sherpa.astro.io.read_image(arg, coord, dstype)
 
-    ### Ahelp ingest: 2015-05-13 DJB
     #@loggable(with_id=True, with_keyword='arg', with_name='load_data')
     def load_image(self, id, arg=None, coord='logical',
                      dstype=sherpa.astro.data.DataIMG):
@@ -1527,7 +1509,6 @@ class Session(sherpa.ui.utils.Session):
             id, arg = arg, id
         self.set_data(id, self.unpack_image(arg, coord, dstype))
 
-    ### Ahelp ingest: 2015-05-01 DJB
     ### DOC-TODO: labelling as AstroPy HDUList; i.e. assuming conversion
     ###           from PyFITS lands soon.
     ### DOC-TODO: what does this return when given a PHA2 file?
@@ -1583,7 +1564,6 @@ class Session(sherpa.ui.utils.Session):
         return sherpa.astro.io.read_pha(arg, use_errors)
 
 
-    ### Ahelp ingest: 2015-05-01 DJB
     ### DOC-TODO: labelling as AstroPy HDUList; i.e. assuming conversion
     ###           from PyFITS lands soon.
     ### DOC-TODO: what does this return when given a PHA2 file?
@@ -1639,7 +1619,6 @@ class Session(sherpa.ui.utils.Session):
         return sherpa.astro.io.read_pha(arg, use_errors, True)
 
 
-    ### Ahelp ingest: 2015-05-06 DJB
     ### DOC-TODO: how best to include datastack support?
     #@loggable(with_id=True, with_keyword='arg', with_name='load_data')
     def load_pha(self, id, arg=None, use_errors=False):
@@ -1792,7 +1771,6 @@ class Session(sherpa.ui.utils.Session):
 
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-06 DJB
     ### DOC-TODO: does ncols make sense here? (have removed for now)
     ### DOC-TODO: labelling as AstroPy; i.e. assuming conversion
     ###           from PyFITS lands soon.
@@ -1874,7 +1852,6 @@ class Session(sherpa.ui.utils.Session):
                         bkg_id=bkg_id, ignore=ignore)
 
 
-    ### Ahelp ingest: 2015-04-30 DJB
     ### DOC-TODO: does ncols make sense here? (have removed for now)
     ### DOC-TODO: labelling as AstroPy; i.e. assuming conversion
     ###           from PyFITS lands soon.
@@ -1966,7 +1943,6 @@ class Session(sherpa.ui.utils.Session):
         self.set_grouping(id,
             self._read_user_model(filename, *args, **kwargs)[1], bkg_id=bkg_id)
 
-    ### Ahelp ingest: 2015-04-30 DJB
     ### DOC-TODO: labelling as AstroPy; i.e. assuming conversion
     ###           from PyFITS lands soon.
     def load_quality(self, id, filename=None, bkg_id=None, *args, **kwargs):
@@ -2045,7 +2021,6 @@ class Session(sherpa.ui.utils.Session):
         self.set_quality(id,
             self._read_user_model(filename, *args, **kwargs)[1], bkg_id=bkg_id)
 
-    ### Ahelp ingest: 2015-05-06 DJB
     def set_filter(self, id, val=None, bkg_id=None, ignore=False):
         """Set the filter array of a data set.
 
@@ -2122,7 +2097,6 @@ class Session(sherpa.ui.utils.Session):
 
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-06 DJB
     ### DOC-TODO: does ncols make sense here? (have removed for now)
     def load_staterror(self, id, filename=None, bkg_id=None, *args, **kwargs):
         """Load the statistical errors from a file.
@@ -2207,7 +2181,6 @@ class Session(sherpa.ui.utils.Session):
             self._read_user_model(filename, *args, **kwargs)[1], bkg_id=bkg_id)
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-06 DJB
     ### DOC-NOTE: is ncols really 2 here? Does it make sense?
     def load_syserror(self, id, filename=None, bkg_id=None, *args, **kwargs):
         """Load the systematic errors from a file.
@@ -2292,7 +2265,6 @@ class Session(sherpa.ui.utils.Session):
             self._read_user_model(filename, *args, **kwargs)[1], bkg_id=bkg_id)
 
     # also in sherpa.utils
-    ### Ahelp ingest: 2015-05-11 DJB
     def set_dep(self, id, val=None, bkg_id=None):
         """Set the dependent axis of a data set.
 
@@ -2367,7 +2339,6 @@ class Session(sherpa.ui.utils.Session):
 
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-05 DJB
     def set_staterror(self, id, val=None, fractional=False, bkg_id=None):
         """Set the statistical errors on the dependent axis of a data set.
 
@@ -2444,7 +2415,6 @@ class Session(sherpa.ui.utils.Session):
 
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-05 DJB
     def set_syserror(self, id, val=None, fractional=False, bkg_id=None):
         """Set the systematic errors on the dependent axis of a data set.
 
@@ -2517,12 +2487,11 @@ class Session(sherpa.ui.utils.Session):
         d.syserror = err
 
 
-    ### Ahelp ingest: 2015-05-02 DJB
     def set_exposure(self, id, exptime=None, bkg_id=None):
         """Change the exposure time of a PHA data set.
 
         The exposure time of a PHA data set is taken from the
-        EXPTIME keyword in its header, but it can be changed
+        ``EXPTIME`` keyword in its header, but it can be changed
         once the file has been loaded.
 
         Parameters
@@ -2535,7 +2504,7 @@ class Session(sherpa.ui.utils.Session):
            The exposure time, in seconds.
         bkg_id : int or str, optional
            Set to identify which background component to set.  The
-           default value (`None`) means that this is for the source
+           default value (``None``) means that this is for the source
            component of the data set.
 
         See Also
@@ -2549,8 +2518,8 @@ class Session(sherpa.ui.utils.Session):
         The function does not follow the normal Python standards for
         parameter use, since it is designed for easy interactive use.
         When called with a single un-named argument, it is taken to be
-        the `exptime` parameter. If given two un-named arguments, then
-        they are interpreted as the `id` and `exptime` parameters,
+        the ``exptime`` parameter. If given two un-named arguments, then
+        they are interpreted as the ``id`` and ``exptime`` parameters,
         respectively. The remaining parameters are expected to be
         given as named arguments.
 
@@ -2586,7 +2555,6 @@ class Session(sherpa.ui.utils.Session):
             self._get_pha_data(id).exposure = exptime
 
 
-    ### Ahelp ingest: 2015-05-02 DJB
     def set_backscal(self, id, backscale=None, bkg_id=None):
         """Change the area scaling of a PHA data set.
 
@@ -2638,7 +2606,6 @@ class Session(sherpa.ui.utils.Session):
             self._get_pha_data(id).backscal = backscale
 
 
-    ### Ahelp ingest: 2015-05-02 DJB
     ### DOC-TODO: the description needs improving.
     def set_areascal(self, id, area=None, bkg_id=None):
         """Change the fractional area factor of a PHA data set.
@@ -2689,7 +2656,6 @@ class Session(sherpa.ui.utils.Session):
             self._get_pha_data(id).areascal = area
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-05 DJB
     def get_staterror(self, id=None, filter=False, bkg_id=None):
         """Return the statistical error on the dependent axis of a data set.
 
@@ -2763,7 +2729,6 @@ class Session(sherpa.ui.utils.Session):
 
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-05 DJB
     def get_syserror(self, id=None, filter=False, bkg_id=None):
         """Return the systematic error on the dependent axis of a data set.
 
@@ -2812,7 +2777,6 @@ class Session(sherpa.ui.utils.Session):
 
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-05 DJB
     def get_error(self, id=None, filter=False, bkg_id=None):
         """Return the errors on the dependent axis of a data set.
 
@@ -2855,7 +2819,6 @@ class Session(sherpa.ui.utils.Session):
 
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-05 DJB
     def get_indep(self, id=None, filter=False, bkg_id=None):
         """Return the independent axes of a data set.
 
@@ -2955,7 +2918,6 @@ class Session(sherpa.ui.utils.Session):
         return d.get_indep(filter=filter)
 
 
-    ### Ahelp ingest: 2015-05-07 DJB
     def get_axes(self, id=None, bkg_id=None):
         """Return information about the independent axes of a data set.
 
@@ -3050,7 +3012,6 @@ class Session(sherpa.ui.utils.Session):
 
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-05 DJB
     def get_dep(self, id=None, filter=False, bkg_id=None):
         """Return the dependent axis of a data set.
 
@@ -3131,7 +3092,6 @@ class Session(sherpa.ui.utils.Session):
 
     get_counts = get_dep
 
-    ### Ahelp ingest: 2015-05-01 DJB
     def get_rate(self, id=None, filter=False, bkg_id=None):
         """Return the count rate of a PHA data set.
 
@@ -3192,7 +3152,6 @@ class Session(sherpa.ui.utils.Session):
         d._rate=old
         return rate
 
-    ### Ahelp ingest: 2015-05-02 DJB
     ### DOC-TODO: how to get the corresponding x bins for this data?
     ###           i.e. what are the X values for these points
     def get_specresp(self, id=None, filter=False, bkg_id=None):
@@ -3224,7 +3183,6 @@ class Session(sherpa.ui.utils.Session):
         return d.get_specresp(filter)
 
 
-    ### Ahelp ingest: 2015-05-02 DJB
     def get_exposure(self, id=None, bkg_id=None):
         """Return the exposure time of a PHA data set.
 
@@ -3260,7 +3218,6 @@ class Session(sherpa.ui.utils.Session):
         return self._get_pha_data(id).exposure
 
 
-    ### Ahelp ingest: 2015-05-07 DJB
     def get_backscal(self, id=None, bkg_id=None):
         """Return the area scaling of a PHA data set.
 
@@ -3320,7 +3277,6 @@ class Session(sherpa.ui.utils.Session):
         return self._get_pha_data(id).backscal
 
 
-    ### Ahelp ingest: 2015-05-07 DJB
     def get_bkg_scale(self, id=None):
         """Return the background scaling factor for a PHA data set.
 
@@ -3350,7 +3306,7 @@ class Session(sherpa.ui.utils.Session):
         get_backscal : Return the area scaling factor for a PHA data set.
         set_backscal : Change the area scaling of a PHA data set.
         set_full_model : Define the convolved model expression for a data set.
-        set_bkg_full_model : Define the convolved background model expression for a data set.
+        set_bkg_full_model : Define the convolved background model expression for a PHA data set.
 
         Notes
         -----
@@ -3375,7 +3331,6 @@ class Session(sherpa.ui.utils.Session):
         return scale
 
 
-    ### Ahelp ingest: 2015-05-07 DJB
     ### DOC-TODO: the description needs improving.
     def get_areascal(self, id=None, bkg_id=None):
         """Return the fractional area factor of a PHA data set.
@@ -3514,7 +3469,6 @@ class Session(sherpa.ui.utils.Session):
 #
 
     # DOC-NOTE: also in sherpa.utils with a different interface
-    ### Ahelp ingest: 2015-05-12 DJB
     def save_arrays(self, filename, args, fields=None, ascii=True,
                     clobber=False):
         """Write a list of arrays to a file.
@@ -3569,7 +3523,6 @@ class Session(sherpa.ui.utils.Session):
         sherpa.astro.io.write_arrays(filename, args, fields, ascii, clobber)
 
     # DOC-NOTE: also in sherpa.utils with a different API
-    ### Ahelp ingest: 2015-05-13 DJB
     def save_source(self, id, filename=None, bkg_id=None, ascii=False,
                     clobber=False):
         """Save the model values to a file.
@@ -3654,7 +3607,6 @@ class Session(sherpa.ui.utils.Session):
                         bkg_id=bkg_id)
 
     # DOC-NOTE: also in sherpa.utils with a different API
-    ### Ahelp ingest: 2015-05-13 DJB
     def save_model(self, id, filename=None, bkg_id=None, ascii=False,
                    clobber=False):
         """Save the model values to a file.
@@ -3738,7 +3690,6 @@ class Session(sherpa.ui.utils.Session):
                         bkg_id=bkg_id)
 
     # DOC-NOTE: also in sherpa.utils with a different API
-    ### Ahelp ingest: 2015-05-12 DJB
     def save_resid(self, id, filename=None, bkg_id=None, ascii=False,
                    clobber=False):
         """Save the residuals (data-model) to a file.
@@ -3811,7 +3762,6 @@ class Session(sherpa.ui.utils.Session):
                         bkg_id=bkg_id)
 
     # DOC-NOTE: also in sherpa.utils with a different API
-    ### Ahelp ingest: 2015-05-12 DJB
     def save_delchi(self, id, filename=None, bkg_id=None, ascii=True,
                     clobber=False):
         """Save the ratio of residuals (data-model) to error to a file.
@@ -3885,7 +3835,6 @@ class Session(sherpa.ui.utils.Session):
 
 
     # DOC-NOTE: also in sherpa.utils with a different interface
-    ### Ahelp ingest: 2015-05-06 DJB
     def save_filter(self, id, filename=None, bkg_id=None, ascii=True,
                     clobber=False):
         """Save the filter array to a file.
@@ -3973,7 +3922,6 @@ class Session(sherpa.ui.utils.Session):
 
 
     # DOC-NOTE: also in sherpa.utils with a different interface
-    ### Ahelp ingest: 2015-05-06 DJB
     def save_staterror(self, id, filename=None, bkg_id=None, ascii=True,
                     clobber=False):
         """Save the statistical errors to a file.
@@ -4065,7 +4013,6 @@ class Session(sherpa.ui.utils.Session):
 
 
     # DOC-NOTE: also in sherpa.utils with a different interface
-    ### Ahelp ingest: 2015-05-06 DJB
     def save_syserror(self, id, filename=None, bkg_id=None, ascii=True,
                     clobber=False):
         """Save the systematic errors to a file.
@@ -4155,7 +4102,6 @@ class Session(sherpa.ui.utils.Session):
 
 
     # DOC-NOTE: also in sherpa.utils with a different interface
-    ### Ahelp ingest: 2015-05-06 DJB
     def save_error(self, id, filename=None, bkg_id=None, ascii=True,
                     clobber=False):
         """Save the errors to a file.
@@ -4251,7 +4197,6 @@ class Session(sherpa.ui.utils.Session):
                          ascii, clobber)
 
 
-    ### Ahelp ingest: 2015-05-01 DJB
     def save_pha(self, id, filename=None, bkg_id=None, ascii=False, clobber=False):
         """Save a PHA data set to a file.
 
@@ -4329,7 +4274,6 @@ class Session(sherpa.ui.utils.Session):
         sherpa.astro.io.write_pha(filename, d, ascii, clobber)
 
 
-    ### Ahelp ingest: 2015-04-30 DJB
     ### DOC-TODO: labelling as AstroPy; i.e. assuming conversion
     ###           from PyFITS lands soon.
     def save_grouping(self, id, filename=None, bkg_id=None, ascii=True, clobber=False):
@@ -4416,7 +4360,6 @@ class Session(sherpa.ui.utils.Session):
                                      ['CHANNEL', 'GROUPS'], ascii, clobber)
 
 
-    ### Ahelp ingest: 2015-04-30 DJB
     ### DOC-TODO: labelling as AstroPy; i.e. assuming conversion
     ###           from PyFITS lands soon.
     def save_quality(self, id, filename=None, bkg_id=None, ascii=True, clobber=False):
@@ -4505,7 +4448,6 @@ class Session(sherpa.ui.utils.Session):
                                      ['CHANNEL', 'GROUPS'], ascii, clobber)
 
 
-    ### Ahelp ingest: 2015-05-13 DJB
     ### DOC-TODO: setting ascii=True is not supported for crates
     ###           and in pyfits it seems to just be a 1D array (needs thinking about)
     def save_image(self, id, filename=None, ascii=False, clobber=False):
@@ -4575,7 +4517,6 @@ class Session(sherpa.ui.utils.Session):
         sherpa.astro.io.write_image(filename, self.get_data(id),
                                     ascii, clobber)
 
-    ### Ahelp ingest: 2015-05-13 DJB
     ### DOC-TODO: the output for an image is "excessive"
     def save_table(self, id, filename=None, ascii=False, clobber=False):
         """Save a data set to a file as a table.
@@ -4647,7 +4588,6 @@ class Session(sherpa.ui.utils.Session):
 
 
     ### DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-12 DJB
     def save_data(self, id, filename=None, bkg_id=None, ascii=True, clobber=False):
         """Save the data to a file.
 
@@ -4742,7 +4682,6 @@ class Session(sherpa.ui.utils.Session):
                         raise
 
 
-    ### Ahelp ingest: 2015-05-02 DJB
     ### DOC-TODO: labelling as AstroPy HDUList; i.e. assuming conversion
     ###           from PyFITS lands soon.
     def pack_pha(self, id=None):
@@ -4773,7 +4712,6 @@ class Session(sherpa.ui.utils.Session):
         """
         return sherpa.astro.io.pack_pha(self._get_pha_data(id))
     
-    ### Ahelp ingest: 2015-05-02 DJB
     ### DOC-TODO: labelling as AstroPy HDUList; i.e. assuming conversion
     ###           from PyFITS lands soon.
     def pack_image(self, id=None):
@@ -4799,7 +4737,6 @@ class Session(sherpa.ui.utils.Session):
         """
         return sherpa.astro.io.pack_image(self.get_data(id))
 
-    ### Ahelp ingest: 2015-05-02 DJB
     ### DOC-TODO: labelling as AstroPy HDUList; i.e. assuming conversion
     ###           from PyFITS lands soon.
     def pack_table(self, id=None):
@@ -4832,7 +4769,6 @@ class Session(sherpa.ui.utils.Session):
     #        raise ArgumentTypeError('response identifiers must be integers ' +
     #                                'or strings')
 
-    ### Ahelp ingest: 2015-05-02 DJB
     #@loggable(with_id=True)
     def get_arf(self, id=None, resp_id=None, bkg_id=None):
         """Return the ARF associated with a PHA data set.
@@ -4901,7 +4837,6 @@ class Session(sherpa.ui.utils.Session):
         return arf
 
 
-    ### Ahelp ingest: 2015-04-29 DJB
     ### DOC-TODO: add an example of a grating/multiple response
     def set_arf(self, id, arf=None, resp_id=None, bkg_id=None):
         """Set the ARF for use by a PHA data set.
@@ -4984,7 +4919,6 @@ class Session(sherpa.ui.utils.Session):
             data._set_initial_quantity()
 
 
-    ### Ahelp ingest: 2015-05-01 DJB
     ### DOC-TODO: labelling as AstroPy HDUList; i.e. assuming conversion
     ###           from PyFITS lands soon.
     def unpack_arf(self, arg):
@@ -5031,7 +4965,6 @@ class Session(sherpa.ui.utils.Session):
         """
         return sherpa.astro.instrument.ARF1D(sherpa.astro.io.read_arf(arg))
 
-    ### Ahelp ingest: 2015-04-29 DJB
     ### DOC-TODO: add an example of a grating/multiple response
     ### DOC-TODO: how to describe I/O backend support?
     ### DOC-TODO: labelling as AstroPy HDUList; i.e. assuming conversion
@@ -5110,7 +5043,6 @@ class Session(sherpa.ui.utils.Session):
             id, arg = arg, id
         self.set_arf(id, self.unpack_arf(arg), resp_id, bkg_id)
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def get_bkg_arf(self, id=None):
         """Return the background ARF associated with a PHA data set.
 
@@ -5160,7 +5092,6 @@ class Session(sherpa.ui.utils.Session):
         resp_id = self._get_pha_data(id).primary_response_id
         return self.get_arf(id, resp_id, bkg_id)
 
-    ### Ahelp ingest: 2015-04-29 DJB
     ### DOC-TODO: how to describe I/O backend support?
     ### DOC-TODO: labelling as AstroPy HDUList; i.e. assuming conversion
     ###           from PyFITS lands soon.
@@ -5220,7 +5151,6 @@ class Session(sherpa.ui.utils.Session):
         resp_id = self._get_pha_data(id).primary_response_id
         self.set_arf(id, self.unpack_arf(arg), resp_id, bkg_id)
 
-    ### Ahelp ingest: 2015-04-29 DJB
     def load_multi_arfs(self, id, filenames, resp_ids=None):
         """Load multiple ARFs for a PHA data set.
 
@@ -5288,7 +5218,6 @@ class Session(sherpa.ui.utils.Session):
             resp_id = resp_ids.pop(0)
             self.load_arf(id, filename, resp_id)
 
-    ### Ahelp ingest: 2015-05-02 DJB
     #@loggable(with_id=True)
     def get_rmf(self, id=None, resp_id=None, bkg_id=None):
         """Return the RMF associated with a PHA data set.
@@ -5352,7 +5281,6 @@ class Session(sherpa.ui.utils.Session):
         return rmf
 
 
-    ### Ahelp ingest: 2015-04-29 DJB
     ### DOC-TODO: add an example of a grating/multiple response
     def set_rmf(self, id, rmf=None, resp_id=None, bkg_id=None):
         """Set the RMF for use by a PHA data set.
@@ -5435,7 +5363,6 @@ class Session(sherpa.ui.utils.Session):
             data._set_initial_quantity()
 
 
-    ### Ahelp ingest: 2015-05-01 DJB
     ### DOC-TODO: labelling as AstroPy HDUList; i.e. assuming conversion
     ###           from PyFITS lands soon.
     def unpack_rmf(self, arg):
@@ -5482,7 +5409,6 @@ class Session(sherpa.ui.utils.Session):
         """
         return sherpa.astro.instrument.RMF1D(sherpa.astro.io.read_rmf(arg))
 
-    ### Ahelp ingest: 2015-04-29 DJB
     ### DOC-TODO: add an example of a grating/multiple response
     ### DOC-TODO: how to describe I/O backend support?
     ### DOC-TODO: labelling as AstroPy HDUList; i.e. assuming conversion
@@ -5561,7 +5487,6 @@ class Session(sherpa.ui.utils.Session):
             id, arg = arg, id
         self.set_rmf(id, self.unpack_rmf(arg), resp_id, bkg_id)
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def get_bkg_rmf(self, id=None):
         """Return the background RMF associated with a PHA data set.
 
@@ -5606,7 +5531,6 @@ class Session(sherpa.ui.utils.Session):
         resp_id = self._get_pha_data(id).primary_response_id
         return self.get_rmf(id, resp_id, bkg_id)
 
-    ### Ahelp ingest: 2015-04-29 DJB
     ### DOC-TODO: how to describe I/O backend support?
     ### DOC-TODO: labelling as AstroPy HDUList; i.e. assuming conversion
     ###           from PyFITS lands soon.
@@ -5666,7 +5590,6 @@ class Session(sherpa.ui.utils.Session):
         resp_id = self._get_pha_data(id).primary_response_id
         self.set_rmf(id, self.unpack_rmf(arg), resp_id, bkg_id)
 
-    ### Ahelp ingest: 2015-04-29 DJB
     def load_multi_rmfs(self, id, filenames, resp_ids=None):
         """Load multiple RMFs for a PHA data set.
 
@@ -5734,7 +5657,6 @@ class Session(sherpa.ui.utils.Session):
             resp_id = resp_ids.pop(0)
             self.load_rmf(id, filename, resp_id)
         
-    ### Ahelp ingest: 2015-05-08 DJB
     def get_bkg(self, id=None, bkg_id=None):
         """Return the background for a PHA data set.
 
@@ -5784,7 +5706,6 @@ class Session(sherpa.ui.utils.Session):
                                 str(self._fix_id(id)))
         return bkg
 
-    ### Ahelp ingest: 2015-04-30 DJB
     def set_bkg(self, id, bkg=None, bkg_id=None):
         """Set the background for a PHA data set.
 
@@ -5859,7 +5780,6 @@ class Session(sherpa.ui.utils.Session):
         bkg.plot_fac = data.plot_fac
 
 
-    ### Ahelp ingest: 2015-04-29 DJB
     def list_bkg_ids(self, id=None):
         """List all the background identifiers for a data set.
 
@@ -5888,7 +5808,6 @@ class Session(sherpa.ui.utils.Session):
         #return self._get_pha_data(id).background_ids
         return self._get_pha_data(id)._backgrounds.keys()
 
-    ### Ahelp ingest: 2015-04-29 DJB
     def list_response_ids(self, id=None, bkg_id=None):
         """List all the response identifiers of a data set.
 
@@ -5924,7 +5843,6 @@ class Session(sherpa.ui.utils.Session):
         #return data.response_ids
         return data._responses.keys()
 
-    ### Ahelp ingest: 2015-04-27 DJB
     ### DOC-TODO: docs need to be added to sherpa.astro.data.set_analysis
     ### DOC-TODO: should the arguments be renamed to better match optional
     ###           nature of the routine (e.g. can call set_analysis('energy'))?
@@ -6015,7 +5933,6 @@ class Session(sherpa.ui.utils.Session):
             self._get_pha_data(id).set_analysis(quantity, type, factor) 
 
 
-    ### Ahelp ingest: 2015-04-27 DJB
     ### DOC-TODO: docs need to be added to sherpa.astro.data.get_analysis
     def get_analysis(self, id=None):
         """Return the units used when fitting spectral data.
@@ -6045,7 +5962,6 @@ class Session(sherpa.ui.utils.Session):
         """
         return self._get_pha_data(id).get_analysis()
 
-    ### Ahelp ingest: 2015-04-28 DJB
     ### DOC-TODO: docs need to be added to sherpa.astro.data.set_coord
     ### DOC-TODO: how best to document the wcssubs support?
     #@loggable(with_id=True, with_keyword='coord')
@@ -6136,7 +6052,6 @@ class Session(sherpa.ui.utils.Session):
            self._get_img_data(id).set_coord(coord)
 
 
-    ### Ahelp ingest: 2015-04-28 DJB
     ### DOC-TODO: docs need to be added to sherpa.astro.data.get_coord
     def get_coord(self, id=None):
         """Get the coordinate system used for image analysis.
@@ -6167,7 +6082,6 @@ class Session(sherpa.ui.utils.Session):
         return self._get_img_data(id).coord
 
 
-    ### Ahelp ingest: 2015-05-06 DJB
     def ignore_bad(self, id=None, bkg_id=None):
         """Exclude channels marked as bad in a PHA data set.
 
@@ -6259,7 +6173,6 @@ class Session(sherpa.ui.utils.Session):
     ignore.__doc__ = sherpa.ui.utils.Session.ignore.__doc__
 
 
-    ### Ahelp ingest: 2015-05-06 DJB
     ### DOC-TODO: how best to document the region support?
     ### DOC-TODO: I have not mentioned the support for radii in arcsec/minutes/degrees
     ###           or sexagessimal formats. Is this supported here?
@@ -6275,7 +6188,7 @@ class Session(sherpa.ui.utils.Session):
            A region specification as a string or the name of a file
            containing a region filter. The coordinates system of the
            filter is taken from the coordinate setting of the data
-           sets (`set_coord`). If `None`, then all points are
+           sets (`set_coord`). If ``None``, then all points are
            included.
 
         See Also
@@ -6340,7 +6253,8 @@ class Session(sherpa.ui.utils.Session):
           shape1()*!shape1()
 
         The precedence uses the same rules as the mathematical
-        operators "+" and "*" (with - replaced by *!), so that::
+        operators ``+`` and ``*`` (with ``-`` replaced by ``*!``),
+        so that::
 
           circle(0,0,10)+rect(10,-10,20,10)-circle(10,0,10)
 
@@ -6368,7 +6282,7 @@ class Session(sherpa.ui.utils.Session):
 
         >>> notice2d('circle(4324.5,3827.5,430)')
 
-        Read in the filter from the file `ds9.reg`, using either:
+        Read in the filter from the file ``ds9.reg``, using either:
 
         >>> notice2d('ds9.reg')
 
@@ -6396,7 +6310,6 @@ class Session(sherpa.ui.utils.Session):
                         'a image data set')
             d.notice2d(val, False)
 
-    ### Ahelp ingest: 2015-05-06 DJB
     def ignore2d(self, val=None):
         """Exclude a spatial region from all data sets.
 
@@ -6409,7 +6322,7 @@ class Session(sherpa.ui.utils.Session):
            A region specification as a string or the name of a file
            containing a region filter. The coordinates system of the
            filter is taken from the coordinate setting of the data
-           sets (`set_coord`). If `None`, then all points are
+           sets (`set_coord`). If ``None``, then all points are
            included.
 
         See Also
@@ -6450,7 +6363,6 @@ class Session(sherpa.ui.utils.Session):
                         'a image data set')
             d.notice2d(val, True)
     
-    ### Ahelp ingest: 2015-05-06 DJB
     def notice2d_id(self, ids, val=None):
         """Include a spatial region of a data set.
 
@@ -6519,7 +6431,6 @@ class Session(sherpa.ui.utils.Session):
                         'img', 'a image data set')
             self.get_data(id).notice2d(val, False)
         
-    ### Ahelp ingest: 2015-05-06 DJB
     def ignore2d_id(self, ids, val=None):
         """Exclude a spatial region from a data set.
 
@@ -6683,7 +6594,6 @@ class Session(sherpa.ui.utils.Session):
             self.ignore2d_id(id, regions)
 
 
-    ### Ahelp ingest: 2015-05-06 DJB
     ### DOC-TODO: how best to include datastack support? How is it handled here?
     #@loggable(with_id=True, with_keyword='arg')
     def load_bkg(self, id, arg=None, use_errors=False, bkg_id=None):
@@ -6760,7 +6670,6 @@ class Session(sherpa.ui.utils.Session):
         else:
             self.set_bkg(id, bkgsets, bkg_id)
 
-    ### Ahelp ingest: 2015-04-29 DJB
     #@loggable(with_id=True)
     def group(self, id=None, bkg_id=None):
         """Turn on the grouping for a PHA data set.
@@ -6887,7 +6796,6 @@ class Session(sherpa.ui.utils.Session):
         data.group()
 
 
-    ### Ahelp ingest: 2015-04-29 DJB
     def set_grouping(self, id, val=None, bkg_id=None):
         """Apply a set of grouping flags to a PHA data set.
 
@@ -6978,7 +6886,6 @@ class Session(sherpa.ui.utils.Session):
                 data.grouping = numpy.asarray(val, SherpaInt)
 
 
-    ### Ahelp ingest: 2015-04-30 DJB
     def get_grouping(self, id=None, bkg_id=None):
         """Return the grouping array for a PHA data set.
 
@@ -7032,7 +6939,6 @@ class Session(sherpa.ui.utils.Session):
 
         return data.grouping
 
-    ### Ahelp ingest: 2015-04-29 DJB
     def set_quality(self, id, val=None, bkg_id=None):
         """Apply a set of quality flags to a PHA data set.
 
@@ -7125,7 +7031,6 @@ class Session(sherpa.ui.utils.Session):
     ###           direct object access
     ###           get_data().exposure [= ...]
 
-    ### Ahelp ingest: 2015-04-30 DJB
     def get_quality(self, id=None, bkg_id=None):
         """Return the quality flags for a PHA data set.
 
@@ -7173,7 +7078,6 @@ class Session(sherpa.ui.utils.Session):
 
         return data.quality
 
-    ### Ahelp ingest: 2015-04-29 DJB
     #@loggable(with_id=True)
     def ungroup(self, id=None, bkg_id=None):
         """Turn off the grouping for a PHA data set.
@@ -7284,7 +7188,6 @@ class Session(sherpa.ui.utils.Session):
     ### DOC-TODO: how to set the quality if using tabstops to indicate
     ###           "bad" channels, rather than ones to ignore
 
-    ### Ahelp ingest: 2015-04-30 DJB
     #@loggable(with_id=True, with_keyword='num')
     def group_bins(self, id, num=None, bkg_id=None, tabStops=None):
         """Group into a fixed number of bins.
@@ -7397,7 +7300,6 @@ class Session(sherpa.ui.utils.Session):
             data = self.get_bkg(id, bkg_id)
         data.group_bins(num, tabStops)
 
-    ### Ahelp ingest: 2015-04-30 DJB
     ### DOC-TODO: should num= be renamed val= to better match
     ###           underlying code/differ from group_bins?
     #@loggable(with_id=True, with_keyword='num')
@@ -7508,7 +7410,6 @@ class Session(sherpa.ui.utils.Session):
             data = self.get_bkg(id, bkg_id)
         data.group_width(num, tabStops)
 
-    ### Ahelp ingest: 2015-04-30 DJB
     #@loggable(with_id=True, with_keyword='num')
     def group_counts(self, id, num=None, bkg_id=None,
                      maxLength=None, tabStops=None):
@@ -7624,7 +7525,6 @@ class Session(sherpa.ui.utils.Session):
             data = self.get_bkg(id, bkg_id)
         data.group_counts(num, maxLength, tabStops)
 
-    ### Ahelp ingest: 2015-05-01 DJB
     ### DOC-TODO: check the Poisson stats claim; I'm guessing it means
     ###           gaussian (i.e. sqrt(n))
     #@loggable(with_id=True, with_keyword='snr')
@@ -7726,7 +7626,6 @@ class Session(sherpa.ui.utils.Session):
             data = self.get_bkg(id, bkg_id)
         data.group_snr(snr, maxLength, tabStops, errorCol)
 
-    ### Ahelp ingest: 2015-05-01 DJB
     #@loggable(with_id=True, with_keyword='min')
     def group_adapt(self, id, min=None, bkg_id=None,
                      maxLength=None, tabStops=None):
@@ -7824,7 +7723,6 @@ class Session(sherpa.ui.utils.Session):
             data = self.get_bkg(id, bkg_id)
         data.group_adapt(min, maxLength, tabStops)
 
-    ### Ahelp ingest: 2015-05-01 DJB
     ### DOC-TODO: shouldn't this be snr=None rather than min=None
     #@loggable(with_id=True, with_keyword='min')
     def group_adapt_snr(self, id, min=None, bkg_id=None,
@@ -7929,16 +7827,15 @@ class Session(sherpa.ui.utils.Session):
             data = self.get_bkg(id, bkg_id)
         data.group_adapt_snr(min, maxLength, tabStops, errorCol)
 
-    ### Ahelp ingest: 2015-04-28 DJB
     #@loggable(with_id=True)
     def subtract(self, id=None):
         """Subtract the background estimate from a data set.
 
-        The `subtract` function performs a channel-by-channel
+        The ``subtract`` function performs a channel-by-channel
         subtraction of the background estimate from the data. After
         this command, anything that uses the data set - such as a
         plot, fit, or error analysis - will use the subtracted
-        data. Models should be re-fit if `subtract` is called.
+        data. Models should be re-fit if ``subtract`` is called.
 
         Parameters
         ----------
@@ -7971,7 +7868,7 @@ class Session(sherpa.ui.utils.Session):
         numbers of channels, but must have the same number of groups
         after grouping.
 
-        The equation for the subtraction is:
+        The equation for the subtraction is::
 
            src_counts - bg_counts * (src_exposure * src_backscal)
                                     -----------------------------
@@ -7980,10 +7877,10 @@ class Session(sherpa.ui.utils.Session):
         where src_exposure and bg_exposure are the source and
         background exposure times, and src_backscal and bg_backscal
         are the source and background backscales.  The backscale, read
-        from the `BACKSCAL` header keyword of the PHA file [2]_, is
+        from the ``BACKSCAL`` header keyword of the PHA file [2]_, is
         the ratio of data extraction area to total detector area.
 
-        The `subtracted` field of a dataset is set to `True` when
+        The ``subtracted`` field of a dataset is set to ``True`` when
         the background is subtracted.
 
         References
@@ -8013,7 +7910,6 @@ class Session(sherpa.ui.utils.Session):
             raise DataErr('subtractset', 'data set', str(self._fix_id(id)), 'True')
         self._get_pha_data(id).subtract()
 
-    ### Ahelp ingest: 2015-04-28 DJB
     #@loggable(with_id=True)
     def unsubtract(self, id=None):
         """Undo any background subtraction for the data set.
@@ -8073,52 +7969,92 @@ class Session(sherpa.ui.utils.Session):
                  grouping=None, grouped=False, quality=None, bkg=None):
         """Simulate a PHA data set from a model.
 
-        fake_pha
+        Take a PHA data set, evaluate the model for each bin, and then
+        use this value to create a data value from each bin, where the
+        value is used as the expectation value of the Poisson
+        distribution. A background component can be added (these
+        values are scaled to account for area extraction and exposure
+        time, but are not themselves simulated).
 
-        SYNOPSIS
-           Create and fill a Sherpa DataPHA dataset by data id 
-           with faked PHA counts using poisson noise.
+        Parameters
+        ----------
+        id : int or str
+           The identifier for the data set to create. If it
+           already exists then it is assumed to contain a PHA
+           data set and the counts will be over-written.
+        arf : filename or ARF object
+           The name of the ARF, or an ARF data object (e.g.
+           as returned by `get_arf` or `unpack_arf`).
+        rmf : filename or RMF object
+           The name of the RMF, or an RMF data object (e.g.
+           as returned by `get_arf` or `unpack_arf`).
+        exposure : number
+           The exposure time, in seconds.
+        backscal : number, optional
+           The 'BACKSCAL' value for the data set.
+        areascal : number, optional
+           The 'AREASCAL' value for the data set.
+        grouping : array, optional
+           The grouping array for the data (see `set_grouping`).
+        grouped : bool, optional
+           Should the simulated data be grouped (see `group`)?
+           The default is `False`. This value is only used if
+           the `grouping` parameter is set.
+        quality : array, optional
+           The quality array for the data (see `set_quality`).
+        bkg : optional
+           If left empty, then only the source emission is simulated.
+           If set to a PHA data object, then the counts from this data
+           set are scaled appropriately and added to the simulated
+           source signal.
 
-        SYNTAX
+        See Also
+        --------
+        fake : Simulate a data set.
+        get_arf : Return the ARF associated with a PHA data set.
+        get_rmf : Return the RMF associated with a PHA data set.
+        get_dep : Return the dependent axis of a data set.
+        load_arrays : Create a data set from array values.
+        set_model : Set the source model expression for a data set.
 
-        Arguments:
-           id        - data id, if exists overwrites old dataset
+        Raises
+        ------
+        sherpa.utils.err.ArgumentErr
+           If the data set already exists and does not contain PHA
+           data.
 
-           arf       - Sherpa DataARF dataset, defines ancillary response
+        Examples
+        --------
+        Estimate the signal from a 5000 second observation using
+        the ARF and RMF from "src.arf" and "src.rmf" respectively:
 
-           rmf       - Sherpa DataRMF dataset, defines response matrix
+        >>> set_source(1, xsphabs.gal * xsapec.clus)
+        >>> gal.nh = 0.12
+        >>> clus.kt, clus.abundanc = 4.5, 0.3
+        >>> clus.redshift = 0.187
+        >>> clus.norm = 1.2e-3
+        >>> fake_pha(1, 'src.arf', 'src.rmf', 5000)
 
-           exposure  - length of observation in seconds
+        Simulate a 1 mega second observation for the data and model
+        from the default data set. The simulated data will include an
+        estimated background component based on scaling the existing
+        background observations for the source. The simulated data
+        set, which has the same grouping as the default set, for
+        easier comparison, is created with the 'sim' label
+        and then written out to the file 'sim.pi':
 
-           backscal  - background scaling factor
-                       default = None
+        >>> arf = get_arf()
+        >>> rmf = get_rmf()
+        >>> bkg = get_bkg()
+        >>> bscal = get_backscal()
+        >>> grp = get_grouping()
+        >>> qual = get_quality()
+        >>> texp = 1e6
+        >>> set_source('sim', get_model())
+        >>> fake_pha('sim', arf, rmf, backscal=bscal, bkg=bkg,
+                     grouping=grp, quality=qual, grouped=True)
+        >>> save_pha('sim', 'sim.pi')
 
-           areascal  - area scaling factor
-                       default = None
-
-           grouping  - integer array of grouping flags
-                       default = None
-
-           grouped   - dataset grouped boolean
-                       default = False
-
-           quality   - integer array of quality flags
-                       default = None
-
-           bkg       - python DataPHA object defines the background,
-                       default = None
-
-        Returns:
-           None
-
-        DESCRIPTION
-           fake_pha allows for the simulation of spectra given a source model
-           and a grid.  The generated counts will contain poisson noise. If the
-           data id exists, the dataset's counts will be clobber, if not, a new
-           dataset with that data id will be generated.
-
-        SEE ALSO
-           save_pha           
         """
         d = sherpa.astro.data.DataPHA('', None, None)
         if self._data.has_key(id):
@@ -8254,7 +8190,6 @@ class Session(sherpa.ui.utils.Session):
     ###########################################################################
 
     # DOC-NOTE: also in sherpa.utils
-    ### Ahelp ingest: 2015-05-14 DJB
     #@loggable(with_id=True, with_keyword='model')
     def set_full_model(self, id, model=None):
         """Define the convolved model expression for a data set.
@@ -8284,7 +8219,7 @@ class Session(sherpa.ui.utils.Session):
         See Also
         --------
         fit : Fit one or more data sets.
-        set_bkg_full_model : Define the convolved background model expression for a data set.
+        set_bkg_full_model : Define the convolved background model expression for a PHA data set.
         set_pileup_model : Include a model of the Chandra ACIS pile up when fitting PHA data.
         set_psf : Add a PSF model to a data set.
         set_model : Set the source model expression for a data set.
@@ -8392,7 +8327,6 @@ class Session(sherpa.ui.utils.Session):
 
         return model
 
-    ### Ahelp ingest: 2015-05-12 DJB
     #@loggable(with_id=True)
     def get_response(self, id=None, bkg_id=None):
         """Return the respone information applied to a PHA data set.
@@ -8429,7 +8363,7 @@ class Session(sherpa.ui.utils.Session):
         get_arf : Return the ARF associated with a PHA data set.
         get_pileup_model : Return the pile up model for a data set.
         get_rmf : Return the RMF associated with a PHA data set.
-        set_bkg_full_model : Define the convolved background model expression for a data set.
+        set_bkg_full_model : Define the convolved background model expression for a PHA data set.
         set_full_model : Define the convolved model expression for a data set.
 
         Examples
@@ -8462,7 +8396,6 @@ class Session(sherpa.ui.utils.Session):
         return resp
 
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def get_pileup_model(self, id=None):
         """Return the pile up model for a data set.
 
@@ -8503,7 +8436,6 @@ class Session(sherpa.ui.utils.Session):
                               'has not been set')
 
     #@loggable(with_id=True, with_keyword='model')
-    ### Ahelp ingest: 2015-05-08 DJB
     ### DOC-NOTE: should this be made a general function, since it
     ###           presumably does not care about pileup, just adds the
     ###           given model into the expression? Or is it PHA specific?
@@ -8584,7 +8516,6 @@ class Session(sherpa.ui.utils.Session):
         return (model, is_source)
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_bkg_source(self, id=None, bkg_id=None):
         """Return the model expression for the background of a PHA data set.
 
@@ -8637,7 +8568,6 @@ class Session(sherpa.ui.utils.Session):
         return model
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_bkg_model(self, id=None, bkg_id=None):
         """Return the model expression for the background of a PHA data set.
 
@@ -8668,7 +8598,7 @@ class Session(sherpa.ui.utils.Session):
         get_bkg_source : Return the model expression for the background of a PHA data set.
         list_model_ids : List of all the data sets with a source expression.
         set_bkg_model : Set the background model expression for a PHA data set.
-        set_bkg_full_model : Define the convolved background model expression for a data set.
+        set_bkg_full_model : Define the convolved background model expression for a PHA data set.
         show_bkg_model : Display the background model expression for a data set.
 
         Examples
@@ -8702,35 +8632,66 @@ class Session(sherpa.ui.utils.Session):
 
     #@loggable(with_id=True, with_keyword='model')
     def set_bkg_full_model(self, id, model=None, bkg_id=None):
-        """Define the convolved background model expression for a data set.
+        """Define the convolved background model expression for a PHA data set.
 
-        set_bkg_full_model
+        Set a model expression for a background data set in the same
+        way that `set_full_model` does for a source.  This is for when
+        the background is being fitted simultaneously to the source,
+        rather than subtracted from it.
 
-        SYNOPSIS
-           Set a convolved Sherpa background model by data id
-           and bkg id
+        Parameters
+        ----------
+        id : int or str, optional
+           The data set containing the source expression. If not given
+           then the default identifier is used, as returned by
+           `get_default_id`.
+        model : str or sherpa.models.Model object
+           This defines the model used to fit the data. It can be a
+           Python expression or a string version of it.
+        bkg_id : int or str, optional
+           The identifier for the background of the data set, in
+           cases where multiple backgrounds are provided.
 
-        SYNTAX
+        See Also
+        --------
+        fit : Fit one or more data sets.
+        set_full_model : Define the convolved model expression for a data set.
+        set_pileup_model : Include a model of the Chandra ACIS pile up when fitting PHA data.
+        set_psf : Add a PSF model to a data set.
+        set_model : Set the source model expression for a data set.
 
-        Arguments:
-           id        - data id
-                       default = default data id
+        Notes
+        -----
+        The function does not follow the normal Python standards for
+        parameter use, since it is designed for easy interactive use.
+        When called with a single un-named argument, it is taken to be
+        the `model` parameter. If given two un-named arguments, then
+        they are interpreted as the `id` and `model` parameters,
+        respectively.
 
-           model     - Sherpa bkg model
+        Some functions - such as `plot_bkg_source` - may not work for
+        model expressions created by `set_bkg_full_model`.
 
-           bkg_id    - bkg id, if multiple bkgs exist
-                       default = default bkg id
+        Examples
+        --------
 
-        Returns:
-           None
+        The background is fit by two power laws - one that is passed
+        through the instrument response (gbgnd) and one that is not
+        (pbgnd). The source is modelled by `xsphabs * galabs`,
+        together with the background model, scaled by the ratio of
+        area and time. Note that the background component in the
+        source expression uses the source response rather than
+        background response.
 
-        DESCRIPTION
-           Add a Sherpa background convolved model to the list of
-           current background models by data id and background id.
+        >>> rsp = get_response()
+        >>> bresp = get_response(bkg_id=1)
+        >>> bscale = get_bkg_scale()
+        >>> smodel = xsphabs.galabs * xsapec.emiss
+        >>> bmdl = brsp(powlaw1d.gbdng) + powlaw1d.pbgnd
+        >>> smdl = rsp(smodel) + bscale*(rsp(gbgnd) + pbgnd)
+        >>> set_full_model(smdl)
+        >>> set_bkg_full_model(bmdl)
 
-        SEE ALSO
-           get_bkg_model, delete_bkg_model, set_bkg_model, 
-           set_bkg_source
         """
         if model is None:
             id, model = model, id
@@ -8774,7 +8735,6 @@ class Session(sherpa.ui.utils.Session):
 
         self._runparamprompt(model.pars)
 
-    ### Ahelp ingest: 2015-04-29 DJB
     ### DOC-TODO: should probably explain more about how backgrounds are fit?
     #@loggable(with_id=True, with_keyword='model')
     def set_bkg_model(self, id, model=None, bkg_id=None):
@@ -8804,7 +8764,7 @@ class Session(sherpa.ui.utils.Session):
         fit : Fit one or more data sets.
         integrate1d : Integrate 1D source expressions.
         set_model : Set the model expression for a data set.
-        set_bkg_full_model : Define the convolved background model expression for a data set.
+        set_bkg_full_model : Define the convolved background model expression for a PHA data set.
         show_bkg_model : Display the background model expression for a data set.
 
         Notes
@@ -8879,7 +8839,6 @@ class Session(sherpa.ui.utils.Session):
     set_bkg_source = set_bkg_model
 
 
-    ### Ahelp ingest: 2015-05-08 DJB
     def delete_bkg_model(self, id=None, bkg_id=None):
         """Delete the background model expression for a data set.
 
@@ -8964,7 +8923,6 @@ class Session(sherpa.ui.utils.Session):
         return (x,y)
 
     # also in sherpa.utils
-    ### Ahelp ingest: 2015-05-13 DJB
     ### DOC-NOTE: can filename be a crate/hdulist?
     ### DOC-TODO: how to describe the supported args/kwargs (not just for this function)?
     #@loggable()
@@ -9096,7 +9054,6 @@ class Session(sherpa.ui.utils.Session):
         self._add_model_component(tablemodel)
 
     ### also in sherpa.utils
-    ### Ahelp ingest: 2015-05-14 DJB
     ### DOC-TODO: how to describe *args/**kwargs
     ### DOC-TODO: how is the _y value used if set
     def load_user_model(self, func, modelname, filename=None, *args, **kwargs):
@@ -9161,8 +9118,8 @@ class Session(sherpa.ui.utils.Session):
         There is no way using this interface to indicate that the
         model is for 1D or 2D data.
 
-        Example
-        -------
+        Examples
+        --------
 
         Create a two-parameter model of the form "y = mx + c",
         where the intercept is the first parameter and the slope the
@@ -9282,73 +9239,168 @@ class Session(sherpa.ui.utils.Session):
         return fit_to_ids, f
 
 
+    # also in sherpa.utils
+    ### DOC-TODO: existing docs suggest that bkg_only can be set, but looking
+    ###           at the code it is always set to False.
     def fit(self, id=None, *otherids, **kwargs):
-        """
-        fit
+        """Fit a model to one or more data sets.
 
-        SYNOPSIS
-           Perform fitting process using current optimization method and 
-           current fit statistic.
+        Use forward fitting to find the best-fit model to one or more
+        data sets, given the chosen statisitic and optimization
+        method. The fit proceeds until the results converge or the
+        number of iterations exceeds the maximum value (these values
+        can be changed with `set_method_opt`). An iterative scheme can
+        be added using `set_iter_method` to try and improve the
+        fit. The final fit results are displayed to the screen and can
+        be retrieved with `get_fit_results`.
 
-        SYNTAX
+        Parameters
+        ----------
+        id : int or str, optional
+           The data set that provides the data. If not given then
+           all data sets with an associated model are fit simultaneously.
+        *otherids : sequence of int or str, optional
+           Other data sets to use in the calculation.
+        outfile : str, optional
+           If set, then the fit results will be written to a file with
+           this name. The file contains the per-iteration fit results.
+        clobber : bool, optional
+           This flag controls whether an existing file can be
+           overwritten (`True`) or if it raises an exception (`False`,
+           the default setting).
 
-        Arguments:
-           id        - Sherpa data id
-                       default = default data id
+        Raises
+        ------
+        sherpa.utils.err.FitErr
+           If `filename` already exists and `clobber` is `False`.
 
-           otherids  - List of other Sherpa data ids
+        See Also
+        --------
+        conf : Estimate the confidence intervals using the confidence method.
+        contour_fit : Contour the fit to a data set.
+        covar : Estimate the confidence intervals using the confidence method.
+        fit_bkg : Fit a model to one or more background PHA data sets.
+        freeze : Fix model parameters so they are not changed by a fit.
+        get_fit_results : Return the results of the last fit.
+        plot_fit : Plot the fit results (data, model) for a data set.
+        image_fit : Display the data, model, and residuals for a data set in the image viewer.
+        set_stat : Set the statistical method.
+        set_method : Change the optimization method.
+        set_method_opt : Change an option of the current optimization method.
+        set_bkg_full_model : Define the convolved background model expression for a PHA data set.
+        set_bkg_model : Set the background model expression for a PHA data set.
+        set_full_model : Define the convolved model expression for a data set.
+        set_iter_method : Set the iterative-fitting scheme used in the fit.
+        set_model : Set the model expression for a data set.
+        show_fit : Summarize the fit results.
+        thaw : Allow model parameters to be varied during a fit.
 
-           outfile   - filename and path of parameter value output vs. number
-                       of function evaluations
-                       default = None
+        Notes
+        -----
+        For PHA data sets with background components, the function
+        will fit any background components for which a background
+        model has been created (rather than being subtracted).
 
-           clobber   - boolean whether to clobber outfile
-                       default = False
+        Examples
+        --------
 
-        Returns:
-           Formatted fit results output 
+        Simultaneously fit all data sets with models and then
+        store the results in the variable fres:
 
-        DESCRIPTION
-           Initiate optimization of model parameter values by id(s).
+        >>> fit()
+        >>> fres = get_fit_results()
 
-        SEE ALSO
-           get_fit_results, conf, proj, covar, show_fit
+        Fit just the data set 'img':
+
+        >>> fit('img')
+
+        Simultaneously fit data sets 1, 2, and 3:
+
+        >>> fit(1, 2, 3)
+
+        Fit data set 'jet' and write the fit results to the text file
+        'jet.fit', over-writing it if it already exists:
+
+        >>> fit('jet', outfile='jet.fit', clobber=True)
+
         """
         kwargs['bkg_only']=False
         self._fit(id, *otherids, **kwargs)
 
 
     def fit_bkg(self, id=None, *otherids, **kwargs):
-        """
-        fit_bkg
+        """Fit a model to one or more background PHA data sets.
 
-        SYNOPSIS
-           Perform fitting process on PHA backgrounds using current 
-           optimization method and current fit statistic.
+        Fit only the backgound components of PHA data sets.  This can
+        be used to find the best-fit background parameters, which can
+        then be frozen before fitting the data, or to ensure that
+        these parameters are well defined before performing a
+        simultaneous source and background fit.
 
-        SYNTAX
+        Parameters
+        ----------
+        id : int or str, optional
+           The data set that provides the background data. If not
+           given then all data sets with an associated background
+           model are fit simultaneously.
+        *otherids : sequence of int or str, optional
+           Other data sets to use in the calculation.
+        outfile : str, optional
+           If set, then the fit results will be written to a file with
+           this name. The file contains the per-iteration fit results.
+        clobber : bool, optional
+           This flag controls whether an existing file can be
+           overwritten (`True`) or if it raises an exception (`False`,
+           the default setting).
 
-        Arguments:
-           id        - Sherpa background data id
-                       default = default background data id
+        Raises
+        ------
+        sherpa.utils.err.FitErr
+           If `filename` already exists and `clobber` is `False`.
 
-           otherids  - List of other Sherpa background data ids
+        See Also
+        --------
+        conf : Estimate the confidence intervals using the confidence method.
+        contour_fit : Contour the fit to a data set.
+        covar : Estimate the confidence intervals using the confidence method.
+        fit : Fit a model to one or more data sets.
+        freeze : Fix model parameters so they are not changed by a fit.
+        get_fit_results : Return the results of the last fit.
+        plot_fit : Plot the fit results (data, model) for a data set.
+        image_fit : Display the data, model, and residuals for a data set in the image viewer.
+        set_stat : Set the statistical method.
+        set_method : Change the optimization method.
+        set_method_opt : Change an option of the current optimization method.
+        set_bkg_full_model : Define the convolved background model expression for a PHA data set.
+        set_bkg_model : Set the background model expression for a PHA data set.
+        set_full_model : Define the convolved model expression for a data set.
+        set_iter_method : Set the iterative-fitting scheme used in the fit.
+        set_model : Set the model expression for a data set.
+        show_bkg_source : Display the background model expression for a data set.
+        show_bkg_model : Display the background model expression used to fit a data set.
+        show_fit : Summarize the fit results.
+        thaw : Allow model parameters to be varied during a fit.
 
-           outfile   - filename and path of parameter value output vs. number
-                       of function evaluations
-                       default = None
+        Notes
+        -----
+        This is only for PHA data sets where the background is being
+        modelled, rather than subtracted from the data.
 
-           clobber   - boolean whether to clobber outfile
-                       default = False
+        Examples
+        --------
 
-        Returns:
-           Formatted fit results output 
+        Simultaneously fit all background data sets with models and
+        then store the results in the variable fres:
 
-        DESCRIPTION
-           Initiate optimization of model parameter values by background id(s).
+        >>> fit_bkg()
+        >>> fres = get_fit_results()
 
-        SEE ALSO
-           get_fit_results, conf, proj, covar, show_fit
+        Fit the background for data sets 1 and 2, then do a
+        simultaneous fit to the source and background data sets:
+
+        >>> fit_bkg(1,2)
+        >>> fit(1,2)
+
         """
         kwargs['bkg_only']=True
         self._fit(id, *otherids, **kwargs)
@@ -9455,7 +9507,6 @@ class Session(sherpa.ui.utils.Session):
     get_model_plot.__doc__ = sherpa.ui.utils.Session.get_model_plot.__doc__
 
     # also in sherpa.utils, but without the lo/hi arguments
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_source_plot(self, id=None, lo=None, hi=None):
         """Return the data used by plot_source.
 
@@ -9543,34 +9594,34 @@ class Session(sherpa.ui.utils.Session):
 
 
     def get_order_plot(self, id=None, orders=None):
-        """
-        get_order_plot
+        """Return the data used by plot_order.
 
-        SYNOPSIS
-           Return a Sherpa order plot
+        Parameters
+        ----------
+        id : int or str, optional
+           The data set that provides the data. If not given then the
+           default identifier is used, as returned by `get_default_id`.
+        orders : optional
+           Which response to use. The argument can be a scalar or
+           array, in which case multiple curves will be displayed.
+           The default is to use all orders.
 
-        SYNTAX
+        Returns
+        -------
+        data : a sherpa.astro.plot.OrderPlot instance
+           An object representing the data used to create the plot by
+           `plot_order`.
 
-        Arguments:
-           id       - data id
-                      default = default data id
+        See Also
+        --------
+        get_default_id : Return the default data set identifier.
+        plot_order : Plot the model for a data set convolved by the given response.
 
-           orders   - array of orders
-                      default = all orders
-
-        Returns:
-           Sherpa OrderPlot plot
-
-        DESCRIPTION
-
-        SEE ALSO
-           plot_order, plot_bkg, plot_arf, get_bkg_plot, get_arf_plot
         """
         self._prepare_plotobj(id, self._orderplot, orders=orders)
         return self._orderplot
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_arf_plot(self, id=None, resp_id=None):
         """Return the data used by plot_arf.
 
@@ -9616,7 +9667,6 @@ class Session(sherpa.ui.utils.Session):
         self._prepare_plotobj(id, self._arfplot, resp_id)
         return self._arfplot
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_bkg_fit_plot(self, id=None, bkg_id=None):
         """Return the data used by plot_bkg_fit.
 
@@ -9656,7 +9706,6 @@ class Session(sherpa.ui.utils.Session):
         return self._bkgfitplot
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_bkg_model_plot(self, id=None, bkg_id=None):
         """Return the data used by plot_bkg_model.
 
@@ -9696,7 +9745,6 @@ class Session(sherpa.ui.utils.Session):
         return self._bkgmodelhisto
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_bkg_plot(self, id=None, bkg_id=None):
         """Return the data used by plot_bkg.
 
@@ -9734,7 +9782,6 @@ class Session(sherpa.ui.utils.Session):
         return self._bkgdataplot
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_bkg_source_plot(self, id=None, lo=None, hi=None, bkg_id=None):
         """Return the data used by plot_bkg_source.
 
@@ -9779,7 +9826,6 @@ class Session(sherpa.ui.utils.Session):
         return self._bkgsourceplot
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_bkg_resid_plot(self, id=None, bkg_id=None):
         """Return the data used by plot_bkg_resid.
 
@@ -9820,7 +9866,6 @@ class Session(sherpa.ui.utils.Session):
         return self._bkgresidplot
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_bkg_ratio_plot(self, id=None, bkg_id=None):
         """Return the data used by plot_bkg_ratio.
 
@@ -9861,7 +9906,6 @@ class Session(sherpa.ui.utils.Session):
         return self._bkgratioplot
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_bkg_delchi_plot(self, id=None, bkg_id=None):
         """Return the data used by plot_bkg_delchi.
 
@@ -9902,7 +9946,6 @@ class Session(sherpa.ui.utils.Session):
         return self._bkgdelchiplot
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def get_bkg_chisqr_plot(self, id=None, bkg_id=None):
         """Return the data used by plot_bkg_chisqr.
 
@@ -9955,99 +9998,73 @@ class Session(sherpa.ui.utils.Session):
         return plot
 
 
+    ### DOC-TODO: See comments about plot_energy_flux.
     def get_energy_flux_hist(self, lo=None, hi=None, id=None, num=7500, bins=75,
                              correlated=False, numcores=None, bkg_id=None, **kwargs):
-        """
-        get_energy_flux_hist
+        """Return the data displayed by plot_energy_flux.
 
-        SYNOPSIS
-           Return a Sherpa energy flux histogram
+        Parameters
+        ----------
+        lo : number, optional
+           The lower limit to use when summing up the signal. If not
+           given then the lower value of the data grid is used.
+        hi : optional
+           The upper limit to use when summing up the signal. If not
+           guven then the upper value of the data grid is used.
+        id : int or string, optional
+           The identifier of the data set to use. The default value
+           (`None`) means that the default identifier, as returned by
+           `get_default_id`, is used.
+        num : int, optional
+           The number of samples to create. The default is `7500`.
+        bins : int, optional
+           The number of bins to use for the histogram.
+        correlated : bool, optional
+           If `True` (the default is `False`) then `scales` is the
+           full covariance matrix, otherwise it is just a 1D array
+           containing the variances of the parameters (the diagonal
+           elements of the covariance matrix).
+        numcores : optional
+           The number of CPU cores to use. The default is to use all
+           the cores on the machine.
+        bkg_id : int or string, optional
+           The identifier of the background component to use. This
+           should only be set when the line to be measured is in the
+           background model.
+        scales : array, optional
+           The scales used to define the normal distributions for the
+           parameters. The form depends on the `correlated`
+           parameter: when `True`, the array should be a symmetric
+           positive semi-definite (N,N) array, otherwise a 1D array
+           of length N, where N is the number of free parameters.
+        recalc : bool, optional
+           If `True`, the default, then re-calculate the values rather
+           than use the values from the last time the function was
+           run.
 
-        SYNTAX
+        Returns
+        -------
+        hist : a sherpa.astro.plot.EnergyFluxHistogram instance
+           An object representing the data used to create the plot by
+           `plot_energy_flux`.
 
-        Arguments:
-           lo          - lower energy bound
-                         default = None
+        See Also
+        --------
+        get_photon_flux_hist : Return the data displayed by plot_photon_flux.
+        plot_energy_flux : Display the energy flux distribution.
+        plot_photon_flux : Display the photon flux distribution.
+        sample_energy_flux : Return the energy flux distribution of a model.
+        sample_flux : Return the flux distribution of a model.
+        sample_photon_flux : Return the photon flux distribution of a model.
 
-           hi          - upper energy bound
-                         default = None
+        Examples
+        --------
 
-           id          - data id
-                         default = default data id
+        >>> ehist = get_energy_flux_hist(0.5, 7, num=1000)
 
-           num         - Number of simulations
-                         default = 7500
+        >>> ehist1 = get_energy_flux_hist(0.5, 2, id="jet", num=1000)
+        >>> ehist2 = get_energy_flux_hist(0.5, 2, id="core", num=1000)
 
-           bins        - Number of bins in the histogram
-                         default = 75
-
-           correlated  - Use a multi-variate distribution to sample parameter values
-                         default = False
-
-           numcores    - specify the number of cores for parallel processing.
-                         All available cores are used by default.
-                         default = None
-
-           bkg_id      - Sherpa background id
-                         default = default bkg id
-
-           recalc      - Recompute before sending data arrays to visualizer
-                         default = True
-
-        Returns:
-           Sherpa energy FluxHistogram object
-
-        DESCRIPTION
-           The Sherpa FluxHistogram object holds references to various
-           histogram preferences and data arrays.
-
-           Attributes:
-              title        - title of plot, read-only
-
-              xlabel       - x axis label, read-only
-
-              ylabel       - y axis label, read-only
-
-              units        - units of grid, read-only
-
-              xlo          - grid array, low bins
-
-              xhi          - grid array, high bins
-
-              y            - flux distribution
-
-              histo_prefs  - dictionary of plotting preferences
-
-                 errcolor       - N/A
-                 errstyle       - N/A
-                 errthickness   - N/A
-                 fillcolor      - None
-                 fillopacity    - None
-                 fillstyle      - None
-                 linestyle      - 1
-                 linecolor      - 'red'
-                 linethickness  - None
-                 symbolangle    - N/A
-                 symbolcolor    - N/A
-                 symbolfill     - N/A
-                 symbolsize     - N/A
-                 symbolstyle    - N/A
-                 xlog           - False
-                 yerrorbars     - False
-                 ylog           - False
-
-           Functions:
-
-              prepare()
-                 calculate the source model and populate the data arrays
-
-              plot( overplot=False, clearwindow=True )
-                 send data arrays to plotter for visualization
-
-
-        SEE ALSO
-           plot_energy_flux, get_photon_flux_plot, plot_photon_flux,
-           sample_energy_flux, sample_photon_flux
         """
         if sherpa.utils.bool_cast(kwargs.pop('recalc',True)):
             self._prepare_energy_flux_plot(self._energyfluxplot, lo, hi, id, num,
@@ -10055,99 +10072,73 @@ class Session(sherpa.ui.utils.Session):
         return self._energyfluxplot
 
 
+    ### DOC-TODO: See comments about plot_photon_flux.
     def get_photon_flux_hist(self, lo=None, hi=None, id=None, num=7500, bins=75,
                              correlated=False, numcores=None, bkg_id=None, **kwargs):
-        """
-        get_photon_flux_hist
+        """Return the data displayed by plot_photon_flux.
 
-        SYNOPSIS
-           Return a Sherpa photon flux histogram
+        Parameters
+        ----------
+        lo : number, optional
+           The lower limit to use when summing up the signal. If not
+           given then the lower value of the data grid is used.
+        hi : optional
+           The upper limit to use when summing up the signal. If not
+           guven then the upper value of the data grid is used.
+        id : int or string, optional
+           The identifier of the data set to use. The default value
+           (`None`) means that the default identifier, as returned by
+           `get_default_id`, is used.
+        num : int, optional
+           The number of samples to create. The default is `7500`.
+        bins : int, optional
+           The number of bins to use for the histogram.
+        correlated : bool, optional
+           If `True` (the default is `False`) then `scales` is the
+           full covariance matrix, otherwise it is just a 1D array
+           containing the variances of the parameters (the diagonal
+           elements of the covariance matrix).
+        numcores : optional
+           The number of CPU cores to use. The default is to use all
+           the cores on the machine.
+        bkg_id : int or string, optional
+           The identifier of the background component to use. This
+           should only be set when the line to be measured is in the
+           background model.
+        scales : array, optional
+           The scales used to define the normal distributions for the
+           parameters. The form depends on the `correlated`
+           parameter: when `True`, the array should be a symmetric
+           positive semi-definite (N,N) array, otherwise a 1D array
+           of length N, where N is the number of free parameters.
+        recalc : bool, optional
+           If `True`, the default, then re-calculate the values rather
+           than use the values from the last time the function was
+           run.
 
-        SYNTAX
+        Returns
+        -------
+        hist : a sherpa.astro.plot.PhotonFluxHistogram instance
+           An object representing the data used to create the plot by
+           `plot_photon_flux`.
 
-        Arguments:
-           lo          - lower energy bound
-                         default = None
+        See Also
+        --------
+        get_energy_flux_hist : Return the data displayed by plot_energy_flux.
+        plot_energy_flux : Display the energy flux distribution.
+        plot_photon_flux : Display the photon flux distribution.
+        sample_energy_flux : Return the energy flux distribution of a model.
+        sample_flux : Return the flux distribution of a model.
+        sample_photon_flux : Return the photon flux distribution of a model.
 
-           hi          - upper energy bound
-                         default = None
+        Examples
+        --------
 
-           id          - data id
-                         default = default data id
+        >>> phist = get_photon_flux_hist(0.5, 7, num=1000)
 
-           num         - Number of simulations
-                         default = 7500
+        >>> phist1 = get_photon_flux_hist(0.5, 2, id="jet", num=1000)
+        >>> phist2 = get_photon_flux_hist(0.5, 2, id="core", num=1000)
 
-           bins        - Number of bins in the histogram
-                         default = 75
-
-           correlated  - Use a multi-variate distribution to sample parameter values
-                         default = False
-
-           numcores    - specify the number of cores for parallel processing.
-                         All available cores are used by default.
-                         default = None
-
-           bkg_id      - Sherpa background id
-                         default = default bkg id
-
-           recalc      - Recompute before sending data arrays to visualizer
-                         default = True
-
-        Returns:
-           Sherpa photon FluxHistogram object
-
-        DESCRIPTION
-           The Sherpa FluxHistogram object holds references to various
-           histogram preferences and data arrays.
-
-           Attributes:
-              title        - title of plot, read-only
-
-              xlabel       - x axis label, read-only
-
-              ylabel       - y axis label, read-only
-
-              units        - units of grid, read-only
-
-              xlo          - grid array, low bins
-
-              xhi          - grid array, high bins
-
-              y            - flux distribution
-
-              histo_prefs  - dictionary of plotting preferences
-
-                 errcolor       - N/A
-                 errstyle       - N/A
-                 errthickness   - N/A
-                 fillcolor      - None
-                 fillopacity    - None
-                 fillstyle      - None
-                 linestyle      - 1
-                 linecolor      - 'red'
-                 linethickness  - None
-                 symbolangle    - N/A
-                 symbolcolor    - N/A
-                 symbolfill     - N/A
-                 symbolsize     - N/A
-                 symbolstyle    - N/A
-                 xlog           - False
-                 yerrorbars     - False
-                 ylog           - False
-
-           Functions:
-
-              prepare()
-                 calculate the source model and populate the data arrays
-
-              plot( overplot=False, clearwindow=True )
-                 send data arrays to plotter for visualization
-
-
-        SEE ALSO
-           plot_photon_flux, get_energy_flux_plot, plot_energy_flux,
-           sample_energy_flux, sample_photon_flux
         """
         if sherpa.utils.bool_cast(kwargs.pop('recalc',True)):
             self._prepare_photon_flux_plot(self._photonfluxplot, lo, hi, id, num,
@@ -10261,7 +10252,6 @@ class Session(sherpa.ui.utils.Session):
     plot_model.__doc__ = sherpa.ui.utils.Session.plot_model.__doc__
 
 
-    ### Ahelp ingest: 2015-04-29 DJB
     def plot_arf(self, id=None, resp_id=None, **kwargs):
         """Plot the ARF associated with a data set.
 
@@ -10360,7 +10350,6 @@ class Session(sherpa.ui.utils.Session):
     plot_model_component.__doc__ = sherpa.ui.utils.Session.plot_model_component.__doc__
 
     # DOC-NOTE: also in sherpa.utils, but without the lo/hi arguments
-    ### Ahelp ingest: 2015-05-11 DJB
     def plot_source(self, id=None, lo=None, hi=None, **kwargs):
         """Plot the source expression for a data set.
 
@@ -10428,43 +10417,60 @@ class Session(sherpa.ui.utils.Session):
         else:
             self._plot(id, self._sourceplot, **kwargs)
 
+    ### DOC-TODO: is orders the same as resp_id?
     def plot_order(self, id=None, orders=None, **kwargs):
-        """
-        plot_order
+        """Plot the model for a data set convolved by the given response.
 
-        SYNOPSIS
-           Plot convolved source model by multiple response order
+        Some data sets - such as grating PHA data - can have multiple
+        responses. The `plot_order` function acts like `plot_model`,
+        in that it displays the model after passing through a
+        response, but allows the user to select which response to use.
 
-        SYNTAX
+        Parameters
+        ----------
+        id : int or str, optional
+           The data set that provides the data. If not given then the
+           default identifier is used, as returned by `get_default_id`.
+        orders : optional
+           Which response to use. The argument can be a scalar or
+           array, in which case multiple curves will be displayed.
+           The default is to use all orders.
+        replot : bool, optional
+           Set to `True` to use the values calculated by the last
+           call to `plot_model`. The default is `False`.
+        overplot : bool, optional
+           If `True` then add the data to an exsiting plot, otherwise
+           create a new plot. The default is `False`.
 
-        Arguments:
-           id       - data id
-                      default = default data id
+        See Also
+        --------
+        get_order_plot : Return the data used by plot_order.
+        plot : Create one or more plot types.
+        plot_model : Plot the model for a data set.
 
-           orders   - list of plot orders
-                      default = None
+        Examples
+        --------
 
-           replot   - replot calculated arrays
-                      default = False
+        Display the source model convolved by the first response
+        for the default data set:
 
-           overplot - Plot data without clearing previous plot
-                      default = False
+        >>> plot_order(orders=1)
 
-        Returns:
-           None
+        Plot the source convolved through the first and second
+        responses for the second data set (separate curves for
+        each response):
 
-        DESCRIPTION
-           Visualize the convolved source model in a 1D plot by
-           data id and multiple response order.
+        >>> plot_order(2, orders=[1,2])
 
-        SEE ALSO
-           plot_model, plot_data, get_source_plot, plot_arf, plot_bkg,
-           plot_bkg_source
+        Add the orders plot to a model plot:
+
+        >>> plot_model()
+        >>> plot_order(orders=[2,3], overplot=True)
+
         """
         self._plot(id, self._orderplot, None, None, None, None,orders, **kwargs)
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def plot_bkg(self, id=None, bkg_id=None, **kwargs):
         """Plot the background values for a PHA data set.
 
@@ -10525,7 +10531,6 @@ class Session(sherpa.ui.utils.Session):
         self._plot(id, self._bkgdataplot, None, bkg_id, **kwargs)
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def plot_bkg_model(self, id=None, bkg_id=None, **kwargs):
         """Plot the model for the background of a PHA data set.
 
@@ -10578,7 +10583,6 @@ class Session(sherpa.ui.utils.Session):
         self._plot(id, self._bkgmodelhisto, None, bkg_id, **kwargs)
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def plot_bkg_resid(self, id=None, bkg_id=None, **kwargs):
         """Plot the residual (data-model) values for the background of a PHA data set.
 
@@ -10632,7 +10636,6 @@ class Session(sherpa.ui.utils.Session):
         self._plot(id, self._bkgresidplot, None, bkg_id, **kwargs)
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def plot_bkg_ratio(self, id=None, bkg_id=None, **kwargs):
         """Plot the ratio of data to model values for the background of a PHA data set.
 
@@ -10686,7 +10689,6 @@ class Session(sherpa.ui.utils.Session):
         self._plot(id, self._bkgratioplot, None, bkg_id, **kwargs)
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def plot_bkg_delchi(self, id=None, bkg_id=None, **kwargs):
         """Plot the ratio of residuals to error for the background of a PHA data set.
 
@@ -10740,7 +10742,6 @@ class Session(sherpa.ui.utils.Session):
         self._plot(id, self._bkgdelchiplot, None, bkg_id, **kwargs)
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def plot_bkg_chisqr(self, id=None, bkg_id=None, **kwargs):
         """Plot the chi-squared value for each point of the background of a PHA data set.
 
@@ -10794,7 +10795,6 @@ class Session(sherpa.ui.utils.Session):
         self._plot(id, self._bkgchisqrplot, None, bkg_id, **kwargs)
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def plot_bkg_fit(self, id=None, bkg_id=None, **kwargs):
         """Plot the fit results (data, model) for the background of a PHA data set.
 
@@ -10846,7 +10846,6 @@ class Session(sherpa.ui.utils.Session):
         self._plot(id, self._bkgfitplot, None, bkg_id, **kwargs)
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def plot_bkg_source(self, id=None, lo=None, hi=None, bkg_id=None, **kwargs):
         """Plot the model expression for the background of a PHA data set.
 
@@ -10902,57 +10901,90 @@ class Session(sherpa.ui.utils.Session):
         self._plot(id, self._bkgsourceplot, None, bkg_id, lo, hi, **kwargs)
 
 
+    ### DOC-TODO: I am assuming it accepts a scales parameter
     def plot_energy_flux(self, lo=None, hi=None, id=None, num=7500, bins=75,
                          correlated=False, numcores=None, bkg_id=None, **kwargs):
-        """
-        plot_energy_flux
+        """Display the energy flux distribution.
 
-        SYNOPSIS
-           Send a energy flux distribution to the visualizer
+        For each iteration, draw the parameter values of the model
+        from a normal distribution, evaluate the model, and sum the
+        model over the given range (the flux). Plot up the
+        distribution of this flux. The units for the flux are as
+        returned by `calc_energy_flux`. The `sample_energy_flux` and
+        `get_energy_flux_hist` functions return the data used to
+        create this plot.
 
-        SYNTAX
+        Parameters
+        ----------
+        lo : number, optional
+           The lower limit to use when summing up the signal. If not
+           given then the lower value of the data grid is used.
+        hi : optional
+           The upper limit to use when summing up the signal. If not
+           guven then the upper value of the data grid is used.
+        id : int or string, optional
+           The identifier of the data set to use. The default value
+           (`None`) means that the default identifier, as returned by
+           `get_default_id`, is used.
+        num : int, optional
+           The number of samples to create. The default is `7500`.
+        bins : int, optional
+           The number of bins to use for the histogram.
+        correlated : bool, optional
+           If `True` (the default is `False`) then `scales` is the
+           full covariance matrix, otherwise it is just a 1D array
+           containing the variances of the parameters (the diagonal
+           elements of the covariance matrix).
+        numcores : optional
+           The number of CPU cores to use. The default is to use all
+           the cores on the machine.
+        bkg_id : int or string, optional
+           The identifier of the background component to use. This
+           should only be set when the line to be measured is in the
+           background model.
+        scales : array, optional
+           The scales used to define the normal distributions for the
+           parameters. The form depends on the `correlated`
+           parameter: when `True`, the array should be a symmetric
+           positive semi-definite (N,N) array, otherwise a 1D array
+           of length N, where N is the number of free parameters.
+        recalc : bool, optional
+           If `True`, the default, then re-calculate the values rather
+           than use the values from the last time the function was
+           run.
+        overplot : bool, optional
+           If `True` then add the data to an exsiting plot, otherwise
+           create a new plot. The default is `False`.
 
-        Arguments:
-           lo          - lower energy bound
-                         default = None
+        See Also
+        --------
+        calc_photon_flux : Integrate the source model over a pass band.
+        calc_energy_flux : Integrate the source model over a pass band.
+        covar : Estimate the confidence intervals using the confidence method.
+        get_energy_flux_hist : Return the data displayed by plot_energy_flux.
+        get_photon_flux_hist : Return the data displayed by plot_photon_flux.
+        plot_cdf : Plot the cumulative density function of an array.
+        plot_pdf : Plot the probability density function of an array.
+        plot_photon_flux : Display the photon flux distribution.
+        plot_trace : Create a trace plot of row number versus value.
+        sample_energy_flux : Return the energy flux distribution of a model.
+        sample_flux : Return the flux distribution of a model.
+        sample_photon_flux : Return the photon flux distribution of a model.
 
-           hi          - upper energy bound
-                         default = None
+        Examples
+        --------
 
-           id          - Sherpa data id
-                         default = default data id
+        Plot the energy energy distribution for the range 0.5 to 7 for
+        the default data set:
 
-           num         - Number of simulations
-                         default = 7500
+        >>> plot_energy_flux(0.5, 7, num=1000)
 
-           bins        - Number of bins in the histogram
-                         default = 75
+        Overplot the 0.5 to 2 energy flux distribution from the "core"
+        data set on top of the values from the "jet" data set:
 
-           correlated  - Use a multi-variate distribution to sample parameter values
-                         default = False
+        >>> plot_energy_flux(0.5, 2, id="jet", num=1000)
+        >>> plot_energy_flux(0.5, 2, id="core", num=1000, overplot=True)
 
-           numcores    - specify the number of cores for parallel processing.
-                         All available cores are used by default.
-                         default = None
-
-           bkg_id      - Sherpa background id
-                         default = default bkg id
-
-           recalc      - Recompute before sending data arrays to visualizer
-                         default = True
-
-           overplot    - Plot data without clearing previous plot
-                         default = False
-
-        Returns:
-           None
-
-        DESCRIPTION
-           Visualize a energy flux histogram by Sherpa data id.
-
-        SEE ALSO
-           get_energy_flux_plot, get_photon_flux_plot, plot_photon_flux,
-           sample_energy_flux, sample_photon_flux
         """
         efplot = self._energyfluxplot
         if sherpa.utils.bool_cast(kwargs.pop('recalc',True)):
@@ -10967,58 +10999,92 @@ class Session(sherpa.ui.utils.Session):
         else:
             sherpa.plot.end()
 
-
+    ### DOC-TODO: I am assuming it accepts a scales parameter, but
+    ###           changing it doesn't seem to do anything (see next)
+    ### DOC-NOTE: I got a TypeError about the scales option
     def plot_photon_flux(self, lo=None, hi=None, id=None, num=7500, bins=75,
                          correlated=False, numcores=None, bkg_id=None, **kwargs):
-        """
-        plot_photon_flux
+        """Display the photon flux distribution.
 
-        SYNOPSIS
-           Send a photon flux distribution to the visualizer
+        For each iteration, draw the parameter values of the model
+        from a normal distribution, evaluate the model, and sum the
+        model over the given range (the flux). Plot up the
+        distribution of this flux. The units for the flux are as
+        returned by `calc_photon_flux`. The `sample_photon_flux` and
+        `get_photon_flux_hist` functions return the data used to
+        create this plot.
 
-        SYNTAX
+        Parameters
+        ----------
+        lo : number, optional
+           The lower limit to use when summing up the signal. If not
+           given then the lower value of the data grid is used.
+        hi : optional
+           The upper limit to use when summing up the signal. If not
+           guven then the upper value of the data grid is used.
+        id : int or string, optional
+           The identifier of the data set to use. The default value
+           (`None`) means that the default identifier, as returned by
+           `get_default_id`, is used.
+        num : int, optional
+           The number of samples to create. The default is `7500`.
+        bins : int, optional
+           The number of bins to use for the histogram.
+        correlated : bool, optional
+           If `True` (the default is `False`) then `scales` is the
+           full covariance matrix, otherwise it is just a 1D array
+           containing the variances of the parameters (the diagonal
+           elements of the covariance matrix).
+        numcores : optional
+           The number of CPU cores to use. The default is to use all
+           the cores on the machine.
+        bkg_id : int or string, optional
+           The identifier of the background component to use. This
+           should only be set when the line to be measured is in the
+           background model.
+        scales : array, optional
+           The scales used to define the normal distributions for the
+           parameters. The form depends on the `correlated`
+           parameter: when `True`, the array should be a symmetric
+           positive semi-definite (N,N) array, otherwise a 1D array
+           of length N, where N is the number of free parameters.
+        recalc : bool, optional
+           If `True`, the default, then re-calculate the values rather
+           than use the values from the last time the function was
+           run.
+        overplot : bool, optional
+           If `True` then add the data to an exsiting plot, otherwise
+           create a new plot. The default is `False`.
 
-        Arguments:
-           lo          - lower energy bound
-                         default = None
+        See Also
+        --------
+        calc_photon_flux : Integrate the source model over a pass band.
+        calc_energy_flux : Integrate the source model over a pass band.
+        covar : Estimate the confidence intervals using the confidence method.
+        get_energy_flux_hist : Return the data displayed by plot_energy_flux.
+        get_photon_flux_hist : Return the data displayed by plot_photon_flux.
+        plot_cdf : Plot the cumulative density function of an array.
+        plot_pdf : Plot the probability density function of an array.
+        plot_energy_flux : Display the energy flux distribution.
+        plot_trace : Create a trace plot of row number versus value.
+        sample_energy_flux : Return the energy flux distribution of a model.
+        sample_flux : Return the flux distribution of a model.
+        sample_photon_flux : Return the photon flux distribution of a model.
 
-           hi          - upper energy bound
-                         default = None
+        Examples
+        --------
 
-           id          - Sherpa data id
-                         default = default data id
+        Plot the photon flux distribution for the range 0.5 to 7 for
+        the default data set:
 
-           num         - Number of simulations
-                         default = 7500
+        >>> plot_photon_flux(0.5, 7, num=1000)
 
-           bins        - Number of bins in the histogram
-                         default = 75
+        Overplot the 0.5 to 2 photon flux distribution from the "core"
+        data set on top of the values from the "jet" data set:
 
-           correlated  - Use a multi-variate distribution to sample parameter values
-                         default = False
+        >>> plot_photon_flux(0.5, 2, id="jet", num=1000)
+        >>> plot_photon_flux(0.5, 2, id="core", num=1000, overplot=True)
 
-           numcores    - specify the number of cores for parallel processing.
-                         All available cores are used by default.
-                         default = None
-
-           bkg_id      - Sherpa background id
-                         default = default bkg id
-
-           recalc      - Recompute before sending data arrays to visualizer
-                         default = True
-
-           overplot    - Plot data without clearing previous plot
-                         default = False
-
-        Returns:
-           None
-
-        DESCRIPTION
-           Visualize a photon flux histogram by Sherpa data id.
-
-        SEE ALSO
-           get_photon_flux_plot, get_energy_flux_plot, plot_energy_flux,
-           sample_energy_flux, sample_photon_flux
         """
         pfplot = self._photonfluxplot
         if sherpa.utils.bool_cast(kwargs.pop('recalc',True)):
@@ -11034,7 +11100,6 @@ class Session(sherpa.ui.utils.Session):
             sherpa.plot.end()
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def plot_bkg_fit_resid(self, id=None, bkg_id=None, replot=False,
                            overplot=False, clearwindow=True):
         """Plot the fit results, and the residuals, for the background of
@@ -11119,7 +11184,6 @@ class Session(sherpa.ui.utils.Session):
             sherpa.plot.end()
 
 
-    ### Ahelp ingest: 2015-05-12 DJB
     def plot_bkg_fit_delchi(self, id=None, bkg_id=None, replot=False,
                             overplot=False, clearwindow=True):
         """Plot the fit results, and the residuals, for the background of
@@ -11209,55 +11273,91 @@ class Session(sherpa.ui.utils.Session):
     ###########################################################################
 
 
+    ### DOC-TODO: should this accept the confidence parameter?
     def sample_photon_flux(self, lo=None, hi=None, id=None, num=1, scales=None,
                            correlated=False, numcores=None, bkg_id=None):
-        """
-        sample_photon_flux
+        """Return the photon flux distribution of a model.
 
-        SYNOPSIS
-           Get a sample the of photon flux
+        For each iteration, draw the parameter values of the model
+        from a normal distribution, evaluate the model, and sum the
+        model over the given range (the flux). The return array
+        contains the flux and parameter values for each iteration.
+        The units for the flux are as returned by `calc_photon_flux`.
 
-        SYNTAX
+        Parameters
+        ----------
+        lo : number, optional
+           The lower limit to use when summing up the signal. If not
+           given then the lower value of the data grid is used.
+        hi : optional
+           The upper limit to use when summing up the signal. If not
+           guven then the upper value of the data grid is used.
+        id : int or string, optional
+           The identifier of the data set to use. The default value
+           (`None`) means that the default identifier, as returned by
+           `get_default_id`, is used.
+        num : int, optional
+           The number of samples to create. The default is `1`.
+        scales : array, optional
+           The scales used to define the normal distributions for the
+           parameters. The form depends on the `correlated`
+           parameter: when `True`, the array should be a symmetric
+           positive semi-definite (N,N) array, otherwise a 1D array
+           of length N, where N is the number of free parameters.
+        correlated : bool, optional
+           If `True` (the default is `False`) then `scales` is the
+           full covariance matrix, otherwise it is just a 1D array
+           containing the variances of the parameters (the diagonal
+           elements of the covariance matrix).
+        numcores : optional
+           The number of CPU cores to use. The default is to use all
+           the cores on the machine.
+        bkg_id : int or string, optional
+           The identifier of the background component to use. This
+           should only be set when the line to be measured is in the
+           background model.
 
-        Arguments:
-           lo          - lower energy bound
-                         default = None
+        Returns
+        -------
+        vals :
+           The return array has the shape (num, N+1), where N is the
+           number of free parameters and num is the `num` parameter.
+           The rows of this array contain the flux value, as
+           calculated by `calc_photon_flux`, followed by the values of
+           the thawed parameters used for that iteration. The order of
+           the parameters matches the data returned by
+           `get_fit_results`.
 
-           hi          - upper energy bound
-                         default = None
+        See Also
+        --------
+        calc_photon_flux : Integrate the source model over a pass band.
+        calc_energy_flux : Integrate the source model over a pass band.
+        covar : Estimate the confidence intervals using the confidence method.
+        plot_cdf : Plot the cumulative density function of an array.
+        plot_pdf : Plot the probability density function of an array.
+        plot_energy_flux : Display the energy flux distribution.
+        plot_photon_flux : Display the photon flux distribution.
+        plot_trace : Create a trace plot of row number versus value.
+        sample_energy_flux : Return the energy flux distribution of a model.
+        sample_flux : Return the flux distribution of a model.
 
-           id          - Sherpa data id
-                         default = default data id
+        Examples
+        --------
 
-           num         - Number of simulations
-                         default = 1
+        Calculate the photon flux distribution for the range 0.5 to 7,
+        and plot up the resulting flux distribution (as a cumulative
+        distribution):
 
-           correlated  - Use a multi-variate distribution to sample parameter values.
-                         default = False
+        >>> vals = sample_photon_flux(0.5, 7, num=1000)
+        >>> plot_cdf(vals[:,0], name='flux')
 
-           scales      - User supplied scales for the sampling distributions.
-                         If correlated is True then scales must be a symmetric
-                         and postive semi-definite 2-D array_like of shape 
-                         (N,N) where N is the number of free parameters,
-                         otherwise scales can be a 1-D array_like, of length N.
-                         default = None
+        Repeat the above, but allowing the parameters to be
+        correlated, and then calculate the 5, 50, and 95 percent
+        quantiles of the photon flux distribution:
 
-           numcores    - specify the number of cores for parallel processing.
-                         All available cores are used by default.
-                         default = None
+        >>> cvals = sample_photon_flux(.5, 7, num=1000, correlated=True)
+        >>> np.percentile(cvals[:,0], [5,50,95])
 
-           bkg_id      - Sherpa background id
-                         default = default bkg id
-
-        Returns:
-           array of flux value and parameter values
-
-        DESCRIPTION
-           Get a sample of the photon flux at a particular spot in parameter space.
-
-        SEE ALSO
-           get_energy_flux_plot, get_photon_flux_plot, plot_photon_flux,
-           plot_energy_flux, sample_energy_flux
         """
         ids, fit = self._get_fit(id)
         data = self.get_data(id)
@@ -11276,55 +11376,91 @@ class Session(sherpa.ui.utils.Session):
                                              scales)
 
 
+    ### DOC-TODO: should this accept the confidence parameter?
     def sample_energy_flux(self, lo=None, hi=None, id=None, num=1, scales=None,
                            correlated=False, numcores=None, bkg_id=None):
-        """
-        sample_energy_flux
+        """Return the energy flux distribution of a model.
 
-        SYNOPSIS
-           Get a sample the of energy flux
+        For each iteration, draw the parameter values of the model
+        from a normal distribution, evaluate the model, and sum the
+        model over the given range (the flux). The return array
+        contains the flux and parameter values for each iteration.
+        The units for the flux are as returned by `calc_energy_flux`.
 
-        SYNTAX
+        Parameters
+        ----------
+        lo : number, optional
+           The lower limit to use when summing up the signal. If not
+           given then the lower value of the data grid is used.
+        hi : optional
+           The upper limit to use when summing up the signal. If not
+           guven then the upper value of the data grid is used.
+        id : int or string, optional
+           The identifier of the data set to use. The default value
+           (`None`) means that the default identifier, as returned by
+           `get_default_id`, is used.
+        num : int, optional
+           The number of samples to create. The default is `1`.
+        scales : array, optional
+           The scales used to define the normal distributions for the
+           parameters. The form depends on the `correlated`
+           parameter: when `True`, the array should be a symmetric
+           positive semi-definite (N,N) array, otherwise a 1D array
+           of length N, where N is the number of free parameters.
+        correlated : bool, optional
+           If `True` (the default is `False`) then `scales` is the
+           full covariance matrix, otherwise it is just a 1D array
+           containing the variances of the parameters (the diagonal
+           elements of the covariance matrix).
+        numcores : optional
+           The number of CPU cores to use. The default is to use all
+           the cores on the machine.
+        bkg_id : int or string, optional
+           The identifier of the background component to use. This
+           should only be set when the line to be measured is in the
+           background model.
 
-        Arguments:
-           lo          - lower energy bound
-                         default = None
+        Returns
+        -------
+        vals :
+           The return array has the shape (num, N+1), where N is the
+           number of free parameters and num is the `num` parameter.
+           The rows of this array contain the flux value, as
+           calculated by `calc_energy_flux`, followed by the values of
+           the thawed parameters used for that iteration. The order of
+           the parameters matches the data returned by
+           `get_fit_results`.
 
-           hi          - upper energy bound
-                         default = None
+        See Also
+        --------
+        calc_photon_flux : Integrate the source model over a pass band.
+        calc_energy_flux : Integrate the source model over a pass band.
+        covar : Estimate the confidence intervals using the confidence method.
+        plot_cdf : Plot the cumulative density function of an array.
+        plot_pdf : Plot the probability density function of an array.
+        plot_energy_flux : Display the energy flux distribution.
+        plot_photon_flux : Display the photon flux distribution.
+        plot_trace : Create a trace plot of row number versus value.
+        sample_photon_flux : Return the flux distribution of a model.
+        sample_flux : Return the flux distribution of a model.
 
-           id          - Sherpa data id
-                         default = default data id
+        Examples
+        --------
 
-           num         - Number of simulations
-                         default = 1
+        Calculate the energy flux distribution for the range 0.5 to 7,
+        and plot up the resulting flux distribution (as a cumulative
+        distribution):
 
-           correlated  - Use a multi-variate distribution to sample parameter values.
-                         default = False
+        >>> vals = sample_energy_flux(0.5, 7, num=1000)
+        >>> plot_cdf(vals[:,0], name='flux')
 
-           scales      - User supplied scales for the sampling distributions.
-                         If correlated is True then scales must be a symmetric
-                         and postive semi-definite 2-D array_like of shape 
-                         (N,N) where N is the number of free parameters,
-                         otherwise scales can be a 1-D array_like, of length N.
-                         default = None
+        Repeat the above, but allowing the parameters to be
+        correlated, and then calculate the 5, 50, and 95 percent
+        quantiles of the energy flux distribution:
 
-           numcores    - specify the number of cores for parallel processing.
-                         All available cores are used by default.
-                         default = None
+        >>> cvals = sample_energy_flux(.5, 7, num=1000, correlated=True)
+        >>> np.percentile(cvals[:,0], [5,50,95])
 
-           bkg_id      - Sherpa background id
-                         default = default bkg id
-
-        Returns:
-           array of flux value and parameter values
-
-        DESCRIPTION
-           Get a sample of the energy flux at a particular spot in parameter space.
-
-        SEE ALSO
-           get_energy_flux_plot, get_photon_flux_plot, plot_photon_flux,
-           plot_energy_flux, sample_photon_flux
         """
         ids, fit = self._get_fit(id)
         data = self.get_data(id)
@@ -11342,92 +11478,114 @@ class Session(sherpa.ui.utils.Session):
                                              correlated, num, lo, hi, numcores,
                                              scales)
 
+    ### DOC-NOTE: are scales the variance or standard deviation?
     def sample_flux(self, modelcomponent=None, lo=None, hi=None, id=None,
                      num=1, scales=None, correlated=False,
                      numcores=None, bkg_id=None, Xrays=True, confidence=68):
-         """
-         sample_flux
+         """Return the flux distribution of a model.
 
-         SYNOPSIS
-            Get a sample of the parameters with the corresponding flux and a
-            flux uncertainty for a model component or a combination of model
-            components.
+         For each iteration, draw the parameter values of the model
+         from a normal distribution, evaluate the model, and sum the
+         model over the given range (the flux). Return the parameter
+         values used, together with the median, upper, and lower
+         quantiles of the flux distribution.
 
+         Parameters
+         ----------
+         modelcomponent : optional
+            The model to use. It can be a single component or
+            a combination. If not given, then the full source
+            expression for the data set is used.
+         lo : number, optional
+            The lower limit to use when summing up the signal. If not
+            given then the lower value of the data grid is used.
+         hi : optional
+            The upper limit to use when summing up the signal. If not
+            guven then the upper value of the data grid is used.
+         id : int or string, optional
+            The identifier of the data set to use. The default value
+            (`None`) means that the default identifier, as returned by
+            `get_default_id`, is used.
+         num : int, optional
+            The number of samples to create. The default is `1`.
+         scales : array, optional
+            The scales used to define the normal distributions for the
+            parameters. The form depends on the `correlated`
+            parameter: when `True`, the array should be a symmetric
+            positive semi-definite (N,N) array, otherwise a 1D array
+            of length N, where N is the number of free parameters.
+         correlated : bool, optional
+            If `True` (the default is `False`) then `scales` is the
+            full covariance matrix, otherwise it is just a 1D array
+            containing the variances of the parameters (the diagonal
+            elements of the covariance matrix).
+         numcores : optional
+            The number of CPU cores to use. The default is to use all
+            the cores on the machine.
+         bkg_id : int or string, optional
+            The identifier of the background component to use. This
+            should only be set when the line to be measured is in the
+            background model.
+         Xrays : bool, optional
+            When `True` (the default), assume that the model has
+            units of photon/cm^2/s, and use `calc_energy_flux`
+            to convert to erg/cm^2/s.
+         confidence : number, optional
+            The confidence level for the upper and lower quartiles,
+            as a percentage. The default is 68, so as to return
+            the one-sigma range.
 
-         SYNTAX
+         Returns
+         -------
+         (fullflux,cptflux,vals) :
+            The fullflux and cptflux arrays contain the results for
+            the full source model and the flux of the `modelcomponent`
+            argument (they can be the same). They have three elements
+            and give the median value, upper quartile, and lower
+            quartile values of the flux distribution. The vals array
+            has a shape of (num+1,N+2), where N is the number of free
+            parameters and num is the `num` parameter. The rows of
+            this array contain the flux value for the iteration (for
+            the full source model), the parameter values, and then the
+            statistic value for this set of parameters.
 
-         Arguments:
-            modelcomponent - a model component or by default the model
-                             expression built from the previously defined
-                             models.
-                             default = None
+         See Also
+         --------
+         calc_photon_flux : Integrate the source model over a pass band.
+         calc_energy_flux : Integrate the source model over a pass band.
+         covar : Estimate the confidence intervals using the confidence method.
+         plot_energy_flux : Display the energy flux distribution.
+         plot_photon_flux : Display the photon flux distribution.
+         sample_energy_flux : Return the energy flux distribution of a model.
+         sample_photon_flux : Return the photon flux distribution of a model.
 
-            lo             - lower energy bound
-                             default = None
+         Examples
+         --------
 
-            hi             - upper energy bound
-                             default = None
+         Estimate the flux distribution for the "src" component using
+         the default data set. The parameters are assumed to be
+         uncorrelated.
 
-            id             - Sherpa data id
-                             default = default data id
+         >>> set_source(xsphabs.gal * xsapec.src)
+         >>> fit()
+         >>> covar()
+         >>> (fflux,cflux,vals) = sample_flux(src, 0.5, 2, num=1000)
+         original model flux = 2.88993e-14, + 1.92575e-15, - 1.81963e-15
+         model component flux = 7.96865e-14, + 4.65144e-15, - 4.41222e-15
+         >>> (f0, fhi, flo) = cflux
+         >>> print("Flux: {:.2e} {:.2e} {:.2e}".format(f0, fhi-f0, flo-f0))
+         Flux: 7.97e-14 4.65e-15 -4.41e-15
 
-            num            - Number of realization in the sample
-                             default = 1
+         This time the parameters are assumed to be correlated, using
+         the covariance matrix created by the `covar` call:
 
-            correlated	   - If True then include a full covariance matrix
-			     to set scales for multi-variate distributions,
-                             otherwise use only diagonal elements (variances).  
-			     default = False
+         >>> ans = sample_flux(src, 0.5, 2, num=1000, correlated=True)
 
-            scales	   - User supplied scales for the sampling
-			     distributions.  If correlated is True then scales
-                             must be a symmetric and postive semi-definite 2-D
-                             array_like of shape (N,N) where N is the number of
-                             free parameters, otherwise scales can be a 1-D
-                             array_like, of length N.
-			     default = None
+         Explicitly send in a covariance matrix:
 
-            numcores       - specify the number of cores for parallel 
-			     processing. All available cores are used by
-                             default.
-                             default = None
+         >>> cmatrix = get_covar_results().extra_output
+         >>> ans = sample_flux(correlated=True, scales=cmatrix, num=500)
 
-            bkg_id         - Sherpa background id
-                             default = default bkg_id
-
-            Xrays          - If True then calc_energy_flux used and the
-                             returned flux is in units of erg/cm2/s, otherwise
-                             the units are not specified and depend the data.
-                             default = True
-
-            confidence     - confidence level for the returned flux uncertainty
-                             expressed as percentile
-			     default = 68
-
-         Returns:
-            array of parameter values and a flux value with lower and upper
-            bounds.
-
-         DESCRIPTION
-	    Get a sample of parameters with a corresponding flux and a
-	    flux uncertainty for a model component or a combination of
-	    model components. The model components have to be
-	    previously defined and used in the fit. The samples are
-	    generated from the multi-variate normal distributions with
-	    the scales defined by covariance (if at the best fit) or
-	    supplied (as "scales"). The flux is calculated for each
-	    set of new parameters.  The returned flux value is given
-	    by a sample's median with the lower and upper quantiles
-	    defined by the confidence level supplied to the function.
-
-	 EXAMPLES
-
-
-         SEE ALSO
-            get_energy_flux_plot, get_photon_flux_plot, plot_photon_flux,
-            plot_energy_flux, sample_photon_flux, sample_energy_flux, 
-	    calc_energy_flux, calc_photon_flux, plot_cdf, plot_pdf, normal_sample,
-	    t_sample, get_draws
          """
 
          ids, fit = self._get_fit(id)
@@ -11462,7 +11620,6 @@ class Session(sherpa.ui.utils.Session):
                                                     samples, modelcomponent,
                                                     confidence )
 
-    ### Ahelp ingest: 2015-04-28 DJB
     def eqwidth(self, src, combo, id=None, lo=None, hi=None, bkg_id=None):
         """Calculate the equivalent width of an emission or absorption line.
 
@@ -11544,7 +11701,6 @@ class Session(sherpa.ui.utils.Session):
         return sherpa.astro.utils.eqwidth(data, src, combo, lo, hi)
 
 
-    ### Ahelp ingest: 2015-05-04 DJB
     def calc_photon_flux(self, lo=None, hi=None, id=None, bkg_id=None):
         """Integrate the source model over a pass band.
 
@@ -11641,7 +11797,6 @@ class Session(sherpa.ui.utils.Session):
             
         return sherpa.astro.utils.calc_photon_flux(data, model, lo, hi)
     
-    ### Ahelp ingest: 2015-05-04 DJB
     def calc_energy_flux(self, lo=None, hi=None, id=None, bkg_id=None):
         """Integrate the source model over a pass band.
 
@@ -11733,7 +11888,6 @@ class Session(sherpa.ui.utils.Session):
         return sherpa.astro.utils.calc_energy_flux(data, model, lo, hi)
 
 
-    ### Ahelp ingest: 2015-05-05 DJB
     ### DOC-TODO: how do lo/hi limits interact with bin edges;
     ###           is it all in or partially in or ...
     def calc_data_sum(self, lo=None, hi=None, id=None, bkg_id=None):
@@ -11817,7 +11971,6 @@ class Session(sherpa.ui.utils.Session):
             data = self.get_bkg(id, bkg_id)
         return sherpa.astro.utils.calc_data_sum(data, lo, hi)
             
-    ### Ahelp ingest: 2015-05-05 DJB
     ### DOC-TODO: does lo!=None,hi=None make sense here,
     ###           since this is not an integration but a sum.
     ###           For now I have just not documented this capability.
@@ -11893,7 +12046,6 @@ class Session(sherpa.ui.utils.Session):
             model= self.get_model(id)
         return sherpa.astro.utils.calc_model_sum(data, model, lo, hi)
 
-    ### Ahelp ingest: 2015-05-05 DJB
     def calc_data_sum2d(self, reg=None, id=None):
         """Sum up the data values of a 2D data set.
 
@@ -11959,7 +12111,6 @@ class Session(sherpa.ui.utils.Session):
         data = self.get_data(id)
         return sherpa.astro.utils.calc_data_sum2d(data, reg)
 
-    ### Ahelp ingest: 2015-05-05 DJB
     ### DOC-TODO: show an example with psf
     ### DOC-TODO: this needs testing as doesn't seem to be working for me
     def calc_model_sum2d(self, reg=None, id=None):
@@ -12032,7 +12183,6 @@ class Session(sherpa.ui.utils.Session):
         model= self.get_model(id)
         return sherpa.astro.utils.calc_model_sum2d(data, model, reg)
 
-    ### Ahelp ingest: 2015-05-05 DJB
     def calc_source_sum2d(self, reg=None, id=None):
         """Sum up the fitted model for a 2D data set.
 
@@ -12102,7 +12252,6 @@ class Session(sherpa.ui.utils.Session):
         src= self.get_source(id)
         return sherpa.astro.utils.calc_model_sum2d(data, src, reg)
 
-    ### Ahelp ingest: 2015-05-05 DJB
     ### DOC-TODO: does lo!=None,hi=None make sense here,
     ###           since this is not an integration but a sum.
     ###           For now I have just not documented this capability.
@@ -12192,7 +12341,6 @@ class Session(sherpa.ui.utils.Session):
             model= self.get_source(id)
         return sherpa.astro.utils.calc_source_sum(data, model, lo, hi)
 
-    ### Ahelp ingest: 2015-05-04 DJB
     ### DOC-TODO: no reason can't k-correct wavelength range,
     ###           but need to work out how to identify the units
     def calc_kcorr(self, z, obslo, obshi, restlo=None, resthi=None,
@@ -12319,7 +12467,6 @@ class Session(sherpa.ui.utils.Session):
     # Session Text Save Function
     ###########################################################################
 
-    ### Ahelp ingest: 2015-04-27 DJB
     def save_all(self, outfile=None, clobber=False):
         """Save the information about the current session to a text file.
 

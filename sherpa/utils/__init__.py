@@ -645,14 +645,24 @@ def quantile(sorted_array, f):
 
 
 def get_error_estimates(x, sorted=False):
-    """
-    Compute the quantiles and return the median, -1 sigma value, and +1 sigma
-    value for the array *x*.
+    """Compute the median and (-1,+1) sigma values for the data.
 
-    `x`        input ndarray
-    `sorted`   boolean flag to sort array, default=False
+    Parameters
+    ----------
+    x : array of numbers
+       The input values.
+    sorted : bool, optional
+       If `False`, the default, then `x` is assumed to not be sorted.
 
-    returns a 3-tuple (median, -1 sigma value, and +1 sigma value)
+    Returns
+    -------
+    (median, lsig, usig)
+       The median, value that corresponds to -1 sigma, and value that
+       is +1 sigma, for the input distribution.
+
+    Examples
+    --------
+    >>> (m, l, h) = get_error_estimates(x)
 
     """
     xs = numpy.asarray(x)
@@ -669,11 +679,27 @@ def get_error_estimates(x, sorted=False):
 
 
 def poisson_noise(x):
-    """
+    """Draw samples from a Poisson distribution.
 
-    Return a random value from a Poisson distribution with mean x.  If
-    x is an array, return an array of such values.  Uses
-    numpy.random.poisson to generate the values.
+    Parameters
+    ----------
+    x : scalar or array
+       The expectation value for the distribution.
+
+    Returns
+    -------
+    out : scalar or array
+       A random realisation of the input array, drawn from
+       the Poisson distribution, as a `SherpaFloat`.
+
+    Notes
+    -----
+    The distribution is calculated by `numpy.poisson.poisson`.
+
+    Examples
+    --------
+    >>> poisson_noise([10, 20, 5])
+    array([ 13.,  21.,   6.])
 
     """
 
@@ -859,7 +885,6 @@ def dataspace2d(dim):
 
     return x0, x1, y, shape
 
-### Ahelp ingest: 2015-04-27 DJB
 def histogram1d( x, x_lo, x_hi ):
     """Create a 1D histogram from a binned grid (`x_lo`, `xhi`)
     and array of samples (`x`).
@@ -913,7 +938,6 @@ def histogram1d( x, x_lo, x_hi ):
 
     return hist1d( numpy.asarray(x), x_lo, x_hi )
 
-### Ahelp ingest: 2015-04-27 DJB
 def histogram2d( x, y, x_grid, y_grid ):
     """Create 21D histogram from a binned grid (`x_grid`, `y_grid`)
     and array of samples (`x`, and `y`).
